@@ -1,0 +1,2438 @@
+{
+  "schemaVersion": 1,
+  "providers": {
+    "semrush": {
+      "status": "public-catalog-bounded",
+      "liveAudit": {
+        "auditedAt": "2026-08-27",
+        "planTier": "GURU, expires 2027-02-21",
+        "officialPages": 80,
+        "sameOriginPages": 102,
+        "artifactBundles": 79,
+        "fullHtmlPages": 79,
+        "outcomes": {
+          "captured": 15,
+          "bounded": 11,
+          "permissionBlocked": 4,
+          "writeConfirmationRequired": 49,
+          "externalUnavailable": 1
+        },
+        "verifiedWorkflow": "keyword geo-hop from US/global demand to India database",
+        "sidebarExtraction": "The toolkit sidebar lives in shadow DOM. Read it with document.querySelectorAll('snav-sidebar-ribbon-item, snav-sidebar-list-item') then el.shadowRoot.querySelector('a').getAttribute('href'). A plain querySelectorAll('a') returns only header and footer marketing links, which is why an earlier pass concluded the sidebar was invisible.",
+        "boundaries": [
+          "SEOquake is an external provider",
+          "paid, account, and export actions were not executed",
+          "the gmitm proxy anonymises some third-party domains, so competitor widgets can return placeholder domains such as silver-switchboard.net that are not real data",
+          "several report tables failed to render across repeated reloads and are recorded as not-reached rather than missing",
+          "2026-08-28 更正：旧边界「Traffic analysis submission creates a project」已证伪，见 Traffic & Market 模块的 note。",
+          "App Center: no paid app has been installed, trialled, or subscribed to. The 2026-08-28 pass read listing cards only - names, descriptions, prices, and Active badges. Only SERP Gap Analyzer and AdClarity read as Active on this account; the other 46 apps are name-level knowledge, not usable capability. CORRECTED 2026-08-28: that Active pair is **node 5's account (initial H)**. On node 8 (initial B) SERP Gap Analyzer reads $99/mo and is not subscribed; AdClarity is Active on both. Do not read the pair as a property of the shared-account pool."
+        ],
+        "knownMissing": [
+          "Brand Monitoring: confirmed 404 on two reloads; replaced by the third-party Brand24 Media Monitoring app in App Center at $39/mo",
+          "Link Building Tool: /link_building/ now 302s to /analytics/backlinks/, the Backlink Analytics landing page. The SEO sidebar 外链建设 group holds Backlinks, Referring Domains, and Backlink Audit instead. The landing copy still names a standalone Link Building Tool, but no sidebar entry matches it",
+          "Content Analyzer: renamed to 内容优化工具 (Content Optimizer) at /content/articles/optimize/",
+          "My Reports: Scheduled PDF Reports and Toolkit Widgets were not in the sidebar; possibly inside the report constructor, unverified"
+        ],
+        "previouslyMissingNowFound": [
+          "PLA Research → exists as 谷歌购物广告研究 (Google Shopping Ads Research) at /analytics/pla/positions/ in Advertising Toolkit"
+        ],
+        "newlyFound": [
+          "SEO: 页面 SEO 检查器 /on-page-seo-checker/",
+          "SEO: 自然流量洞察 /organic_traffic_insights/",
+          "AI SEO: 提示跟踪 /position-tracking/?filter=geo",
+          "Traffic: 社会经济 /analytics/traffic/socioeconomics/",
+          "Traffic: 行为 /analytics/traffic/behavior/",
+          "Traffic: 每日趋势 /analytics/traffic/daily-trends/",
+          "Traffic: 行业与批量分析 /analytics/traffic/industry-and-bulk-analysis/",
+          "Traffic: Trends API /analytics/traffic/trends-api",
+          "Traffic: 热门网站趋势 /trending-websites/global/all/",
+          "Local: GBP 优化 /gbp-optimization/",
+          "Local: Google 商家资料 AI 代理 /gbp-ai-agent/",
+          "AI PR: 发件人和域名, 警告和摘要",
+          "Social: standalone /media-monitoring/",
+          "My Reports: GA4 / GSC / monthly-SEO templates, 主题, 关于我的报告套件"
+        ],
+        "rowCaps": {
+          "referring-domains": "100 rows per page, 201 pages, header reads 1-100 (~20,001), so roughly 20,001 rows - a hard cap",
+          "top-pages": "100 rows per page, 67 pages for coolmathgames.com against a stated 6,693 total",
+          "organic-positions": "100 rows per page, 1,848 pages, 184.7K keywords for coolmathgames.com - the domain total, not a cap",
+          "keyword-magic": "100 rows per page, 201 pages, 20.1K keywords for the seed 'nonogram', with a Topics sidebar of clusters"
+        },
+        "notReached": [
+          {
+            "what": "the 7 inner pages of the AI Visibility toolkit",
+            "why": "with no campaign the route renders a marketing landing page, and starting one is a write action; read-only AI metrics are on Domain Overview instead"
+          },
+          {
+            "what": "2 of the 17 columns in Advertising Research",
+            "why": "the column manager reads 15/17 and was not opened"
+          }
+        ],
+        "retriedOn": "2026-08-28",
+        "resolvedOnRetry": [
+          "Google Shopping Ads Research columns: 广告, 关键词, 排名, 位差, 搜索量, 产品标题和 URL, 价格 (USD), 趋势, SERP, 上次更新. The earlier failure was the test domain, not loading - amazon.com carries no shopping-ads data in the US database, while walmart.com renders immediately.",
+          "Organic Positions and Keyword Magic pagination, both captured after the reload-and-retry rule; each needed 2-3 reloads before the table body appeared."
+        ],
+        "keywordMagicLimitation": "CORRECTION 2026-08-28: an earlier note called the metrics quota-gated. They are not. The 不可用 / 要更新指标数据 state is progressive hydration - waiting for the parse to stabilise returns every metric. Two live runs (seeds nonogram and tower defense) came back 100/100 rows with volume, KD, and CPC filled in.",
+        "keywordMagicMeasured": "seed nonogram: 20.1K keywords over 201 pages; seed tower defense: 98.5K. 100 rows per page, 15 columns, read via DOM cells because the innerText row shape is variable-length.",
+        "verificationStrength": {
+          "enumeratedPages": 118,
+          "enumeratedPagesBreakdown": "102 toolkit pages from the 2026-08-27 shadow-DOM sidebar sweep + 16 App Center pages (the /apps/ index and 15 collection listings) enumerated 2026-08-28.",
+          "pagesWithCapturedData": 16,
+          "note": "枚举数不是验证数。引用某项能力前先看该模块的 observed 字段；没有就是只有名字。 **比例只按工具箱的 102 页算（16/102 = 16%）。** 应用中心那 16 页是列表页，本来就没有报表数据可取，并进分母只会把比例稀释成 14%，制造「覆盖率下降」的假象——实际是多枚举了一批本质不同的页面，不是少取了数。",
+          "toolkitPages": 102,
+          "appCenterListingPages": 16
+        }
+      },
+      "scriptCoverage": {
+        "status": "script-verified",
+        "reports": [
+          "organic-overview",
+          "organic-positions",
+          "organic-pages",
+          "backlinks-overview",
+          "backlinks-list",
+          "referring-domains",
+          "keyword-magic",
+          "keyword-overview"
+        ],
+        "targets": [
+          "domain",
+          "keyword"
+        ],
+        "gapsRanked": [
+          "Keyword Gap and Backlink Gap",
+          "multi-country-database sum wrapper"
+        ],
+        "notWorthScripting": [
+          "Local Toolkit (4 pages, write actions and no physical storefront)",
+          "Social Toolkit (5 pages, publishing)",
+          "AI PR Toolkit (5 pages, outbound email)",
+          "My Reports (3 pages, export and account actions)",
+          "Content Toolkit (7 pages, generation)"
+        ],
+        "gapNote": "Page count does not rank priority. **2026-08-28 更正**：Traffic & Market 之前被排到第九位，写的理由是「它复刻的是 Similarweb 那类估算，而两家已知互相对不上」——**那个「已知对不上」从来没有测过，是个假设**。实测 canva.com：两家的总访问量相差 2.4%、设备占比相差 1.7pp。真正不能并列的只有平均访问时长（相差 86%）。所以这个模块的价值被一个未经验证的前提压低了：它不是重复 Similarweb，它是**唯一一个能和 Similarweb 互相校验的口径**。教训与本仓库其它几起一样——把没验证过的假设当成已知事实写进优先级排序，代价是整条产品线被跳过。",
+        "gapsClosed": [
+          "Keyword Magic Tool bulk export and clustering → semrush-report.mjs --report keyword-magic",
+          "Referring Domains list with hit-count rollup → semrush-report.mjs --report referring-domains（含 --rollup）"
+        ]
+      },
+      "modules": [
+        {
+          "name": "SEO Toolkit",
+          "pages": 22,
+          "groups": [
+            "站点表现",
+            "竞品分析",
+            "关键词研究",
+            "内容创意",
+            "外链建设",
+            "其他"
+          ],
+          "examples": [
+            "Dashboard",
+            "Site Audit",
+            "Position Tracking",
+            "Domain Overview",
+            "Organic Rankings",
+            "Top Pages",
+            "Compare Domains",
+            "Keyword Gap",
+            "Backlink Gap",
+            "Keyword Overview",
+            "Keyword Magic Tool",
+            "Keyword Strategy Builder",
+            "SEO Writing Assistant",
+            "Topic Research",
+            "Backlinks",
+            "Referring Domains",
+            "Backlink Audit",
+            "On-Page SEO Checker",
+            "Organic Traffic Insights",
+            "Sensor",
+            "SEOquake",
+            "Semrush Ranking"
+          ]
+        },
+        {
+          "name": "Traffic & Market Toolkit",
+          "pages": 28,
+          "groups": [
+            "流量分布",
+            "页面和类别 (beta)",
+            "地区趋势",
+            "受众资料",
+            "高级版"
+          ],
+          "examples": [
+            "Getting Started",
+            "Traffic Analysis",
+            "Market Overview",
+            "Top Pages",
+            "Competitor Monitoring",
+            "AI Traffic",
+            "Referral Traffic",
+            "Organic Search",
+            "Paid Search",
+            "Organic Social",
+            "Paid Social",
+            "Email",
+            "Display Ads",
+            "Sources & Destinations",
+            "Subfolders & Subdomains",
+            "Page Groups (beta)",
+            "US/Country/Business/Geographic Regions",
+            "Demographics",
+            "Audience Overlap",
+            "Socioeconomics",
+            "Behaviour",
+            "Daily Trends",
+            "Industry & Bulk Analysis",
+            "Trends API",
+            "Trending Websites"
+          ],
+          "observed": "route-level-classified",
+          "note": "2026-08-28 实测跑通。28 条确切路由见 routes。 **旧边界「提交查询会创建项目」已证伪**：填域名提交后报表直接渲染，无升级提示、无限额、不需要项目；提交前后面板「保存的列表」可见部分逐字节相同（列表下方还有「再显示 20 个结果」未展开，比对的是可见部分）。「保存的列表 / 创建新列表」是独立的显式控件，报表头上的「未命名列表」是未保存临时选择的默认名。 入口路由是 /analytics/traffic/traffic-overview/，不是 /overview/——后者重定向到落地页并丢掉 query。 深链参数是 ?q=<域名>&searchType=domain，两个参数缺一不可（2026-08-29 实盘确认，加上就立刻渲染完整报表）。 **旧记录「?q=<domain> 不被识别，必须在页面上填域名提交」已证伪**：那次测试漏了 searchType=domain。 而且这条路由根本不提供查询表单——裸导航落地页标题是 Dashboards，整页唯一的 input 是 13 个 checkbox，前台轮询 36 秒也不会出现任何文本框。",
+          "routes": [
+            [
+              "/analytics/traffic/",
+              "开始"
+            ],
+            [
+              "/analytics/traffic/traffic-overview/",
+              "流量分析"
+            ],
+            [
+              "/analytics/traffic/market-overview/",
+              "市场概览"
+            ],
+            [
+              "/analytics/traffic/top-pages/",
+              "主要页面"
+            ],
+            [
+              "/analytics/traffic/competitor-monitoring/",
+              "竞争对手监控"
+            ],
+            [
+              "/analytics/traffic/ai-traffic/",
+              "AI 流量"
+            ],
+            [
+              "/analytics/traffic/referral/",
+              "引荐流量"
+            ],
+            [
+              "/analytics/traffic/organic-search/",
+              "自然搜索"
+            ],
+            [
+              "/analytics/traffic/paid-search/",
+              "付费搜索"
+            ],
+            [
+              "/analytics/traffic/organic-social/",
+              "自然社交"
+            ],
+            [
+              "/analytics/traffic/paid-social/",
+              "付费社交"
+            ],
+            [
+              "/analytics/traffic/email/",
+              "电子邮件"
+            ],
+            [
+              "/analytics/traffic/display-ads/",
+              "展示广告"
+            ],
+            [
+              "/analytics/traffic/sources-destinations/",
+              "来源与目标"
+            ],
+            [
+              "/analytics/traffic/subfolders-subdomains/",
+              "子文件夹和子域名"
+            ],
+            [
+              "/analytics/traffic/page-groups/",
+              "页面组"
+            ],
+            [
+              "/analytics/traffic/usa/",
+              "美国"
+            ],
+            [
+              "/analytics/traffic/countries/",
+              "国家/地区"
+            ],
+            [
+              "/analytics/traffic/business-regions/",
+              "业务区域"
+            ],
+            [
+              "/analytics/traffic/geographical-regions/",
+              "地理区域"
+            ],
+            [
+              "/analytics/traffic/demographics/",
+              "人口统计"
+            ],
+            [
+              "/analytics/traffic/audience-overlap/",
+              "受众重叠"
+            ],
+            [
+              "/analytics/traffic/socioeconomics/",
+              "社会经济"
+            ],
+            [
+              "/analytics/traffic/behavior/",
+              "行为"
+            ],
+            [
+              "/analytics/traffic/daily-trends/",
+              "每日趋势"
+            ],
+            [
+              "/analytics/traffic/industry-and-bulk-analysis/",
+              "行业与批量分析"
+            ],
+            [
+              "/analytics/traffic/trends-api",
+              "Trends API"
+            ],
+            [
+              "/trending-websites/global/all/",
+              "热门网站趋势"
+            ]
+          ],
+          "capturedSample": {
+            "domain": "canva.com",
+            "period": "2026年7月",
+            "scope": "全球 / 所有设备",
+            "visits": "7.9亿",
+            "uniqueVisitors": "2.1亿",
+            "purchaseConversionPercent": 0.21,
+            "pagesPerVisit": 5.4,
+            "avgVisitDuration": "11:02",
+            "bounceRatePercent": 30.23,
+            "deviceSplit": {
+              "desktopPercent": 84.26,
+              "mobilePercent": 15.74
+            }
+          },
+          "crossPlatformCheck": {
+            "against": "Similarweb 网站表现（similarweb-query --domain canva.com）",
+            "comparable": [
+              "总访问量（相差 2.4%）",
+              "设备占比（相差 1.7pp）"
+            ],
+            "notComparable": [
+              "平均访问时长（Semrush 11:02 vs Similarweb 05:56，相差 86%）"
+            ],
+            "roughlyComparable": [
+              "跳出率（相差 3.2pp）",
+              "页数/访问（相差 15%）"
+            ],
+            "caveat": "窗口不完全重合：Semrush 是 2026 年 7 月整月，Similarweb 总访问量标 Jul–Aug 2026、参与度标 Last 28 days as of Aug 24。"
+          },
+          "perRouteFindings": {
+            "_source": "sweep-results-v2.jsonl（node 5、canva.com、2026年7月、全球/所有设备）。文件共 24 行：node 5 完整 22 条，另有 2 行 node 8 的复测（top-pages、sources-destinations）在跑，未计入本分类。",
+            "_protocol": "v4-visible-gated。每条路由最多 3 轮导航、每轮轮询 100 秒；只有 filled > 0、或**连续 3 次在 document.visibilityState === \"visible\" 下读到空**，才允许下判定；全程没等到过 visible 就判 inconclusive-hidden，绝不记成「空」。每条记录都带判定时的 visibilityState 与 visibleReads。 **已被两次推翻，见各条 supersededObservation**：v4 的早停缺陷（最快 18 秒下结论）先被 v5「可见读满 3 次且等满 100 秒」修补，v5 又被同一天的重测推翻（5 条改判为 data，2 条第二次重测才出数）。现行协议 v6-patient-signal-gated（耐心模式：每轮 200 秒、3 轮跑满不早停、单条最长 600 秒；空判定必须绑定正向的「本页已渲染完成」信号，拿不到就输出 inconclusive 而不是 empty）。",
+            "_categories": {
+              "data": "有表且有行。这条线上**只有这一类能直接喂给取数脚本**。",
+              "chart-only": "页面本身不提供表格，只有 svg。**重读无效**，要写图表读取器。既不能报「没数据」，也不该套可见性重试循环。 **2026-08-29：这一类不再是一个笼统的计数。** 一条路由只有在满足结构判据、判定为 `no-table-structural` 时才算数（本模块 4 条）；证据强但缺结构字段的记 `strong-but-different-protocol`（2 条）；跑满预算却没凑齐结构判据的只配 `no-table`，**不可采信**，一律移出本分类记 `pending`。逐条看 `chartOnlyTier`。判据和两个判定名（`no-table-structural` / `no-table`）**只写在** backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 的 <correct> 块里，这里不复述。 **2026-08-29 再更新：结构判据去掉了 `vis === 'visible'` 那一项**（它不是页面产出，且一次 foreground attach 之后会被永久锁死在 `visible`）。保留的是「目标已生效」那半。**这意味着已判定 `no-table-structural` 的路由不受 visible 锁死污染的影响** —— 它们靠的是图表数字与导出按钮，都是页面产出。",
+              "empty-silent": "列头齐全、0 行、无 upsell、无限额提示、无「未找到匹配内容」。**与 chart-only 的补救方向相反**：这一类可能是可见性伪空，值得重读/换节点复测。 **2026-08-28 起这一类的门槛提高了**：光是「等够久还是空」不再够格——判空必须绑定一个正向的「本页已渲染完成」信号（分页器 / 行数计数 / 加载指示消失）。拿不到那个信号就记 `inconclusive`，不记 `empty`。 **2026-08-28：这一类在 node 5 上已清空（8 条全部改判为 `data`）。** 保留枚举值是因为它命名的现象仍可能出现，但目前没有任何一条路由属于它。",
+              "requires-input": "路由存在且渲染正常，但要人先贴输入才产出。不是「空」，也不是「没数据」。",
+              "not-a-report-route": "这条路由根本不返回报表——是营销/定价页。",
+              "pending": "尚未拿到可采信判据的路由：要么弱证据（`no-table`，跑满预算但结构判据没凑齐），要么重测还没回来。**这一类不是一个结论，是一个待办**——不要拿它规划取数，也不要写成「这条路由没有表格」。",
+              "data-not-in-table": "**2026-08-29 新增，只有 `behavior` 一条。** 路由没有任何 table 元素，但数据就在 DOM 文本里，用列表 + 条形图呈现。⚠️ **按「非空单元格 > 0」判会得 0，但这不是「没数据」** —— 那条正向判据只能正着用：`filledCells > 0` 证明有数据，`filledCells === 0` 只证明「没有表格型数据」，推不出「没数据」。它隐含过一个没说出口的假设：**数据 = 表格**。实测原文：`YouTube 71.8% 1.5亿 | Facebook 49.36% 1亿 | Instagram 48.61% | Reddit 33.71% | TikTok 28.06%`，另有兴趣度与设备分布。取数要写列表/图表读取器，并且**必须按路由声明 `presentationShape` 与本路由自己的锚点维度名**（社交媒体 / 兴趣度 / 设备），在锚点子树内部取值。**绝不能改成「页面上有数字就算有数据」** —— 那正是 axa.fr 挂件那个假阳性。判据、判定名（`no-table-structural` / `data-not-in-table` / `no-table`）和「非空单元格判据不能反过来用」这条更正**只写在** backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 里，这里不复述。"
+            },
+            "_distributionNode5": {
+              "total": 22,
+              "_asOf": "2026-08-29（B 的最终报告）",
+              "_protocolId": "v8-structural-no-visibility-gate",
+              "data": 10,
+              "chart-only": 9,
+              "data-not-in-table": 1,
+              "empty-silent": 0,
+              "pending": 0,
+              "requires-input": 1,
+              "not-a-report-route": 1,
+              "_members": {
+                "data（22 条之内，10 条）": [
+                  "subfolders-subdomains 900 格",
+                  "usa 459 格",
+                  "sources-destinations 272 格",
+                  "audience-overlap 204 格",
+                  "geographical-regions 198 格",
+                  "trending-websites 140 格",
+                  "ai-traffic 120 格",
+                  "business-regions 36 格",
+                  "page-groups 20 格",
+                  "demographics 20 格"
+                ],
+                "chart-only / no-table-structural（9 条，均通过结构判据）": [
+                  "referral",
+                  "organic-search",
+                  "paid-search",
+                  "organic-social",
+                  "paid-social",
+                  "email",
+                  "display-ads",
+                  "daily-trends",
+                  "socioeconomics"
+                ],
+                "data-not-in-table（1 条）": [
+                  "behavior —— 无 table 元素，数据在 DOM 文本里，列表 + 条形图。**按非空单元格判会得 0，但不是没数据**"
+                ],
+                "非报表路由（2 条）": [
+                  "industry-and-bulk-analysis（requires-input）",
+                  "trends-api（not-a-report-route）"
+                ]
+              },
+              "_countingNote": "**「能出表格数据 11 条」与本表的 `data: 10` 不矛盾，差的那一条是 `top-pages`。** top-pages（850 个非空单元格）**不在 node 5 这次 sweep 的 22 条里**，它是另一次实测，记录在 `notInThisSweep` 里。所以：22 条之内 data 10 条；把 top-pages 算进来，能直接喂给取数脚本的路由共 **11** 条。11 + 9（图表型）+ 1（behavior）+ 2（非报表）= 23 = 22 + top-pages。写数字时把口径写清楚，不要混。",
+              "note": "**修正 2026-08-28**：此前口述的分布是「出数 3 条（ai-traffic / top-pages / trending-websites）、图表型 9 条」。**以 sweep-results-v2.jsonl 为准，两处都不对**：(1) `/analytics/traffic/top-pages/` **根本不在这次 node 5 的 22 条里**，它只在文件末尾以 node 8 的复测行出现（当时读到 no-table、0 格，那一轮还在跑）——所以本次 node 5 出数的是 2 条，不是 3 条。top-pages 的 850 格是**另一次**实测，见下面它自己的记录，那条结论不受影响。(2) 图表型是 **10** 条不是 9：referral / organic-search / paid-search / organic-social / paid-social / email / display-ads / socioeconomics / behavior / daily-trends。 **再更正 2026-08-28：`empty-silent` 这 8 条的判定已作废，正在重测。** 原判据「可见读满 3 次即采信为空」最快 18 秒下结论，而表格最后水合；node 8 已反证出 page-groups 20 格、geographical-regions 198 格。新判据 v5-visible-gated-min100s（可见读满 3 次且本轮等满 100 秒）。本分布里的 8 这个数字先当作「待重测的条数」看，不要当作结论。 **改判 2026-08-28（耐心模式重测回来之后）：分类计数变了。** `data` 从 **2 条改为 7 条**、`empty-silent` 从 **8 条改为 3 条**。改判的 5 条是 page-groups（20 格）/ geographical-regions（198 格）/ business-regions（36 格）/ sources-destinations（272 格）/ subfolders-subdomains（900 格）；其中 **geographical-regions 与 business-regions 是第二次重测才出的数**，100 秒的下限没兜住它们。剩下的 3 条（usa / demographics / audience-overlap）**仍在重测**，保持 pending-remeasure-v5，那个 3 依旧是「待重测的条数」而不是结论。总数仍是 22。 **最终改判 2026-08-28：`empty-silent` 这一类在 node 5 上的计数是 0。** 8 条全部出数（非空单元格）：page-groups 20 / demographics 20 / business-regions 36 / geographical-regions 198 / audience-overlap 204 / sources-destinations 272 / usa 459 / subfolders-subdomains 900。其中 geographical-regions 与 business-regions 是**第二次重测**才出的数。实盘那边的原话记在这里：**「我判过的每一条『空』，最后都是我等得不够。零例外。」** ⚠️ **同时：`chart-only` 这 10 条的计数现在也不是确认值**——它们同样是在早停判据下测出来的，正按耐心模式重跑（先跑 referral / organic-search / paid-search / organic-social / socioeconomics）。**这个 10 要当作「待重测的条数」读，不要当作结论。** 现在唯一没被判据缺陷牵连的只有 requires-input 与 not-a-report-route 各 1 条。总数仍是 22。 **再更新 2026-08-29：`chart-only: 10` 这个数字作废，拆成四档。** 4 条通过结构判据（organic-social 30/5、paid-social 34/5、email 23/4、display-ads 29/4）标 structural-confirmed，可采信；referral / organic-search 在更早的协议下各被 visible 读了 98 / 96 次仍无 table 元素，证据够但缺结构字段，标 strong-but-different-protocol，待补测；paid-search（chart=0/exp=6）与 behavior（chart=0/exp=0，整页章节都没渲染）只拿到弱判定 `no-table`，**不可采信，移出分类记 pending**；daily-trends / socioeconomics 仍在跑，保持 pending。总数仍是 22（data 10 / chart-only 6 / pending 4 / requires-input 1 / not-a-report-route 1）。判据和两个判定名（`no-table-structural` / `no-table`）**只写在** backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 的 <correct> 块里，这里不复述。 **最终更新 2026-08-29（B 的最终报告，protocol v8-structural-no-visibility-gate）：`pending` 清零。** 9 条图表型（referral / organic-search / paid-search / organic-social / paid-social / email / display-ads / daily-trends / socioeconomics）**全部通过结构判据**，判定 `no-table-structural`，可采信；`behavior` 单列为新分类 **`data-not-in-table`**（无 table 元素，但数据就在 DOM 文本里，列表 + 条形图；**按非空单元格判会得 0，但不是没数据**）；非报表路由 2 条（industry-and-bulk-analysis / trends-api）。22 条之内 data 10 条，**加上不在这 22 条里的 top-pages（850 格），能出表格数据的共 11 条**。 **同批判据修订：结构判据去掉了 `vis === 'visible'` 这一项。** 理由：(1) 它不是页面产出，而 `chartHydrated` / `exportBtns` 已经直接证明「页面其余部分渲染完了」，代理项不再增加信息；(2) 一次 foreground attach 会把 `visibilityState` 永久锁死在 `visible`，所以这个条件在被污染的会话上恒真（形同虚设），在诚实的纯后台会话上反而可能为假（误杀成立的结构判定）。**保留「目标已生效」那半**（空态落地页是一个完美的 noTable===true）。**连带结论：4 条 structural-confirmed 的判定不受 visible 锁死污染影响**，因为它们从来不靠可见性。⚠️ **但这不动摇「可见性伪空」那条 law**：可见性管的是**表格里的行会不会水合**（top-pages：hidden 0 格 / visible 850 格，三次交叉验证），不是**table 这个元素存不存在**。两者是两个问题，别合并。"
+            },
+            "routes": {
+              "/analytics/traffic/referral/": {
+                "label": "引荐流量",
+                "category": "chart-only",
+                "node": 5,
+                "target": "canva.com",
+                "period": "2026年7月",
+                "protocol": "v4-visible-gated：只采信 document.visibilityState === \"visible\" 时的读；空判定必须在 visible 下连读 3 次",
+                "protocolId": "v4-visible-gated",
+                "visibilityStateAtVerdict": "visible",
+                "visibleReads": 3,
+                "sawVisible": true,
+                "hasTable": false,
+                "filledCells": 0,
+                "svgCount": 50,
+                "canvasCount": 0,
+                "innerTextLength": 1094,
+                "targetVisible": true,
+                "upsell": false,
+                "dailyCapNotice": false,
+                "noMatchMessage": false,
+                "error": null,
+                "sweepVerdict": "no-table",
+                "note": "A 类。图表里是 canva.com 的真实量级（流量趋势轴到 6000 万），且「增长最快的页面」区块有逐条读数：剧增 37.1万% canva.com/features/change-background-color-of-image 7413。**数据存在，取数形态是图不是表。**",
+                "remeasureStatus": "voided-2026-08-29-blind-probe",
+                "remeasureNote": "**2026-08-29 结案。** 此前标 `strong-but-different-protocol`：更早协议下 98 次 `visible` 读、每次 0 个 table 元素，证据强但缺 `chartHydrated` / `exportBtns` 两个结构字段。现按结构判据补测通过，判定 `no-table-structural`，可采信。⚠️ **关于那 98 次「visible 读」**：`scripts/semrush-traffic.mjs` 的 `DEFAULT_WINDOW = 'foreground'`，而一次 foreground attach 会把 `visibilityState` 永久锁死在 `visible`，所以那 98 个 `visible` 标签**作为可见性证据是作废的**。但它们从来不是可见性证据——它们是 98 次「0 个 table 元素」的 DOM 观测，这一点不受污染影响。**结论：那批读数的可信度既不提升也不下降**，它当初不可采信的理由（缺两个结构字段）现在由补测解决，与可见性无关。判据、判定名（`no-table-structural` / `data-not-in-table` / `no-table`）和「非空单元格判据不能反过来用」这条更正**只写在** backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 里，这里不复述。",
+                "chartOnlyTier": "voided-blind-probe",
+                "structuralEvidence": {
+                  "verdict": "no-table-structural",
+                  "chartHydrated": null,
+                  "exportBtns": null,
+                  "criterionVersion": "v8-structural-no-visibility-gate",
+                  "note": "**B 的最终报告只给了「均通过结构判据」这个结论，没有逐条转述 chart/exp 计数**，所以这两个数字记为 null 而不是编一个。判定名可采信，逐格证据待从实测日志回填。 **2026-08-29 判据修订：结构判据不再要求 `vis === 'visible'`。** 它不是页面产出，而且一次 foreground attach 之后会被永久锁死在 `visible`（一个 Chrome 窗口里两个标签页同时报 visible 是铁证），是一个可能撒谎的信号。「页面其余部分渲染完了」这件事由 chartHydrated 与 exportBtns 直接证明，不需要可见性做代理。**保留的是「目标已生效」那半**——空态落地页是一个完美的 noTable===true。判据、判定名（`no-table-structural` / `data-not-in-table` / `no-table`）和「非空单元格判据不能反过来用」这条更正**只写在** backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 里，这里不复述。",
+                  "status20260829": "voided-blind-probe",
+                  "voidedBecause": "浅层 DOM 探针（不穿透 shadow DOM）+ 空白模块 + 导航壳里的 12 个导出按钮。chartHydrated 与 exportBtns 已在 backlink Skill 里退役，不再是判据。"
+                },
+                "chartOnlyTierVoided20260829": "structural-confirmed",
+                "voided20260829": {
+                  "status": "voided-blind-probe",
+                  "voidedVerdict": "no-table-structural",
+                  "now": "pending-remeasure",
+                  "note": "**2026-08-29 作废（voided-blind-probe）。** 这条判定所依据的 DOM 探针**对 shadow DOM 结构性失明**，所以它量到的是页面的一小块，不是页面。同一页同一刻实测：`document.body.innerText.length` = **59**，穿透 shadow DOM 的深层文本 = **1,605,054**，文档里 **44 个 shadow root**（Semrush 把外壳和报表挂件都渲染在里面）。`innerText` 不穿透，`querySelectorAll` 也不穿透。\n\n**成因三条，缺一不可：**\n1. **浅层 DOM 探针** —— `hasTable` / `filledCells` / `innerTextLength` / `svgCount` 全部是浅层读数。穿透探针在同一页上把 svg 从 32 读到 45、3 读到 16、49 读到 62。\n2. **空白模块** —— 内容区实际一片空白，所以「没有 table」是「什么都没渲染」，不是「这条路由不用表格」。\n3. **伪造的 exportBtns** —— `daily-trends` 量到 `exportBtns: 12`，**与本记录里的 `exp=12` 完全一致**，而内容区空白：那 12 个匹配全在 shadow DOM 的**导航壳**里，不在任何报表内。同批的 `chartHydrated` 在三条路由上**全部读到 0**，包括记录里写着 `chart=122` 的那条 —— 「这 9 条通过了结构判据」**无法复现**。\n\n**对照组（决定性）：** `top-pages` —— 记录里写着 **850 个非空单元格** —— 现在读到 `tables:0, grids:0, cells:0, innerText:59`，持续 150 秒。**一条已知有数据的路由，和这 9 条读出来完全一样。**分类在这样的读数上零区分力。\n\n**原观测一律保留、一个字没删**（`hasTable` / `filledCells` / `svgCount` / `innerTextLength` / `chartOnlyTier` / `structuralEvidence` 都在原位），标注它们被什么推翻而已。\n\n**处置：** 判定作废，本条回到 `pending-remeasure`。重测的前提是穿透探针 + 分类前的三条硬闸门（落地 path == 请求路由 / 页头域名 == 请求目标 / 穿透后的报表区内容非空），任一不满足输出 `inconclusive`，**不许输出 `no-table` 或 `empty`**。判据与闸门只写在 backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 及 `scripts/lib-report-readiness.mjs` / `scripts/lib-deep-dom.mjs` 里，这里不复述。"
+                }
+              },
+              "/analytics/traffic/ai-traffic/": {
+                "label": "AI 流量",
+                "category": "data",
+                "node": 5,
+                "target": "canva.com",
+                "period": "2026年7月",
+                "protocol": "v4-visible-gated：只采信 document.visibilityState === \"visible\" 时的读；空判定必须在 visible 下连读 3 次",
+                "protocolId": "v4-visible-gated",
+                "visibilityStateAtVerdict": "visible",
+                "visibleReads": 1,
+                "sawVisible": true,
+                "hasTable": true,
+                "filledCells": 120,
+                "svgCount": 89,
+                "canvasCount": 0,
+                "innerTextLength": 2261,
+                "targetVisible": true,
+                "upsell": false,
+                "dailyCapNotice": false,
+                "noMatchMessage": false,
+                "error": null,
+                "sweepVerdict": "data",
+                "sampleCells": [
+                  "chatgpt.com\nchatgpt.com",
+                  "无类别",
+                  "64.62%",
+                  "363.9万",
+                  "↑18.48%",
+                  "gemini.google.com\ngemini.google.com",
+                  "无类别",
+                  "19.41%",
+                  "109.3万",
+                  "↑21.42%",
+                  "claude.ai\nclaude.ai",
+                  "12.71%"
+                ],
+                "note": "✅ 可采信。120 格在两次**独立**的跑里逐字相同（一次 background、一次 v4-visible）：chatgpt.com / 无类别 / 64.62% / 363.9万 / ↑18.48%。两次独立复现，不必再复测。",
+                "recheck20260829": {
+                  "status": "pending-recheck-blind-probe",
+                  "verdictStands": true,
+                  "filledCellsIsLowerBound": true,
+                  "note": "**2026-08-29 标为「待复查」（pending-recheck-blind-probe）。判定未作废。** 本条是**正向**判定：它拿到过真实的非空单元格字符串（见 `firstCells` / `filledCells`），而正向证据比缺失证据结实得多 —— 浅层探针**读到**的东西是真的，它只是可能**漏读**。所以 `filledCells` 是**下界**，不是等值；行数/列数很可能被低估。\n\n**但它和被作废的那 9 条是同一个失明探针产出的**，所以两件事必须复查：\n1. **数值本身是否完整** —— 穿透之后单元格数会不会变多（`top-pages` 850 → 现读 0 说明这套读数极不稳定）；\n2. **数是不是这个域名的** —— 同一批实盘里，深链弹跳之后标签页停在 **`mmradar.gg`** 的域名概览（23 个非空单元格、AS 22、自然流量 23.9K）。**任何当时读到 `cells > 0` 的探针，都会把 mmradar.gg 的数字记到 canva.com 名下。** 本条没有页头域名核对的留痕，所以无法自证不是那一种。\n\n复查按新闸门跑，通过前这条记录**可用但不可引用为精确值**。"
+                }
+              },
+              "/analytics/traffic/organic-search/": {
+                "label": "自然搜索",
+                "category": "chart-only",
+                "node": 5,
+                "target": "canva.com",
+                "period": "2026年7月",
+                "protocol": "v4-visible-gated：只采信 document.visibilityState === \"visible\" 时的读；空判定必须在 visible 下连读 3 次",
+                "protocolId": "v4-visible-gated",
+                "visibilityStateAtVerdict": "visible",
+                "visibleReads": 3,
+                "sawVisible": true,
+                "hasTable": false,
+                "filledCells": 0,
+                "svgCount": 57,
+                "canvasCount": 0,
+                "innerTextLength": 1310,
+                "targetVisible": true,
+                "upsell": false,
+                "dailyCapNotice": false,
+                "noMatchMessage": false,
+                "error": null,
+                "sweepVerdict": "no-table",
+                "note": "A 类。图表轴到 1.5 亿。",
+                "remeasureStatus": "voided-2026-08-29-blind-probe",
+                "remeasureNote": "**2026-08-29 结案。** 此前标 `strong-but-different-protocol`：更早协议下 96 次 `visible` 读、每次 0 个 table 元素，证据强但缺 `chartHydrated` / `exportBtns` 两个结构字段。现按结构判据补测通过，判定 `no-table-structural`，可采信。⚠️ **关于那 96 次「visible 读」**：`scripts/semrush-traffic.mjs` 的 `DEFAULT_WINDOW = 'foreground'`，而一次 foreground attach 会把 `visibilityState` 永久锁死在 `visible`，所以那 96 个 `visible` 标签**作为可见性证据是作废的**。但它们从来不是可见性证据——它们是 96 次「0 个 table 元素」的 DOM 观测，这一点不受污染影响。**结论：那批读数的可信度既不提升也不下降**，它当初不可采信的理由（缺两个结构字段）现在由补测解决，与可见性无关。判据、判定名（`no-table-structural` / `data-not-in-table` / `no-table`）和「非空单元格判据不能反过来用」这条更正**只写在** backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 里，这里不复述。",
+                "chartOnlyTier": "voided-blind-probe",
+                "structuralEvidence": {
+                  "verdict": "no-table-structural",
+                  "chartHydrated": null,
+                  "exportBtns": null,
+                  "criterionVersion": "v8-structural-no-visibility-gate",
+                  "note": "**B 的最终报告只给了「均通过结构判据」这个结论，没有逐条转述 chart/exp 计数**，所以这两个数字记为 null 而不是编一个。判定名可采信，逐格证据待从实测日志回填。 **2026-08-29 判据修订：结构判据不再要求 `vis === 'visible'`。** 它不是页面产出，而且一次 foreground attach 之后会被永久锁死在 `visible`（一个 Chrome 窗口里两个标签页同时报 visible 是铁证），是一个可能撒谎的信号。「页面其余部分渲染完了」这件事由 chartHydrated 与 exportBtns 直接证明，不需要可见性做代理。**保留的是「目标已生效」那半**——空态落地页是一个完美的 noTable===true。判据、判定名（`no-table-structural` / `data-not-in-table` / `no-table`）和「非空单元格判据不能反过来用」这条更正**只写在** backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 里，这里不复述。",
+                  "status20260829": "voided-blind-probe",
+                  "voidedBecause": "浅层 DOM 探针（不穿透 shadow DOM）+ 空白模块 + 导航壳里的 12 个导出按钮。chartHydrated 与 exportBtns 已在 backlink Skill 里退役，不再是判据。"
+                },
+                "chartOnlyTierVoided20260829": "structural-confirmed",
+                "voided20260829": {
+                  "status": "voided-blind-probe",
+                  "voidedVerdict": "no-table-structural",
+                  "now": "pending-remeasure",
+                  "note": "**2026-08-29 作废（voided-blind-probe）。** 这条判定所依据的 DOM 探针**对 shadow DOM 结构性失明**，所以它量到的是页面的一小块，不是页面。同一页同一刻实测：`document.body.innerText.length` = **59**，穿透 shadow DOM 的深层文本 = **1,605,054**，文档里 **44 个 shadow root**（Semrush 把外壳和报表挂件都渲染在里面）。`innerText` 不穿透，`querySelectorAll` 也不穿透。\n\n**成因三条，缺一不可：**\n1. **浅层 DOM 探针** —— `hasTable` / `filledCells` / `innerTextLength` / `svgCount` 全部是浅层读数。穿透探针在同一页上把 svg 从 32 读到 45、3 读到 16、49 读到 62。\n2. **空白模块** —— 内容区实际一片空白，所以「没有 table」是「什么都没渲染」，不是「这条路由不用表格」。\n3. **伪造的 exportBtns** —— `daily-trends` 量到 `exportBtns: 12`，**与本记录里的 `exp=12` 完全一致**，而内容区空白：那 12 个匹配全在 shadow DOM 的**导航壳**里，不在任何报表内。同批的 `chartHydrated` 在三条路由上**全部读到 0**，包括记录里写着 `chart=122` 的那条 —— 「这 9 条通过了结构判据」**无法复现**。\n\n**对照组（决定性）：** `top-pages` —— 记录里写着 **850 个非空单元格** —— 现在读到 `tables:0, grids:0, cells:0, innerText:59`，持续 150 秒。**一条已知有数据的路由，和这 9 条读出来完全一样。**分类在这样的读数上零区分力。\n\n**原观测一律保留、一个字没删**（`hasTable` / `filledCells` / `svgCount` / `innerTextLength` / `chartOnlyTier` / `structuralEvidence` 都在原位），标注它们被什么推翻而已。\n\n**处置：** 判定作废，本条回到 `pending-remeasure`。重测的前提是穿透探针 + 分类前的三条硬闸门（落地 path == 请求路由 / 页头域名 == 请求目标 / 穿透后的报表区内容非空），任一不满足输出 `inconclusive`，**不许输出 `no-table` 或 `empty`**。判据与闸门只写在 backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 及 `scripts/lib-report-readiness.mjs` / `scripts/lib-deep-dom.mjs` 里，这里不复述。"
+                }
+              },
+              "/analytics/traffic/paid-search/": {
+                "label": "付费搜索",
+                "category": "chart-only",
+                "node": 5,
+                "target": "canva.com",
+                "period": "2026年7月",
+                "protocol": "v4-visible-gated：只采信 document.visibilityState === \"visible\" 时的读；空判定必须在 visible 下连读 3 次",
+                "protocolId": "v4-visible-gated",
+                "visibilityStateAtVerdict": "visible",
+                "visibleReads": 3,
+                "sawVisible": true,
+                "hasTable": false,
+                "filledCells": 0,
+                "svgCount": 53,
+                "canvasCount": 0,
+                "innerTextLength": 1189,
+                "targetVisible": true,
+                "upsell": false,
+                "dailyCapNotice": false,
+                "noMatchMessage": false,
+                "error": null,
+                "sweepVerdict": "no-table",
+                "note": "A 类。图表轴到 150 万。",
+                "remeasureStatus": "voided-2026-08-29-blind-probe",
+                "remeasureNote": "**2026-08-29 结案。** 此前是弱证据 `no-table`（chart=0 / exp=6，图表数字没渲染），记 `pending`。现按结构判据补测通过，判定 `no-table-structural`，可采信。判据、判定名（`no-table-structural` / `data-not-in-table` / `no-table`）和「非空单元格判据不能反过来用」这条更正**只写在** backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 里，这里不复述。",
+                "chartOnlyTier": "voided-blind-probe",
+                "weakEvidence": {
+                  "chartHydrated": 0,
+                  "exportBtns": 6,
+                  "verdict": "no-table",
+                  "admissible": false
+                },
+                "structuralEvidence": {
+                  "verdict": "no-table-structural",
+                  "chartHydrated": null,
+                  "exportBtns": null,
+                  "criterionVersion": "v8-structural-no-visibility-gate",
+                  "note": "**B 的最终报告只给了「均通过结构判据」这个结论，没有逐条转述 chart/exp 计数**，所以这两个数字记为 null 而不是编一个。判定名可采信，逐格证据待从实测日志回填。 **2026-08-29 判据修订：结构判据不再要求 `vis === 'visible'`。** 它不是页面产出，而且一次 foreground attach 之后会被永久锁死在 `visible`（一个 Chrome 窗口里两个标签页同时报 visible 是铁证），是一个可能撒谎的信号。「页面其余部分渲染完了」这件事由 chartHydrated 与 exportBtns 直接证明，不需要可见性做代理。**保留的是「目标已生效」那半**——空态落地页是一个完美的 noTable===true。判据、判定名（`no-table-structural` / `data-not-in-table` / `no-table`）和「非空单元格判据不能反过来用」这条更正**只写在** backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 里，这里不复述。",
+                  "status20260829": "voided-blind-probe",
+                  "voidedBecause": "浅层 DOM 探针（不穿透 shadow DOM）+ 空白模块 + 导航壳里的 12 个导出按钮。chartHydrated 与 exportBtns 已在 backlink Skill 里退役，不再是判据。"
+                },
+                "chartOnlyTierVoided20260829": "structural-confirmed",
+                "voided20260829": {
+                  "status": "voided-blind-probe",
+                  "voidedVerdict": "no-table-structural",
+                  "now": "pending-remeasure",
+                  "note": "**2026-08-29 作废（voided-blind-probe）。** 这条判定所依据的 DOM 探针**对 shadow DOM 结构性失明**，所以它量到的是页面的一小块，不是页面。同一页同一刻实测：`document.body.innerText.length` = **59**，穿透 shadow DOM 的深层文本 = **1,605,054**，文档里 **44 个 shadow root**（Semrush 把外壳和报表挂件都渲染在里面）。`innerText` 不穿透，`querySelectorAll` 也不穿透。\n\n**成因三条，缺一不可：**\n1. **浅层 DOM 探针** —— `hasTable` / `filledCells` / `innerTextLength` / `svgCount` 全部是浅层读数。穿透探针在同一页上把 svg 从 32 读到 45、3 读到 16、49 读到 62。\n2. **空白模块** —— 内容区实际一片空白，所以「没有 table」是「什么都没渲染」，不是「这条路由不用表格」。\n3. **伪造的 exportBtns** —— `daily-trends` 量到 `exportBtns: 12`，**与本记录里的 `exp=12` 完全一致**，而内容区空白：那 12 个匹配全在 shadow DOM 的**导航壳**里，不在任何报表内。同批的 `chartHydrated` 在三条路由上**全部读到 0**，包括记录里写着 `chart=122` 的那条 —— 「这 9 条通过了结构判据」**无法复现**。\n\n**对照组（决定性）：** `top-pages` —— 记录里写着 **850 个非空单元格** —— 现在读到 `tables:0, grids:0, cells:0, innerText:59`，持续 150 秒。**一条已知有数据的路由，和这 9 条读出来完全一样。**分类在这样的读数上零区分力。\n\n**原观测一律保留、一个字没删**（`hasTable` / `filledCells` / `svgCount` / `innerTextLength` / `chartOnlyTier` / `structuralEvidence` 都在原位），标注它们被什么推翻而已。\n\n**处置：** 判定作废，本条回到 `pending-remeasure`。重测的前提是穿透探针 + 分类前的三条硬闸门（落地 path == 请求路由 / 页头域名 == 请求目标 / 穿透后的报表区内容非空），任一不满足输出 `inconclusive`，**不许输出 `no-table` 或 `empty`**。判据与闸门只写在 backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 及 `scripts/lib-report-readiness.mjs` / `scripts/lib-deep-dom.mjs` 里，这里不复述。"
+                }
+              },
+              "/analytics/traffic/organic-social/": {
+                "label": "自然社交",
+                "category": "chart-only",
+                "node": 5,
+                "target": "canva.com",
+                "period": "2026年7月",
+                "protocol": "v4-visible-gated：只采信 document.visibilityState === \"visible\" 时的读；空判定必须在 visible 下连读 3 次",
+                "protocolId": "v4-visible-gated",
+                "visibilityStateAtVerdict": "visible",
+                "visibleReads": 3,
+                "sawVisible": true,
+                "hasTable": false,
+                "filledCells": 0,
+                "svgCount": 50,
+                "canvasCount": 0,
+                "innerTextLength": 1122,
+                "targetVisible": true,
+                "upsell": false,
+                "dailyCapNotice": false,
+                "noMatchMessage": false,
+                "error": null,
+                "sweepVerdict": "no-table",
+                "note": "A 类。图表轴到 3000 万。",
+                "remeasureStatus": "voided-2026-08-29-blind-probe",
+                "remeasureNote": "**2026-08-29 结案**：耐心模式重测通过**结构判据**，判定 `no-table-structural`，可采信。此前那条「早停判据下测出、不要当成已确认」的警告对本条**已解除**。证据见 `structuralEvidence`。",
+                "chartOnlyTier": "voided-blind-probe",
+                "structuralEvidence": {
+                  "noTable": true,
+                  "chartHydrated": 30,
+                  "exportBtns": 5,
+                  "targetVisible": true,
+                  "visibilityStateAtRead": "visible",
+                  "consecutiveReads": 2,
+                  "verdict": "no-table-structural",
+                  "protocolId": "v7-structural-absence",
+                  "note": "四条件全满足、连续两次读都满足：整页 0 个 table/[role=grid]，svg 内含数字的文本节点 30 个，章节导出按钮 5 个，目标已生效。 **2026-08-29 判据修订：结构判据不再要求 `vis === 'visible'`。** 它不是页面产出，而且一次 foreground attach 之后会被永久锁死在 `visible`（一个 Chrome 窗口里两个标签页同时报 visible 是铁证），是一个可能撒谎的信号。「页面其余部分渲染完了」这件事由 chartHydrated 与 exportBtns 直接证明，不需要可见性做代理。**保留的是「目标已生效」那半**——空态落地页是一个完美的 noTable===true。判据、判定名（`no-table-structural` / `data-not-in-table` / `no-table`）和「非空单元格判据不能反过来用」这条更正**只写在** backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 里，这里不复述。",
+                  "criterionVersion": "v8-structural-no-visibility-gate",
+                  "status20260829": "voided-blind-probe",
+                  "voidedBecause": "浅层 DOM 探针（不穿透 shadow DOM）+ 空白模块 + 导航壳里的 12 个导出按钮。chartHydrated 与 exportBtns 已在 backlink Skill 里退役，不再是判据。"
+                },
+                "chartOnlyTierVoided20260829": "structural-confirmed",
+                "voided20260829": {
+                  "status": "voided-blind-probe",
+                  "voidedVerdict": "no-table-structural",
+                  "now": "pending-remeasure",
+                  "note": "**2026-08-29 作废（voided-blind-probe）。** 这条判定所依据的 DOM 探针**对 shadow DOM 结构性失明**，所以它量到的是页面的一小块，不是页面。同一页同一刻实测：`document.body.innerText.length` = **59**，穿透 shadow DOM 的深层文本 = **1,605,054**，文档里 **44 个 shadow root**（Semrush 把外壳和报表挂件都渲染在里面）。`innerText` 不穿透，`querySelectorAll` 也不穿透。\n\n**成因三条，缺一不可：**\n1. **浅层 DOM 探针** —— `hasTable` / `filledCells` / `innerTextLength` / `svgCount` 全部是浅层读数。穿透探针在同一页上把 svg 从 32 读到 45、3 读到 16、49 读到 62。\n2. **空白模块** —— 内容区实际一片空白，所以「没有 table」是「什么都没渲染」，不是「这条路由不用表格」。\n3. **伪造的 exportBtns** —— `daily-trends` 量到 `exportBtns: 12`，**与本记录里的 `exp=12` 完全一致**，而内容区空白：那 12 个匹配全在 shadow DOM 的**导航壳**里，不在任何报表内。同批的 `chartHydrated` 在三条路由上**全部读到 0**，包括记录里写着 `chart=122` 的那条 —— 「这 9 条通过了结构判据」**无法复现**。\n\n**对照组（决定性）：** `top-pages` —— 记录里写着 **850 个非空单元格** —— 现在读到 `tables:0, grids:0, cells:0, innerText:59`，持续 150 秒。**一条已知有数据的路由，和这 9 条读出来完全一样。**分类在这样的读数上零区分力。\n\n**原观测一律保留、一个字没删**（`hasTable` / `filledCells` / `svgCount` / `innerTextLength` / `chartOnlyTier` / `structuralEvidence` 都在原位），标注它们被什么推翻而已。\n\n**处置：** 判定作废，本条回到 `pending-remeasure`。重测的前提是穿透探针 + 分类前的三条硬闸门（落地 path == 请求路由 / 页头域名 == 请求目标 / 穿透后的报表区内容非空），任一不满足输出 `inconclusive`，**不许输出 `no-table` 或 `empty`**。判据与闸门只写在 backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 及 `scripts/lib-report-readiness.mjs` / `scripts/lib-deep-dom.mjs` 里，这里不复述。"
+                }
+              },
+              "/analytics/traffic/paid-social/": {
+                "label": "付费社交",
+                "category": "chart-only",
+                "node": 5,
+                "target": "canva.com",
+                "period": "2026年7月",
+                "protocol": "v4-visible-gated：只采信 document.visibilityState === \"visible\" 时的读；空判定必须在 visible 下连读 3 次",
+                "protocolId": "v4-visible-gated",
+                "visibilityStateAtVerdict": "visible",
+                "visibleReads": 3,
+                "sawVisible": true,
+                "hasTable": false,
+                "filledCells": 0,
+                "svgCount": 50,
+                "canvasCount": 0,
+                "innerTextLength": 1063,
+                "targetVisible": true,
+                "upsell": false,
+                "dailyCapNotice": false,
+                "noMatchMessage": false,
+                "error": null,
+                "sweepVerdict": "no-table",
+                "remeasureStatus": "voided-2026-08-29-blind-probe",
+                "remeasureNote": "**2026-08-29 结案**：耐心模式重测通过**结构判据**，判定 `no-table-structural`，可采信。此前那条「早停判据下测出、不要当成已确认」的警告对本条**已解除**。证据见 `structuralEvidence`。",
+                "chartOnlyTier": "voided-blind-probe",
+                "structuralEvidence": {
+                  "noTable": true,
+                  "chartHydrated": 34,
+                  "exportBtns": 5,
+                  "targetVisible": true,
+                  "visibilityStateAtRead": "visible",
+                  "consecutiveReads": 2,
+                  "verdict": "no-table-structural",
+                  "protocolId": "v7-structural-absence",
+                  "note": "四条件全满足、连续两次读都满足：整页 0 个 table/[role=grid]，svg 内含数字的文本节点 34 个，章节导出按钮 5 个，目标已生效。 **2026-08-29 判据修订：结构判据不再要求 `vis === 'visible'`。** 它不是页面产出，而且一次 foreground attach 之后会被永久锁死在 `visible`（一个 Chrome 窗口里两个标签页同时报 visible 是铁证），是一个可能撒谎的信号。「页面其余部分渲染完了」这件事由 chartHydrated 与 exportBtns 直接证明，不需要可见性做代理。**保留的是「目标已生效」那半**——空态落地页是一个完美的 noTable===true。判据、判定名（`no-table-structural` / `data-not-in-table` / `no-table`）和「非空单元格判据不能反过来用」这条更正**只写在** backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 里，这里不复述。",
+                  "criterionVersion": "v8-structural-no-visibility-gate",
+                  "status20260829": "voided-blind-probe",
+                  "voidedBecause": "浅层 DOM 探针（不穿透 shadow DOM）+ 空白模块 + 导航壳里的 12 个导出按钮。chartHydrated 与 exportBtns 已在 backlink Skill 里退役，不再是判据。"
+                },
+                "chartOnlyTierVoided20260829": "structural-confirmed",
+                "voided20260829": {
+                  "status": "voided-blind-probe",
+                  "voidedVerdict": "no-table-structural",
+                  "now": "pending-remeasure",
+                  "note": "**2026-08-29 作废（voided-blind-probe）。** 这条判定所依据的 DOM 探针**对 shadow DOM 结构性失明**，所以它量到的是页面的一小块，不是页面。同一页同一刻实测：`document.body.innerText.length` = **59**，穿透 shadow DOM 的深层文本 = **1,605,054**，文档里 **44 个 shadow root**（Semrush 把外壳和报表挂件都渲染在里面）。`innerText` 不穿透，`querySelectorAll` 也不穿透。\n\n**成因三条，缺一不可：**\n1. **浅层 DOM 探针** —— `hasTable` / `filledCells` / `innerTextLength` / `svgCount` 全部是浅层读数。穿透探针在同一页上把 svg 从 32 读到 45、3 读到 16、49 读到 62。\n2. **空白模块** —— 内容区实际一片空白，所以「没有 table」是「什么都没渲染」，不是「这条路由不用表格」。\n3. **伪造的 exportBtns** —— `daily-trends` 量到 `exportBtns: 12`，**与本记录里的 `exp=12` 完全一致**，而内容区空白：那 12 个匹配全在 shadow DOM 的**导航壳**里，不在任何报表内。同批的 `chartHydrated` 在三条路由上**全部读到 0**，包括记录里写着 `chart=122` 的那条 —— 「这 9 条通过了结构判据」**无法复现**。\n\n**对照组（决定性）：** `top-pages` —— 记录里写着 **850 个非空单元格** —— 现在读到 `tables:0, grids:0, cells:0, innerText:59`，持续 150 秒。**一条已知有数据的路由，和这 9 条读出来完全一样。**分类在这样的读数上零区分力。\n\n**原观测一律保留、一个字没删**（`hasTable` / `filledCells` / `svgCount` / `innerTextLength` / `chartOnlyTier` / `structuralEvidence` 都在原位），标注它们被什么推翻而已。\n\n**处置：** 判定作废，本条回到 `pending-remeasure`。重测的前提是穿透探针 + 分类前的三条硬闸门（落地 path == 请求路由 / 页头域名 == 请求目标 / 穿透后的报表区内容非空），任一不满足输出 `inconclusive`，**不许输出 `no-table` 或 `empty`**。判据与闸门只写在 backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 及 `scripts/lib-report-readiness.mjs` / `scripts/lib-deep-dom.mjs` 里，这里不复述。"
+                }
+              },
+              "/analytics/traffic/email/": {
+                "label": "电子邮件",
+                "category": "chart-only",
+                "node": 5,
+                "target": "canva.com",
+                "period": "2026年7月",
+                "protocol": "v4-visible-gated：只采信 document.visibilityState === \"visible\" 时的读；空判定必须在 visible 下连读 3 次",
+                "protocolId": "v4-visible-gated",
+                "visibilityStateAtVerdict": "visible",
+                "visibleReads": 3,
+                "sawVisible": true,
+                "hasTable": false,
+                "filledCells": 0,
+                "svgCount": 45,
+                "canvasCount": 0,
+                "innerTextLength": 823,
+                "targetVisible": true,
+                "upsell": false,
+                "dailyCapNotice": false,
+                "noMatchMessage": false,
+                "error": null,
+                "sweepVerdict": "no-table",
+                "remeasureStatus": "voided-2026-08-29-blind-probe",
+                "remeasureNote": "**2026-08-29 结案**：耐心模式重测通过**结构判据**，判定 `no-table-structural`，可采信。此前那条「早停判据下测出、不要当成已确认」的警告对本条**已解除**。证据见 `structuralEvidence`。",
+                "chartOnlyTier": "voided-blind-probe",
+                "structuralEvidence": {
+                  "noTable": true,
+                  "chartHydrated": 23,
+                  "exportBtns": 4,
+                  "targetVisible": true,
+                  "visibilityStateAtRead": "visible",
+                  "consecutiveReads": 2,
+                  "verdict": "no-table-structural",
+                  "protocolId": "v7-structural-absence",
+                  "note": "四条件全满足、连续两次读都满足：整页 0 个 table/[role=grid]，svg 内含数字的文本节点 23 个，章节导出按钮 4 个，目标已生效。 **2026-08-29 判据修订：结构判据不再要求 `vis === 'visible'`。** 它不是页面产出，而且一次 foreground attach 之后会被永久锁死在 `visible`（一个 Chrome 窗口里两个标签页同时报 visible 是铁证），是一个可能撒谎的信号。「页面其余部分渲染完了」这件事由 chartHydrated 与 exportBtns 直接证明，不需要可见性做代理。**保留的是「目标已生效」那半**——空态落地页是一个完美的 noTable===true。判据、判定名（`no-table-structural` / `data-not-in-table` / `no-table`）和「非空单元格判据不能反过来用」这条更正**只写在** backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 里，这里不复述。",
+                  "criterionVersion": "v8-structural-no-visibility-gate",
+                  "status20260829": "voided-blind-probe",
+                  "voidedBecause": "浅层 DOM 探针（不穿透 shadow DOM）+ 空白模块 + 导航壳里的 12 个导出按钮。chartHydrated 与 exportBtns 已在 backlink Skill 里退役，不再是判据。"
+                },
+                "chartOnlyTierVoided20260829": "structural-confirmed",
+                "voided20260829": {
+                  "status": "voided-blind-probe",
+                  "voidedVerdict": "no-table-structural",
+                  "now": "pending-remeasure",
+                  "note": "**2026-08-29 作废（voided-blind-probe）。** 这条判定所依据的 DOM 探针**对 shadow DOM 结构性失明**，所以它量到的是页面的一小块，不是页面。同一页同一刻实测：`document.body.innerText.length` = **59**，穿透 shadow DOM 的深层文本 = **1,605,054**，文档里 **44 个 shadow root**（Semrush 把外壳和报表挂件都渲染在里面）。`innerText` 不穿透，`querySelectorAll` 也不穿透。\n\n**成因三条，缺一不可：**\n1. **浅层 DOM 探针** —— `hasTable` / `filledCells` / `innerTextLength` / `svgCount` 全部是浅层读数。穿透探针在同一页上把 svg 从 32 读到 45、3 读到 16、49 读到 62。\n2. **空白模块** —— 内容区实际一片空白，所以「没有 table」是「什么都没渲染」，不是「这条路由不用表格」。\n3. **伪造的 exportBtns** —— `daily-trends` 量到 `exportBtns: 12`，**与本记录里的 `exp=12` 完全一致**，而内容区空白：那 12 个匹配全在 shadow DOM 的**导航壳**里，不在任何报表内。同批的 `chartHydrated` 在三条路由上**全部读到 0**，包括记录里写着 `chart=122` 的那条 —— 「这 9 条通过了结构判据」**无法复现**。\n\n**对照组（决定性）：** `top-pages` —— 记录里写着 **850 个非空单元格** —— 现在读到 `tables:0, grids:0, cells:0, innerText:59`，持续 150 秒。**一条已知有数据的路由，和这 9 条读出来完全一样。**分类在这样的读数上零区分力。\n\n**原观测一律保留、一个字没删**（`hasTable` / `filledCells` / `svgCount` / `innerTextLength` / `chartOnlyTier` / `structuralEvidence` 都在原位），标注它们被什么推翻而已。\n\n**处置：** 判定作废，本条回到 `pending-remeasure`。重测的前提是穿透探针 + 分类前的三条硬闸门（落地 path == 请求路由 / 页头域名 == 请求目标 / 穿透后的报表区内容非空），任一不满足输出 `inconclusive`，**不许输出 `no-table` 或 `empty`**。判据与闸门只写在 backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 及 `scripts/lib-report-readiness.mjs` / `scripts/lib-deep-dom.mjs` 里，这里不复述。"
+                }
+              },
+              "/analytics/traffic/display-ads/": {
+                "label": "展示广告",
+                "category": "chart-only",
+                "node": 5,
+                "target": "canva.com",
+                "period": "2026年7月",
+                "protocol": "v4-visible-gated：只采信 document.visibilityState === \"visible\" 时的读；空判定必须在 visible 下连读 3 次",
+                "protocolId": "v4-visible-gated",
+                "visibilityStateAtVerdict": "visible",
+                "visibleReads": 3,
+                "sawVisible": true,
+                "hasTable": false,
+                "filledCells": 0,
+                "svgCount": 26,
+                "canvasCount": 0,
+                "innerTextLength": 175,
+                "targetVisible": true,
+                "upsell": false,
+                "dailyCapNotice": false,
+                "noMatchMessage": false,
+                "error": null,
+                "sweepVerdict": "no-table",
+                "note": "A 类，且是 A 类里最贫的一条：innerText 只有 175 字符，主体区除了区块标题和「导出」按钮之外**读不到任何数值**（`流量趋势 | 导出 | 桌面设备趋势 | 导出 | 移动设备趋势 | 导出 | 增长最快的页面 | 导出`）。svg 26 个。「图里有没有数」本条**没有验证**，不要替它下结论。",
+                "remeasureStatus": "voided-2026-08-29-blind-probe",
+                "remeasureNote": "**2026-08-29 结案**：耐心模式重测通过**结构判据**，判定 `no-table-structural`，可采信。此前那条「早停判据下测出、不要当成已确认」的警告对本条**已解除**。证据见 `structuralEvidence`。",
+                "chartOnlyTier": "voided-blind-probe",
+                "structuralEvidence": {
+                  "noTable": true,
+                  "chartHydrated": 29,
+                  "exportBtns": 4,
+                  "targetVisible": true,
+                  "visibilityStateAtRead": "visible",
+                  "consecutiveReads": 2,
+                  "verdict": "no-table-structural",
+                  "protocolId": "v7-structural-absence",
+                  "note": "四条件全满足、连续两次读都满足：整页 0 个 table/[role=grid]，svg 内含数字的文本节点 29 个，章节导出按钮 4 个，目标已生效。 **2026-08-29 判据修订：结构判据不再要求 `vis === 'visible'`。** 它不是页面产出，而且一次 foreground attach 之后会被永久锁死在 `visible`（一个 Chrome 窗口里两个标签页同时报 visible 是铁证），是一个可能撒谎的信号。「页面其余部分渲染完了」这件事由 chartHydrated 与 exportBtns 直接证明，不需要可见性做代理。**保留的是「目标已生效」那半**——空态落地页是一个完美的 noTable===true。判据、判定名（`no-table-structural` / `data-not-in-table` / `no-table`）和「非空单元格判据不能反过来用」这条更正**只写在** backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 里，这里不复述。",
+                  "criterionVersion": "v8-structural-no-visibility-gate",
+                  "status20260829": "voided-blind-probe",
+                  "voidedBecause": "浅层 DOM 探针（不穿透 shadow DOM）+ 空白模块 + 导航壳里的 12 个导出按钮。chartHydrated 与 exportBtns 已在 backlink Skill 里退役，不再是判据。"
+                },
+                "chartOnlyTierVoided20260829": "structural-confirmed",
+                "voided20260829": {
+                  "status": "voided-blind-probe",
+                  "voidedVerdict": "no-table-structural",
+                  "now": "pending-remeasure",
+                  "note": "**2026-08-29 作废（voided-blind-probe）。** 这条判定所依据的 DOM 探针**对 shadow DOM 结构性失明**，所以它量到的是页面的一小块，不是页面。同一页同一刻实测：`document.body.innerText.length` = **59**，穿透 shadow DOM 的深层文本 = **1,605,054**，文档里 **44 个 shadow root**（Semrush 把外壳和报表挂件都渲染在里面）。`innerText` 不穿透，`querySelectorAll` 也不穿透。\n\n**成因三条，缺一不可：**\n1. **浅层 DOM 探针** —— `hasTable` / `filledCells` / `innerTextLength` / `svgCount` 全部是浅层读数。穿透探针在同一页上把 svg 从 32 读到 45、3 读到 16、49 读到 62。\n2. **空白模块** —— 内容区实际一片空白，所以「没有 table」是「什么都没渲染」，不是「这条路由不用表格」。\n3. **伪造的 exportBtns** —— `daily-trends` 量到 `exportBtns: 12`，**与本记录里的 `exp=12` 完全一致**，而内容区空白：那 12 个匹配全在 shadow DOM 的**导航壳**里，不在任何报表内。同批的 `chartHydrated` 在三条路由上**全部读到 0**，包括记录里写着 `chart=122` 的那条 —— 「这 9 条通过了结构判据」**无法复现**。\n\n**对照组（决定性）：** `top-pages` —— 记录里写着 **850 个非空单元格** —— 现在读到 `tables:0, grids:0, cells:0, innerText:59`，持续 150 秒。**一条已知有数据的路由，和这 9 条读出来完全一样。**分类在这样的读数上零区分力。\n\n**原观测一律保留、一个字没删**（`hasTable` / `filledCells` / `svgCount` / `innerTextLength` / `chartOnlyTier` / `structuralEvidence` 都在原位），标注它们被什么推翻而已。\n\n**处置：** 判定作废，本条回到 `pending-remeasure`。重测的前提是穿透探针 + 分类前的三条硬闸门（落地 path == 请求路由 / 页头域名 == 请求目标 / 穿透后的报表区内容非空），任一不满足输出 `inconclusive`，**不许输出 `no-table` 或 `empty`**。判据与闸门只写在 backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 及 `scripts/lib-report-readiness.mjs` / `scripts/lib-deep-dom.mjs` 里，这里不复述。"
+                }
+              },
+              "/analytics/traffic/sources-destinations/": {
+                "label": "来源与目标",
+                "node": 5,
+                "target": "canva.com",
+                "period": "2026年7月",
+                "remeasureStatus": "remeasured-data-2026-08-28",
+                "category": "data",
+                "protocolId": "v6-patient-signal-gated",
+                "protocol": "v6-patient-signal-gated（耐心模式：每轮 200 秒、3 轮跑满不早停、单条最长 600 秒；空判定必须绑定正向的「本页已渲染完成」信号，拿不到就输出 inconclusive 而不是 empty）",
+                "filledCells": 272,
+                "sweepVerdict": "data",
+                "remeasureRound": 1,
+                "pendingCrossNodeCheck": false,
+                "note": "**2026-08-28 改判为 `data`**：耐心模式重测读到 **272 个非空单元格**（样本原文：`canva.com / 直接 / 79.32% / 6.3亿 / ↑4.4%`）。原 `empty-silent` 记录保留在 `supersededObservation` 里，不删。",
+                "supersededObservation": {
+                  "category": "empty-silent",
+                  "protocol": "v4-visible-gated：只采信 document.visibilityState === \"visible\" 时的读；空判定必须在 visible 下连读 3 次",
+                  "protocolId": "v4-visible-gated",
+                  "visibilityStateAtVerdict": "visible",
+                  "visibleReads": 3,
+                  "sawVisible": true,
+                  "hasTable": true,
+                  "filledCells": 0,
+                  "svgCount": 69,
+                  "canvasCount": 0,
+                  "innerTextLength": 216,
+                  "targetVisible": true,
+                  "upsell": false,
+                  "dailyCapNotice": false,
+                  "noMatchMessage": false,
+                  "error": null,
+                  "sweepVerdict": "empty-silent",
+                  "pendingCrossNodeCheck": true,
+                  "pendingCrossNodeCheckNote": "**2026-08-28 作废（保留记录，不删）**：本条的 `empty-silent` 判定来自 v4 判据「vis==='visible' 且累计 3 次可见读即采信为空」。该判据存在**早停缺陷**——可见读间隔 6 秒，最快 18 秒就下结论，而这些页面的渲染顺序是 **摘要 → 图表 → 表格，表格最后水合**，表格尚未开始渲染时任意次数的连续读都稳定为空。**「稳定」不等于「完成」。** 硬反证：node 8 上 `page-groups` 出了 20 格、`geographical-regions` 出了 198 格（`北美 | 20.69% | 1.6亿 | 4752.6万 | 82.63% | 5.3 | 12:05 | 32.98%`）；回查 node 5 这两条的记录，**摘要区数字是齐的**（`访问量 7.9亿 ↑4.53% | 唯一身份访问量 2.1亿 ↑2.92% | 购买转化率 0.21% ↑28.17%`），页面在跑，只是表格还没水合。判据已改为「可见读满 3 次 **且** 本轮已等满 100 秒」，每轮上限 150 秒、最多 3 轮，协议 `v5-visible-gated-min100s`。**8 条静默空表全部作废并正在重测，标 `pending-remeasure-v5`。在重测回来之前，不要写「这条是真的空」，也不要写「这个订阅拿不到这条」。** 判据教训见 backlink Skill 里 id 为 readiness-must-bind-to-this-query 的那条 law（实例 5）。 本条在 node 8 上另外连续两次撞上 opencli 60s 超时，重测尚未取得任何读数。",
+                  "note": "静默空表。列头齐全（来源 / 类别 / 渠道 / 流量比例 / 访问量 / 位差 / Sortable），筛选器里的渠道清单也齐（AI 流量 / 引荐 / 自然搜索 / 谷歌 AI 模式 / 付费搜索 / 自然社交 / 付费社交 / 展示广告），**0 行**。",
+                  "supersededOn": "2026-08-28",
+                  "supersededBy": "**早停判据下的观测，已被推翻，保留不删。** 这条 0 行记录先后经历两代判据：v4「vis==='visible' 且累计 3 次可见读即采信为空」（最快 18 秒下结论），以及 v5「可见读满 3 次 **且** 本轮等满 100 秒」。**两代都不够**——v6-patient-signal-gated（耐心模式：每轮 200 秒、3 轮跑满不早停、单条最长 600 秒；空判定必须绑定正向的「本页已渲染完成」信号，拿不到就输出 inconclusive 而不是 empty） 下重测，本条读到 272 个非空单元格。推翻它的不是「等得更久」这个事实本身，而是这类判据的形状：「等够久 + 还是空 → 判空」永远只是在赌一个阈值，阈值随页面、随目标、随负载变化。**这条记录保留的价值**：当时表格 0 行，而**摘要区数字是齐的**（`访问量 7.9亿 ↑4.53% | 唯一身份访问量 2.1亿 ↑2.92% | 购买转化率 0.21% ↑28.17%`）——正是因为旧数据没被删，才比得出「摘要有数、表格 0 行」这个关键对照，也才看得清 Semrush 流量与市场的渲染顺序是**摘要 → 图表 → 表格，表格永远最后**。判据教训见 backlink Skill 里 id 为 readiness-must-bind-to-this-query 的那条 law（实例 5 与实例 6）。"
+                },
+                "sampleRow": "canva.com / 直接 / 79.32% / 6.3亿 / ↑4.4%",
+                "recheck20260829": {
+                  "status": "pending-recheck-blind-probe",
+                  "verdictStands": true,
+                  "filledCellsIsLowerBound": true,
+                  "note": "**2026-08-29 标为「待复查」（pending-recheck-blind-probe）。判定未作废。** 本条是**正向**判定：它拿到过真实的非空单元格字符串（见 `firstCells` / `filledCells`），而正向证据比缺失证据结实得多 —— 浅层探针**读到**的东西是真的，它只是可能**漏读**。所以 `filledCells` 是**下界**，不是等值；行数/列数很可能被低估。\n\n**但它和被作废的那 9 条是同一个失明探针产出的**，所以两件事必须复查：\n1. **数值本身是否完整** —— 穿透之后单元格数会不会变多（`top-pages` 850 → 现读 0 说明这套读数极不稳定）；\n2. **数是不是这个域名的** —— 同一批实盘里，深链弹跳之后标签页停在 **`mmradar.gg`** 的域名概览（23 个非空单元格、AS 22、自然流量 23.9K）。**任何当时读到 `cells > 0` 的探针，都会把 mmradar.gg 的数字记到 canva.com 名下。** 本条没有页头域名核对的留痕，所以无法自证不是那一种。\n\n复查按新闸门跑，通过前这条记录**可用但不可引用为精确值**。"
+                }
+              },
+              "/analytics/traffic/subfolders-subdomains/": {
+                "label": "子文件夹和子域名",
+                "node": 5,
+                "target": "canva.com",
+                "period": "2026年7月",
+                "remeasureStatus": "remeasured-data-2026-08-28",
+                "category": "data",
+                "protocolId": "v6-patient-signal-gated",
+                "protocol": "v6-patient-signal-gated（耐心模式：每轮 200 秒、3 轮跑满不早停、单条最长 600 秒；空判定必须绑定正向的「本页已渲染完成」信号，拿不到就输出 inconclusive 而不是 empty）",
+                "filledCells": 900,
+                "sweepVerdict": "data",
+                "remeasureRound": 1,
+                "pendingCrossNodeCheck": false,
+                "note": "**2026-08-28 改判为 `data`**：耐心模式重测读到 **900 个非空单元格**（样本原文：`/design/ / 35.74% / 6.1亿 / 1.4亿 / 2.8亿`）。原 `empty-silent` 记录保留在 `supersededObservation` 里，不删。",
+                "supersededObservation": {
+                  "category": "empty-silent",
+                  "protocol": "v4-visible-gated：只采信 document.visibilityState === \"visible\" 时的读；空判定必须在 visible 下连读 3 次",
+                  "protocolId": "v4-visible-gated",
+                  "visibilityStateAtVerdict": "visible",
+                  "visibleReads": 3,
+                  "sawVisible": true,
+                  "hasTable": true,
+                  "filledCells": 0,
+                  "svgCount": 124,
+                  "canvasCount": 0,
+                  "innerTextLength": 325,
+                  "targetVisible": true,
+                  "upsell": false,
+                  "dailyCapNotice": false,
+                  "noMatchMessage": false,
+                  "error": null,
+                  "sweepVerdict": "empty-silent",
+                  "pendingCrossNodeCheck": true,
+                  "pendingCrossNodeCheckNote": "**2026-08-28 作废（保留记录，不删）**：本条的 `empty-silent` 判定来自 v4 判据「vis==='visible' 且累计 3 次可见读即采信为空」。该判据存在**早停缺陷**——可见读间隔 6 秒，最快 18 秒就下结论，而这些页面的渲染顺序是 **摘要 → 图表 → 表格，表格最后水合**，表格尚未开始渲染时任意次数的连续读都稳定为空。**「稳定」不等于「完成」。** 硬反证：node 8 上 `page-groups` 出了 20 格、`geographical-regions` 出了 198 格（`北美 | 20.69% | 1.6亿 | 4752.6万 | 82.63% | 5.3 | 12:05 | 32.98%`）；回查 node 5 这两条的记录，**摘要区数字是齐的**（`访问量 7.9亿 ↑4.53% | 唯一身份访问量 2.1亿 ↑2.92% | 购买转化率 0.21% ↑28.17%`），页面在跑，只是表格还没水合。判据已改为「可见读满 3 次 **且** 本轮已等满 100 秒」，每轮上限 150 秒、最多 3 轮，协议 `v5-visible-gated-min100s`。**8 条静默空表全部作废并正在重测，标 `pending-remeasure-v5`。在重测回来之前，不要写「这条是真的空」，也不要写「这个订阅拿不到这条」。** 判据教训见 backlink Skill 里 id 为 readiness-must-bind-to-this-query 的那条 law（实例 5）。 本条在 node 8 上另外连续两次撞上 opencli 60s 超时，重测尚未取得任何读数。",
+                  "supersededOn": "2026-08-28",
+                  "supersededBy": "**早停判据下的观测，已被推翻，保留不删。** 这条 0 行记录先后经历两代判据：v4「vis==='visible' 且累计 3 次可见读即采信为空」（最快 18 秒下结论），以及 v5「可见读满 3 次 **且** 本轮等满 100 秒」。**两代都不够**——v6-patient-signal-gated（耐心模式：每轮 200 秒、3 轮跑满不早停、单条最长 600 秒；空判定必须绑定正向的「本页已渲染完成」信号，拿不到就输出 inconclusive 而不是 empty） 下重测，本条读到 900 个非空单元格。推翻它的不是「等得更久」这个事实本身，而是这类判据的形状：「等够久 + 还是空 → 判空」永远只是在赌一个阈值，阈值随页面、随目标、随负载变化。**这条记录保留的价值**：当时表格 0 行，而**摘要区数字是齐的**（`访问量 7.9亿 ↑4.53% | 唯一身份访问量 2.1亿 ↑2.92% | 购买转化率 0.21% ↑28.17%`）——正是因为旧数据没被删，才比得出「摘要有数、表格 0 行」这个关键对照，也才看得清 Semrush 流量与市场的渲染顺序是**摘要 → 图表 → 表格，表格永远最后**。判据教训见 backlink Skill 里 id 为 readiness-must-bind-to-this-query 的那条 law（实例 5 与实例 6）。"
+                },
+                "sampleRow": "/design/ / 35.74% / 6.1亿 / 1.4亿 / 2.8亿",
+                "recheck20260829": {
+                  "status": "pending-recheck-blind-probe",
+                  "verdictStands": true,
+                  "filledCellsIsLowerBound": true,
+                  "note": "**2026-08-29 标为「待复查」（pending-recheck-blind-probe）。判定未作废。** 本条是**正向**判定：它拿到过真实的非空单元格字符串（见 `firstCells` / `filledCells`），而正向证据比缺失证据结实得多 —— 浅层探针**读到**的东西是真的，它只是可能**漏读**。所以 `filledCells` 是**下界**，不是等值；行数/列数很可能被低估。\n\n**但它和被作废的那 9 条是同一个失明探针产出的**，所以两件事必须复查：\n1. **数值本身是否完整** —— 穿透之后单元格数会不会变多（`top-pages` 850 → 现读 0 说明这套读数极不稳定）；\n2. **数是不是这个域名的** —— 同一批实盘里，深链弹跳之后标签页停在 **`mmradar.gg`** 的域名概览（23 个非空单元格、AS 22、自然流量 23.9K）。**任何当时读到 `cells > 0` 的探针，都会把 mmradar.gg 的数字记到 canva.com 名下。** 本条没有页头域名核对的留痕，所以无法自证不是那一种。\n\n复查按新闸门跑，通过前这条记录**可用但不可引用为精确值**。"
+                }
+              },
+              "/analytics/traffic/page-groups/": {
+                "label": "页面组",
+                "node": 5,
+                "target": "canva.com",
+                "period": "2026年7月",
+                "remeasureStatus": "remeasured-data-2026-08-28",
+                "category": "data",
+                "protocolId": "v6-patient-signal-gated",
+                "protocol": "v6-patient-signal-gated（耐心模式：每轮 200 秒、3 轮跑满不早停、单条最长 600 秒；空判定必须绑定正向的「本页已渲染完成」信号，拿不到就输出 inconclusive 而不是 empty）",
+                "filledCells": 20,
+                "sweepVerdict": "data",
+                "remeasureRound": 1,
+                "sampleRow": "美国 / 18.73%·1.5亿 / 81.88% / 18.12% / 巴西",
+                "pendingCrossNodeCheck": false,
+                "note": "**2026-08-28 改判为 `data`**：耐心模式重测读到 **20 个非空单元格**（样本原文：`美国 / 18.73%·1.5亿 / 81.88% / 18.12% / 巴西`）。原 `empty-silent` 记录保留在 `supersededObservation` 里，不删。",
+                "supersededObservation": {
+                  "category": "empty-silent",
+                  "protocol": "v4-visible-gated：只采信 document.visibilityState === \"visible\" 时的读；空判定必须在 visible 下连读 3 次",
+                  "protocolId": "v4-visible-gated",
+                  "visibilityStateAtVerdict": "visible",
+                  "visibleReads": 3,
+                  "sawVisible": true,
+                  "hasTable": true,
+                  "filledCells": 0,
+                  "svgCount": 71,
+                  "canvasCount": 0,
+                  "innerTextLength": 1410,
+                  "targetVisible": true,
+                  "upsell": false,
+                  "dailyCapNotice": false,
+                  "noMatchMessage": false,
+                  "error": null,
+                  "sweepVerdict": "empty-silent",
+                  "pendingCrossNodeCheck": true,
+                  "pendingCrossNodeCheckNote": "**2026-08-28 作废（保留记录，不删）**：本条的 `empty-silent` 判定来自 v4 判据「vis==='visible' 且累计 3 次可见读即采信为空」。该判据存在**早停缺陷**——可见读间隔 6 秒，最快 18 秒就下结论，而这些页面的渲染顺序是 **摘要 → 图表 → 表格，表格最后水合**，表格尚未开始渲染时任意次数的连续读都稳定为空。**「稳定」不等于「完成」。** 硬反证：node 8 上 `page-groups` 出了 20 格、`geographical-regions` 出了 198 格（`北美 | 20.69% | 1.6亿 | 4752.6万 | 82.63% | 5.3 | 12:05 | 32.98%`）；回查 node 5 这两条的记录，**摘要区数字是齐的**（`访问量 7.9亿 ↑4.53% | 唯一身份访问量 2.1亿 ↑2.92% | 购买转化率 0.21% ↑28.17%`），页面在跑，只是表格还没水合。判据已改为「可见读满 3 次 **且** 本轮已等满 100 秒」，每轮上限 150 秒、最多 3 轮，协议 `v5-visible-gated-min100s`。**8 条静默空表全部作废并正在重测，标 `pending-remeasure-v5`。在重测回来之前，不要写「这条是真的空」，也不要写「这个订阅拿不到这条」。** 判据教训见 backlink Skill 里 id 为 readiness-must-bind-to-this-query 的那条 law（实例 5）。 **本条已被 node 8 反证**：读到 20 个非空单元格。原 0 行记录保留，作为早停缺陷的证据。",
+                  "supersededOn": "2026-08-28",
+                  "supersededBy": "**早停判据下的观测，已被推翻，保留不删。** 这条 0 行记录先后经历两代判据：v4「vis==='visible' 且累计 3 次可见读即采信为空」（最快 18 秒下结论），以及 v5「可见读满 3 次 **且** 本轮等满 100 秒」。**两代都不够**——v6-patient-signal-gated（耐心模式：每轮 200 秒、3 轮跑满不早停、单条最长 600 秒；空判定必须绑定正向的「本页已渲染完成」信号，拿不到就输出 inconclusive 而不是 empty） 下重测，本条读到 20 个非空单元格。推翻它的不是「等得更久」这个事实本身，而是这类判据的形状：「等够久 + 还是空 → 判空」永远只是在赌一个阈值，阈值随页面、随目标、随负载变化。**这条记录保留的价值**：当时表格 0 行，而**摘要区数字是齐的**（`访问量 7.9亿 ↑4.53% | 唯一身份访问量 2.1亿 ↑2.92% | 购买转化率 0.21% ↑28.17%`）——正是因为旧数据没被删，才比得出「摘要有数、表格 0 行」这个关键对照，也才看得清 Semrush 流量与市场的渲染顺序是**摘要 → 图表 → 表格，表格永远最后**。判据教训见 backlink Skill 里 id 为 readiness-must-bind-to-this-query 的那条 law（实例 5 与实例 6）。"
+                },
+                "crossNodeCheck": "**node 5 与 node 8 逐格相同**：两个节点都读到 20 个非空单元格，逐格一致（node 8 先出、node 5 后出）。两个节点是两个不同的共享账号（页头首字母 node 5 = H、node 8 = B）。这是继 `top-pages`（两节点都 850 格、前 5 格逐字相同）之后**第二条**跨节点逐格一致的路由。",
+                "recheck20260829": {
+                  "status": "pending-recheck-blind-probe",
+                  "verdictStands": true,
+                  "filledCellsIsLowerBound": true,
+                  "note": "**2026-08-29 标为「待复查」（pending-recheck-blind-probe）。判定未作废。** 本条是**正向**判定：它拿到过真实的非空单元格字符串（见 `firstCells` / `filledCells`），而正向证据比缺失证据结实得多 —— 浅层探针**读到**的东西是真的，它只是可能**漏读**。所以 `filledCells` 是**下界**，不是等值；行数/列数很可能被低估。\n\n**但它和被作废的那 9 条是同一个失明探针产出的**，所以两件事必须复查：\n1. **数值本身是否完整** —— 穿透之后单元格数会不会变多（`top-pages` 850 → 现读 0 说明这套读数极不稳定）；\n2. **数是不是这个域名的** —— 同一批实盘里，深链弹跳之后标签页停在 **`mmradar.gg`** 的域名概览（23 个非空单元格、AS 22、自然流量 23.9K）。**任何当时读到 `cells > 0` 的探针，都会把 mmradar.gg 的数字记到 canva.com 名下。** 本条没有页头域名核对的留痕，所以无法自证不是那一种。\n\n复查按新闸门跑，通过前这条记录**可用但不可引用为精确值**。"
+                }
+              },
+              "/analytics/traffic/usa/": {
+                "label": "美国",
+                "node": 5,
+                "target": "canva.com",
+                "period": "2026年7月",
+                "remeasureStatus": "remeasured-data-2026-08-28",
+                "category": "data",
+                "protocolId": "v6-patient-signal-gated",
+                "protocol": "v6-patient-signal-gated（耐心模式：每轮 200 秒、3 轮跑满不早停、单条最长 600 秒；空判定必须绑定正向的「本页已渲染完成」信号，拿不到就输出 inconclusive 而不是 empty）",
+                "filledCells": 459,
+                "sampleRow": "加利福尼亚 / 13.92% / 1811.9万 / 531.5万 / 82.66%",
+                "sweepVerdict": "data",
+                "pendingCrossNodeCheck": false,
+                "note": "**2026-08-28 改判为 `data`**：耐心模式重测读到 **459 个非空单元格**（样本原文：`加利福尼亚 / 13.92% / 1811.9万 / 531.5万 / 82.66%`）。原 `empty-silent` 记录保留在 `supersededObservation` 里，不删。",
+                "supersededObservation": {
+                  "category": "empty-silent",
+                  "protocol": "v4-visible-gated：只采信 document.visibilityState === \"visible\" 时的读；空判定必须在 visible 下连读 3 次",
+                  "protocolId": "v4-visible-gated",
+                  "visibilityStateAtVerdict": "visible",
+                  "visibleReads": 3,
+                  "sawVisible": true,
+                  "hasTable": true,
+                  "filledCells": 0,
+                  "svgCount": 76,
+                  "canvasCount": 0,
+                  "innerTextLength": 370,
+                  "targetVisible": true,
+                  "upsell": false,
+                  "dailyCapNotice": false,
+                  "noMatchMessage": false,
+                  "error": null,
+                  "sweepVerdict": "empty-silent",
+                  "pendingCrossNodeCheck": true,
+                  "pendingCrossNodeCheckNote": "**2026-08-28 作废（保留记录，不删）**：本条的 `empty-silent` 判定来自 v4 判据「vis==='visible' 且累计 3 次可见读即采信为空」。该判据存在**早停缺陷**——可见读间隔 6 秒，最快 18 秒就下结论，而这些页面的渲染顺序是 **摘要 → 图表 → 表格，表格最后水合**，表格尚未开始渲染时任意次数的连续读都稳定为空。**「稳定」不等于「完成」。** 硬反证：node 8 上 `page-groups` 出了 20 格、`geographical-regions` 出了 198 格（`北美 | 20.69% | 1.6亿 | 4752.6万 | 82.63% | 5.3 | 12:05 | 32.98%`）；回查 node 5 这两条的记录，**摘要区数字是齐的**（`访问量 7.9亿 ↑4.53% | 唯一身份访问量 2.1亿 ↑2.92% | 购买转化率 0.21% ↑28.17%`），页面在跑，只是表格还没水合。判据已改为「可见读满 3 次 **且** 本轮已等满 100 秒」，每轮上限 150 秒、最多 3 轮，协议 `v5-visible-gated-min100s`。**8 条静默空表全部作废并正在重测，标 `pending-remeasure-v5`。在重测回来之前，不要写「这条是真的空」，也不要写「这个订阅拿不到这条」。** 判据教训见 backlink Skill 里 id 为 readiness-must-bind-to-this-query 的那条 law（实例 5）。 **2026-08-28 再更新：100 秒的下限本身也被证明不够。** 同批 5 条（page-groups 20 格 / geographical-regions 198 格 / business-regions 36 格 / sources-destinations 272 格 / subfolders-subdomains 900 格）在耐心模式下逐条出数，其中 geographical-regions 与 business-regions **是第二次重测才出的数**。协议已升级为 v6-patient-signal-gated（耐心模式：每轮 200 秒、3 轮跑满不早停、单条最长 600 秒；空判定必须绑定正向的「本页已渲染完成」信号，拿不到就输出 inconclusive 而不是 empty）。**本条仍在重测，保持 `pending-remeasure-v5`，不要替它下任何结论**——既不要写「真的空」，也不要写「其实有数」。",
+                  "note": "空表之外还带一个**渲染 bug**：主体区漏出未解析的 i18n key，原文 `state.undefined | state.undefined | 流量比例 | n/a | 访问量 | n/a`——汇总值是 n/a。如实记为观测，成因未查。",
+                  "supersededOn": "2026-08-28",
+                  "supersededBy": "**早停判据下的观测，已被推翻，保留不删。** 先后两代判据都把这条记成了空：v4「vis==='visible' 且累计 3 次可见读即采信为空」（最快 18 秒下结论）、v5「可见读满 3 次且本轮等满 100 秒」。v6-patient-signal-gated（耐心模式：每轮 200 秒、3 轮跑满不早停、单条最长 600 秒；空判定必须绑定正向的「本页已渲染完成」信号，拿不到就输出 inconclusive 而不是 empty） 下重测读到 459 个非空单元格。推翻它的不是「等得更久」，而是这类判据的形状——「等够久 + 还是空 → 判空」永远只是在赌一个阈值。**保留的价值**：当时表格 0 行而摘要区数字是齐的，正是这个对照让「摘要 → 图表 → 表格，表格永远最后」这个渲染顺序被看清。判据教训见 backlink Skill 里 id 为 readiness-must-bind-to-this-query 的那条 law（实例 5 与实例 6）。"
+                },
+                "recheck20260829": {
+                  "status": "pending-recheck-blind-probe",
+                  "verdictStands": true,
+                  "filledCellsIsLowerBound": true,
+                  "note": "**2026-08-29 标为「待复查」（pending-recheck-blind-probe）。判定未作废。** 本条是**正向**判定：它拿到过真实的非空单元格字符串（见 `firstCells` / `filledCells`），而正向证据比缺失证据结实得多 —— 浅层探针**读到**的东西是真的，它只是可能**漏读**。所以 `filledCells` 是**下界**，不是等值；行数/列数很可能被低估。\n\n**但它和被作废的那 9 条是同一个失明探针产出的**，所以两件事必须复查：\n1. **数值本身是否完整** —— 穿透之后单元格数会不会变多（`top-pages` 850 → 现读 0 说明这套读数极不稳定）；\n2. **数是不是这个域名的** —— 同一批实盘里，深链弹跳之后标签页停在 **`mmradar.gg`** 的域名概览（23 个非空单元格、AS 22、自然流量 23.9K）。**任何当时读到 `cells > 0` 的探针，都会把 mmradar.gg 的数字记到 canva.com 名下。** 本条没有页头域名核对的留痕，所以无法自证不是那一种。\n\n复查按新闸门跑，通过前这条记录**可用但不可引用为精确值**。"
+                }
+              },
+              "/analytics/traffic/business-regions/": {
+                "label": "业务区域",
+                "node": 5,
+                "target": "canva.com",
+                "period": "2026年7月",
+                "remeasureStatus": "remeasured-data-2026-08-28",
+                "category": "data",
+                "protocolId": "v6-patient-signal-gated",
+                "protocol": "v6-patient-signal-gated（耐心模式：每轮 200 秒、3 轮跑满不早停、单条最长 600 秒；空判定必须绑定正向的「本页已渲染完成」信号，拿不到就输出 inconclusive 而不是 empty）",
+                "filledCells": 36,
+                "sweepVerdict": "data",
+                "remeasureRound": 2,
+                "sampleRow": "APAC / 34.96% / 2.8亿 / 6769.9万 / 85.84%",
+                "pendingCrossNodeCheck": false,
+                "note": "**2026-08-28 改判为 `data`**：耐心模式重测读到 **36 个非空单元格**（样本原文：`APAC / 34.96% / 2.8亿 / 6769.9万 / 85.84%`）。**本条是第二次重测才出的数** —— 100 秒的下限没兜住它，重表格页的水合时间跨度大而且不稳定，同一页两次不一样。原 `empty-silent` 记录保留在 `supersededObservation` 里，不删。",
+                "supersededObservation": {
+                  "category": "empty-silent",
+                  "protocol": "v4-visible-gated：只采信 document.visibilityState === \"visible\" 时的读；空判定必须在 visible 下连读 3 次",
+                  "protocolId": "v4-visible-gated",
+                  "visibilityStateAtVerdict": "visible",
+                  "visibleReads": 3,
+                  "sawVisible": true,
+                  "hasTable": true,
+                  "filledCells": 0,
+                  "svgCount": 76,
+                  "canvasCount": 0,
+                  "innerTextLength": 354,
+                  "targetVisible": true,
+                  "upsell": false,
+                  "dailyCapNotice": false,
+                  "noMatchMessage": false,
+                  "error": null,
+                  "sweepVerdict": "empty-silent",
+                  "pendingCrossNodeCheck": true,
+                  "pendingCrossNodeCheckNote": "**2026-08-28 作废（保留记录，不删）**：本条的 `empty-silent` 判定来自 v4 判据「vis==='visible' 且累计 3 次可见读即采信为空」。该判据存在**早停缺陷**——可见读间隔 6 秒，最快 18 秒就下结论，而这些页面的渲染顺序是 **摘要 → 图表 → 表格，表格最后水合**，表格尚未开始渲染时任意次数的连续读都稳定为空。**「稳定」不等于「完成」。** 硬反证：node 8 上 `page-groups` 出了 20 格、`geographical-regions` 出了 198 格（`北美 | 20.69% | 1.6亿 | 4752.6万 | 82.63% | 5.3 | 12:05 | 32.98%`）；回查 node 5 这两条的记录，**摘要区数字是齐的**（`访问量 7.9亿 ↑4.53% | 唯一身份访问量 2.1亿 ↑2.92% | 购买转化率 0.21% ↑28.17%`），页面在跑，只是表格还没水合。判据已改为「可见读满 3 次 **且** 本轮已等满 100 秒」，每轮上限 150 秒、最多 3 轮，协议 `v5-visible-gated-min100s`。**8 条静默空表全部作废并正在重测，标 `pending-remeasure-v5`。在重测回来之前，不要写「这条是真的空」，也不要写「这个订阅拿不到这条」。** 判据教训见 backlink Skill 里 id 为 readiness-must-bind-to-this-query 的那条 law（实例 5）。",
+                  "supersededOn": "2026-08-28",
+                  "supersededBy": "**早停判据下的观测，已被推翻，保留不删。** 这条 0 行记录先后经历两代判据：v4「vis==='visible' 且累计 3 次可见读即采信为空」（最快 18 秒下结论），以及 v5「可见读满 3 次 **且** 本轮等满 100 秒」。**两代都不够**——v6-patient-signal-gated（耐心模式：每轮 200 秒、3 轮跑满不早停、单条最长 600 秒；空判定必须绑定正向的「本页已渲染完成」信号，拿不到就输出 inconclusive 而不是 empty） 下重测，本条读到 36 个非空单元格。推翻它的不是「等得更久」这个事实本身，而是这类判据的形状：「等够久 + 还是空 → 判空」永远只是在赌一个阈值，阈值随页面、随目标、随负载变化。**这条记录保留的价值**：当时表格 0 行，而**摘要区数字是齐的**（`访问量 7.9亿 ↑4.53% | 唯一身份访问量 2.1亿 ↑2.92% | 购买转化率 0.21% ↑28.17%`）——正是因为旧数据没被删，才比得出「摘要有数、表格 0 行」这个关键对照，也才看得清 Semrush 流量与市场的渲染顺序是**摘要 → 图表 → 表格，表格永远最后**。判据教训见 backlink Skill 里 id 为 readiness-must-bind-to-this-query 的那条 law（实例 5 与实例 6）。"
+                },
+                "recheck20260829": {
+                  "status": "pending-recheck-blind-probe",
+                  "verdictStands": true,
+                  "filledCellsIsLowerBound": true,
+                  "note": "**2026-08-29 标为「待复查」（pending-recheck-blind-probe）。判定未作废。** 本条是**正向**判定：它拿到过真实的非空单元格字符串（见 `firstCells` / `filledCells`），而正向证据比缺失证据结实得多 —— 浅层探针**读到**的东西是真的，它只是可能**漏读**。所以 `filledCells` 是**下界**，不是等值；行数/列数很可能被低估。\n\n**但它和被作废的那 9 条是同一个失明探针产出的**，所以两件事必须复查：\n1. **数值本身是否完整** —— 穿透之后单元格数会不会变多（`top-pages` 850 → 现读 0 说明这套读数极不稳定）；\n2. **数是不是这个域名的** —— 同一批实盘里，深链弹跳之后标签页停在 **`mmradar.gg`** 的域名概览（23 个非空单元格、AS 22、自然流量 23.9K）。**任何当时读到 `cells > 0` 的探针，都会把 mmradar.gg 的数字记到 canva.com 名下。** 本条没有页头域名核对的留痕，所以无法自证不是那一种。\n\n复查按新闸门跑，通过前这条记录**可用但不可引用为精确值**。"
+                }
+              },
+              "/analytics/traffic/geographical-regions/": {
+                "label": "地理区域",
+                "node": 5,
+                "target": "canva.com",
+                "period": "2026年7月",
+                "remeasureStatus": "remeasured-data-2026-08-28",
+                "category": "data",
+                "protocolId": "v6-patient-signal-gated",
+                "protocol": "v6-patient-signal-gated（耐心模式：每轮 200 秒、3 轮跑满不早停、单条最长 600 秒；空判定必须绑定正向的「本页已渲染完成」信号，拿不到就输出 inconclusive 而不是 empty）",
+                "filledCells": 198,
+                "sweepVerdict": "data",
+                "remeasureRound": 2,
+                "sampleRow": "北美 / 20.69% / 1.6亿 / 4752.6万 / 82.63%",
+                "pendingCrossNodeCheck": false,
+                "note": "**2026-08-28 改判为 `data`**：耐心模式重测读到 **198 个非空单元格**（样本原文：`北美 / 20.69% / 1.6亿 / 4752.6万 / 82.63%`）。**本条是第二次重测才出的数** —— 100 秒的下限没兜住它，重表格页的水合时间跨度大而且不稳定，同一页两次不一样。原 `empty-silent` 记录保留在 `supersededObservation` 里，不删。",
+                "supersededObservation": {
+                  "category": "empty-silent",
+                  "protocol": "v4-visible-gated：只采信 document.visibilityState === \"visible\" 时的读；空判定必须在 visible 下连读 3 次",
+                  "protocolId": "v4-visible-gated",
+                  "visibilityStateAtVerdict": "visible",
+                  "visibleReads": 3,
+                  "sawVisible": true,
+                  "hasTable": true,
+                  "filledCells": 0,
+                  "svgCount": 76,
+                  "canvasCount": 0,
+                  "innerTextLength": 354,
+                  "targetVisible": true,
+                  "upsell": false,
+                  "dailyCapNotice": false,
+                  "noMatchMessage": false,
+                  "error": null,
+                  "sweepVerdict": "empty-silent",
+                  "pendingCrossNodeCheck": true,
+                  "pendingCrossNodeCheckNote": "**2026-08-28 作废（保留记录，不删）**：本条的 `empty-silent` 判定来自 v4 判据「vis==='visible' 且累计 3 次可见读即采信为空」。该判据存在**早停缺陷**——可见读间隔 6 秒，最快 18 秒就下结论，而这些页面的渲染顺序是 **摘要 → 图表 → 表格，表格最后水合**，表格尚未开始渲染时任意次数的连续读都稳定为空。**「稳定」不等于「完成」。** 硬反证：node 8 上 `page-groups` 出了 20 格、`geographical-regions` 出了 198 格（`北美 | 20.69% | 1.6亿 | 4752.6万 | 82.63% | 5.3 | 12:05 | 32.98%`）；回查 node 5 这两条的记录，**摘要区数字是齐的**（`访问量 7.9亿 ↑4.53% | 唯一身份访问量 2.1亿 ↑2.92% | 购买转化率 0.21% ↑28.17%`），页面在跑，只是表格还没水合。判据已改为「可见读满 3 次 **且** 本轮已等满 100 秒」，每轮上限 150 秒、最多 3 轮，协议 `v5-visible-gated-min100s`。**8 条静默空表全部作废并正在重测，标 `pending-remeasure-v5`。在重测回来之前，不要写「这条是真的空」，也不要写「这个订阅拿不到这条」。** 判据教训见 backlink Skill 里 id 为 readiness-must-bind-to-this-query 的那条 law（实例 5）。 **本条已被 node 8 反证**：读到 198 个非空单元格。原 0 行记录保留，作为早停缺陷的证据。",
+                  "supersededOn": "2026-08-28",
+                  "supersededBy": "**早停判据下的观测，已被推翻，保留不删。** 这条 0 行记录先后经历两代判据：v4「vis==='visible' 且累计 3 次可见读即采信为空」（最快 18 秒下结论），以及 v5「可见读满 3 次 **且** 本轮等满 100 秒」。**两代都不够**——v6-patient-signal-gated（耐心模式：每轮 200 秒、3 轮跑满不早停、单条最长 600 秒；空判定必须绑定正向的「本页已渲染完成」信号，拿不到就输出 inconclusive 而不是 empty） 下重测，本条读到 198 个非空单元格。推翻它的不是「等得更久」这个事实本身，而是这类判据的形状：「等够久 + 还是空 → 判空」永远只是在赌一个阈值，阈值随页面、随目标、随负载变化。**这条记录保留的价值**：当时表格 0 行，而**摘要区数字是齐的**（`访问量 7.9亿 ↑4.53% | 唯一身份访问量 2.1亿 ↑2.92% | 购买转化率 0.21% ↑28.17%`）——正是因为旧数据没被删，才比得出「摘要有数、表格 0 行」这个关键对照，也才看得清 Semrush 流量与市场的渲染顺序是**摘要 → 图表 → 表格，表格永远最后**。判据教训见 backlink Skill 里 id 为 readiness-must-bind-to-this-query 的那条 law（实例 5 与实例 6）。"
+                },
+                "recheck20260829": {
+                  "status": "pending-recheck-blind-probe",
+                  "verdictStands": true,
+                  "filledCellsIsLowerBound": true,
+                  "note": "**2026-08-29 标为「待复查」（pending-recheck-blind-probe）。判定未作废。** 本条是**正向**判定：它拿到过真实的非空单元格字符串（见 `firstCells` / `filledCells`），而正向证据比缺失证据结实得多 —— 浅层探针**读到**的东西是真的，它只是可能**漏读**。所以 `filledCells` 是**下界**，不是等值；行数/列数很可能被低估。\n\n**但它和被作废的那 9 条是同一个失明探针产出的**，所以两件事必须复查：\n1. **数值本身是否完整** —— 穿透之后单元格数会不会变多（`top-pages` 850 → 现读 0 说明这套读数极不稳定）；\n2. **数是不是这个域名的** —— 同一批实盘里，深链弹跳之后标签页停在 **`mmradar.gg`** 的域名概览（23 个非空单元格、AS 22、自然流量 23.9K）。**任何当时读到 `cells > 0` 的探针，都会把 mmradar.gg 的数字记到 canva.com 名下。** 本条没有页头域名核对的留痕，所以无法自证不是那一种。\n\n复查按新闸门跑，通过前这条记录**可用但不可引用为精确值**。"
+                }
+              },
+              "/analytics/traffic/demographics/": {
+                "label": "人口统计",
+                "node": 5,
+                "target": "canva.com",
+                "period": "2026年7月",
+                "remeasureStatus": "remeasured-data-2026-08-28",
+                "category": "data",
+                "protocolId": "v6-patient-signal-gated",
+                "protocol": "v6-patient-signal-gated（耐心模式：每轮 200 秒、3 轮跑满不早停、单条最长 600 秒；空判定必须绑定正向的「本页已渲染完成」信号，拿不到就输出 inconclusive 而不是 empty）",
+                "filledCells": 20,
+                "sampleRow": "美国 / 18.73%·1.5亿 / 81.88% / 18.12% / 巴西",
+                "sweepVerdict": "data",
+                "pendingCrossNodeCheck": false,
+                "note": "**2026-08-28 改判为 `data`**：耐心模式重测读到 **20 个非空单元格**（样本原文：`美国 / 18.73%·1.5亿 / 81.88% / 18.12% / 巴西`）。原 `empty-silent` 记录保留在 `supersededObservation` 里，不删。",
+                "supersededObservation": {
+                  "category": "empty-silent",
+                  "protocol": "v4-visible-gated：只采信 document.visibilityState === \"visible\" 时的读；空判定必须在 visible 下连读 3 次",
+                  "protocolId": "v4-visible-gated",
+                  "visibilityStateAtVerdict": "visible",
+                  "visibleReads": 3,
+                  "sawVisible": true,
+                  "hasTable": true,
+                  "filledCells": 0,
+                  "svgCount": 46,
+                  "canvasCount": 0,
+                  "innerTextLength": 230,
+                  "targetVisible": true,
+                  "upsell": false,
+                  "dailyCapNotice": false,
+                  "noMatchMessage": false,
+                  "error": null,
+                  "sweepVerdict": "empty-silent",
+                  "pendingCrossNodeCheck": true,
+                  "pendingCrossNodeCheckNote": "**2026-08-28 作废（保留记录，不删）**：本条的 `empty-silent` 判定来自 v4 判据「vis==='visible' 且累计 3 次可见读即采信为空」。该判据存在**早停缺陷**——可见读间隔 6 秒，最快 18 秒就下结论，而这些页面的渲染顺序是 **摘要 → 图表 → 表格，表格最后水合**，表格尚未开始渲染时任意次数的连续读都稳定为空。**「稳定」不等于「完成」。** 硬反证：node 8 上 `page-groups` 出了 20 格、`geographical-regions` 出了 198 格（`北美 | 20.69% | 1.6亿 | 4752.6万 | 82.63% | 5.3 | 12:05 | 32.98%`）；回查 node 5 这两条的记录，**摘要区数字是齐的**（`访问量 7.9亿 ↑4.53% | 唯一身份访问量 2.1亿 ↑2.92% | 购买转化率 0.21% ↑28.17%`），页面在跑，只是表格还没水合。判据已改为「可见读满 3 次 **且** 本轮已等满 100 秒」，每轮上限 150 秒、最多 3 轮，协议 `v5-visible-gated-min100s`。**8 条静默空表全部作废并正在重测，标 `pending-remeasure-v5`。在重测回来之前，不要写「这条是真的空」，也不要写「这个订阅拿不到这条」。** 判据教训见 backlink Skill 里 id 为 readiness-must-bind-to-this-query 的那条 law（实例 5）。 **2026-08-28 再更新：100 秒的下限本身也被证明不够。** 同批 5 条（page-groups 20 格 / geographical-regions 198 格 / business-regions 36 格 / sources-destinations 272 格 / subfolders-subdomains 900 格）在耐心模式下逐条出数，其中 geographical-regions 与 business-regions **是第二次重测才出的数**。协议已升级为 v6-patient-signal-gated（耐心模式：每轮 200 秒、3 轮跑满不早停、单条最长 600 秒；空判定必须绑定正向的「本页已渲染完成」信号，拿不到就输出 inconclusive 而不是 empty）。**本条仍在重测，保持 `pending-remeasure-v5`，不要替它下任何结论**——既不要写「真的空」，也不要写「其实有数」。",
+                  "note": "静默空表。区块齐全（年龄 / 性别 / 唯一 / 地理位置分布 / 按国家），表 0 行。",
+                  "supersededOn": "2026-08-28",
+                  "supersededBy": "**早停判据下的观测，已被推翻，保留不删。** 先后两代判据都把这条记成了空：v4「vis==='visible' 且累计 3 次可见读即采信为空」（最快 18 秒下结论）、v5「可见读满 3 次且本轮等满 100 秒」。v6-patient-signal-gated（耐心模式：每轮 200 秒、3 轮跑满不早停、单条最长 600 秒；空判定必须绑定正向的「本页已渲染完成」信号，拿不到就输出 inconclusive 而不是 empty） 下重测读到 20 个非空单元格。推翻它的不是「等得更久」，而是这类判据的形状——「等够久 + 还是空 → 判空」永远只是在赌一个阈值。**保留的价值**：当时表格 0 行而摘要区数字是齐的，正是这个对照让「摘要 → 图表 → 表格，表格永远最后」这个渲染顺序被看清。判据教训见 backlink Skill 里 id 为 readiness-must-bind-to-this-query 的那条 law（实例 5 与实例 6）。"
+                },
+                "recheck20260829": {
+                  "status": "pending-recheck-blind-probe",
+                  "verdictStands": true,
+                  "filledCellsIsLowerBound": true,
+                  "note": "**2026-08-29 标为「待复查」（pending-recheck-blind-probe）。判定未作废。** 本条是**正向**判定：它拿到过真实的非空单元格字符串（见 `firstCells` / `filledCells`），而正向证据比缺失证据结实得多 —— 浅层探针**读到**的东西是真的，它只是可能**漏读**。所以 `filledCells` 是**下界**，不是等值；行数/列数很可能被低估。\n\n**但它和被作废的那 9 条是同一个失明探针产出的**，所以两件事必须复查：\n1. **数值本身是否完整** —— 穿透之后单元格数会不会变多（`top-pages` 850 → 现读 0 说明这套读数极不稳定）；\n2. **数是不是这个域名的** —— 同一批实盘里，深链弹跳之后标签页停在 **`mmradar.gg`** 的域名概览（23 个非空单元格、AS 22、自然流量 23.9K）。**任何当时读到 `cells > 0` 的探针，都会把 mmradar.gg 的数字记到 canva.com 名下。** 本条没有页头域名核对的留痕，所以无法自证不是那一种。\n\n复查按新闸门跑，通过前这条记录**可用但不可引用为精确值**。"
+                }
+              },
+              "/analytics/traffic/audience-overlap/": {
+                "label": "受众重叠",
+                "node": 5,
+                "target": "canva.com",
+                "period": "2026年7月",
+                "remeasureStatus": "remeasured-data-2026-08-28",
+                "category": "data",
+                "protocolId": "v6-patient-signal-gated",
+                "protocol": "v6-patient-signal-gated（耐心模式：每轮 200 秒、3 轮跑满不早停、单条最长 600 秒；空判定必须绑定正向的「本页已渲染完成」信号，拿不到就输出 inconclusive 而不是 empty）",
+                "filledCells": 204,
+                "sampleRow": "chatgpt.com / 无类别 / 8.5亿 / 6.4亿 / 12.25%·1亿",
+                "sweepVerdict": "data",
+                "pendingCrossNodeCheck": false,
+                "note": "**2026-08-28 改判为 `data`**：耐心模式重测读到 **204 个非空单元格**（样本原文：`chatgpt.com / 无类别 / 8.5亿 / 6.4亿 / 12.25%·1亿`）。原 `empty-silent` 记录保留在 `supersededObservation` 里，不删。",
+                "supersededObservation": {
+                  "category": "empty-silent",
+                  "protocol": "v4-visible-gated：只采信 document.visibilityState === \"visible\" 时的读；空判定必须在 visible 下连读 3 次",
+                  "protocolId": "v4-visible-gated",
+                  "visibilityStateAtVerdict": "visible",
+                  "visibleReads": 3,
+                  "sawVisible": true,
+                  "hasTable": true,
+                  "filledCells": 0,
+                  "svgCount": 50,
+                  "canvasCount": 0,
+                  "innerTextLength": 182,
+                  "targetVisible": true,
+                  "upsell": false,
+                  "dailyCapNotice": false,
+                  "noMatchMessage": false,
+                  "error": null,
+                  "sweepVerdict": "empty-silent",
+                  "pendingCrossNodeCheck": true,
+                  "pendingCrossNodeCheckNote": "**2026-08-28 作废（保留记录，不删）**：本条的 `empty-silent` 判定来自 v4 判据「vis==='visible' 且累计 3 次可见读即采信为空」。该判据存在**早停缺陷**——可见读间隔 6 秒，最快 18 秒就下结论，而这些页面的渲染顺序是 **摘要 → 图表 → 表格，表格最后水合**，表格尚未开始渲染时任意次数的连续读都稳定为空。**「稳定」不等于「完成」。** 硬反证：node 8 上 `page-groups` 出了 20 格、`geographical-regions` 出了 198 格（`北美 | 20.69% | 1.6亿 | 4752.6万 | 82.63% | 5.3 | 12:05 | 32.98%`）；回查 node 5 这两条的记录，**摘要区数字是齐的**（`访问量 7.9亿 ↑4.53% | 唯一身份访问量 2.1亿 ↑2.92% | 购买转化率 0.21% ↑28.17%`），页面在跑，只是表格还没水合。判据已改为「可见读满 3 次 **且** 本轮已等满 100 秒」，每轮上限 150 秒、最多 3 轮，协议 `v5-visible-gated-min100s`。**8 条静默空表全部作废并正在重测，标 `pending-remeasure-v5`。在重测回来之前，不要写「这条是真的空」，也不要写「这个订阅拿不到这条」。** 判据教训见 backlink Skill 里 id 为 readiness-must-bind-to-this-query 的那条 law（实例 5）。 **2026-08-28 再更新：100 秒的下限本身也被证明不够。** 同批 5 条（page-groups 20 格 / geographical-regions 198 格 / business-regions 36 格 / sources-destinations 272 格 / subfolders-subdomains 900 格）在耐心模式下逐条出数，其中 geographical-regions 与 business-regions **是第二次重测才出的数**。协议已升级为 v6-patient-signal-gated（耐心模式：每轮 200 秒、3 轮跑满不早停、单条最长 600 秒；空判定必须绑定正向的「本页已渲染完成」信号，拿不到就输出 inconclusive 而不是 empty）。**本条仍在重测，保持 `pending-remeasure-v5`，不要替它下任何结论**——既不要写「真的空」，也不要写「其实有数」。",
+                  "note": "静默空表。列头齐全（域名 / 类别 / 受众总数 / 潜在观众 / 受众重叠 / Sortable），0 行。",
+                  "supersededOn": "2026-08-28",
+                  "supersededBy": "**早停判据下的观测，已被推翻，保留不删。** 先后两代判据都把这条记成了空：v4「vis==='visible' 且累计 3 次可见读即采信为空」（最快 18 秒下结论）、v5「可见读满 3 次且本轮等满 100 秒」。v6-patient-signal-gated（耐心模式：每轮 200 秒、3 轮跑满不早停、单条最长 600 秒；空判定必须绑定正向的「本页已渲染完成」信号，拿不到就输出 inconclusive 而不是 empty） 下重测读到 204 个非空单元格。推翻它的不是「等得更久」，而是这类判据的形状——「等够久 + 还是空 → 判空」永远只是在赌一个阈值。**保留的价值**：当时表格 0 行而摘要区数字是齐的，正是这个对照让「摘要 → 图表 → 表格，表格永远最后」这个渲染顺序被看清。判据教训见 backlink Skill 里 id 为 readiness-must-bind-to-this-query 的那条 law（实例 5 与实例 6）。"
+                },
+                "recheck20260829": {
+                  "status": "pending-recheck-blind-probe",
+                  "verdictStands": true,
+                  "filledCellsIsLowerBound": true,
+                  "note": "**2026-08-29 标为「待复查」（pending-recheck-blind-probe）。判定未作废。** 本条是**正向**判定：它拿到过真实的非空单元格字符串（见 `firstCells` / `filledCells`），而正向证据比缺失证据结实得多 —— 浅层探针**读到**的东西是真的，它只是可能**漏读**。所以 `filledCells` 是**下界**，不是等值；行数/列数很可能被低估。\n\n**但它和被作废的那 9 条是同一个失明探针产出的**，所以两件事必须复查：\n1. **数值本身是否完整** —— 穿透之后单元格数会不会变多（`top-pages` 850 → 现读 0 说明这套读数极不稳定）；\n2. **数是不是这个域名的** —— 同一批实盘里，深链弹跳之后标签页停在 **`mmradar.gg`** 的域名概览（23 个非空单元格、AS 22、自然流量 23.9K）。**任何当时读到 `cells > 0` 的探针，都会把 mmradar.gg 的数字记到 canva.com 名下。** 本条没有页头域名核对的留痕，所以无法自证不是那一种。\n\n复查按新闸门跑，通过前这条记录**可用但不可引用为精确值**。"
+                }
+              },
+              "/analytics/traffic/socioeconomics/": {
+                "label": "社会经济",
+                "category": "chart-only",
+                "node": 5,
+                "target": "canva.com",
+                "period": "2026年7月",
+                "protocol": "v4-visible-gated：只采信 document.visibilityState === \"visible\" 时的读；空判定必须在 visible 下连读 3 次",
+                "protocolId": "v4-visible-gated",
+                "visibilityStateAtVerdict": "visible",
+                "visibleReads": 3,
+                "sawVisible": true,
+                "hasTable": false,
+                "filledCells": 0,
+                "svgCount": 34,
+                "canvasCount": 0,
+                "innerTextLength": 223,
+                "targetVisible": true,
+                "upsell": false,
+                "dailyCapNotice": false,
+                "noMatchMessage": false,
+                "error": null,
+                "sweepVerdict": "no-table",
+                "note": "A 类。主体区只有维度名（家庭规模 / 收入水平 / 就业状况 / 知识 / 义务教育 / 大学 / 研究生 / 未结业），没有数值文本。",
+                "remeasureStatus": "voided-2026-08-29-blind-probe",
+                "remeasureNote": "**2026-08-29 结案。** 此前「仍在跑、保持 pending」。重测回来，按结构判据判定 `no-table-structural`，可采信。判据、判定名（`no-table-structural` / `data-not-in-table` / `no-table`）和「非空单元格判据不能反过来用」这条更正**只写在** backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 里，这里不复述。",
+                "chartOnlyTier": "voided-blind-probe",
+                "structuralEvidence": {
+                  "verdict": "no-table-structural",
+                  "chartHydrated": null,
+                  "exportBtns": null,
+                  "criterionVersion": "v8-structural-no-visibility-gate",
+                  "note": "**B 的最终报告只给了「均通过结构判据」这个结论，没有逐条转述 chart/exp 计数**，所以这两个数字记为 null 而不是编一个。判定名可采信，逐格证据待从实测日志回填。 **2026-08-29 判据修订：结构判据不再要求 `vis === 'visible'`。** 它不是页面产出，而且一次 foreground attach 之后会被永久锁死在 `visible`（一个 Chrome 窗口里两个标签页同时报 visible 是铁证），是一个可能撒谎的信号。「页面其余部分渲染完了」这件事由 chartHydrated 与 exportBtns 直接证明，不需要可见性做代理。**保留的是「目标已生效」那半**——空态落地页是一个完美的 noTable===true。判据、判定名（`no-table-structural` / `data-not-in-table` / `no-table`）和「非空单元格判据不能反过来用」这条更正**只写在** backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 里，这里不复述。",
+                  "status20260829": "voided-blind-probe",
+                  "voidedBecause": "浅层 DOM 探针（不穿透 shadow DOM）+ 空白模块 + 导航壳里的 12 个导出按钮。chartHydrated 与 exportBtns 已在 backlink Skill 里退役，不再是判据。"
+                },
+                "chartOnlyTierVoided20260829": "structural-confirmed",
+                "voided20260829": {
+                  "status": "voided-blind-probe",
+                  "voidedVerdict": "no-table-structural",
+                  "now": "pending-remeasure",
+                  "note": "**2026-08-29 作废（voided-blind-probe）。** 这条判定所依据的 DOM 探针**对 shadow DOM 结构性失明**，所以它量到的是页面的一小块，不是页面。同一页同一刻实测：`document.body.innerText.length` = **59**，穿透 shadow DOM 的深层文本 = **1,605,054**，文档里 **44 个 shadow root**（Semrush 把外壳和报表挂件都渲染在里面）。`innerText` 不穿透，`querySelectorAll` 也不穿透。\n\n**成因三条，缺一不可：**\n1. **浅层 DOM 探针** —— `hasTable` / `filledCells` / `innerTextLength` / `svgCount` 全部是浅层读数。穿透探针在同一页上把 svg 从 32 读到 45、3 读到 16、49 读到 62。\n2. **空白模块** —— 内容区实际一片空白，所以「没有 table」是「什么都没渲染」，不是「这条路由不用表格」。\n3. **伪造的 exportBtns** —— `daily-trends` 量到 `exportBtns: 12`，**与本记录里的 `exp=12` 完全一致**，而内容区空白：那 12 个匹配全在 shadow DOM 的**导航壳**里，不在任何报表内。同批的 `chartHydrated` 在三条路由上**全部读到 0**，包括记录里写着 `chart=122` 的那条 —— 「这 9 条通过了结构判据」**无法复现**。\n\n**对照组（决定性）：** `top-pages` —— 记录里写着 **850 个非空单元格** —— 现在读到 `tables:0, grids:0, cells:0, innerText:59`，持续 150 秒。**一条已知有数据的路由，和这 9 条读出来完全一样。**分类在这样的读数上零区分力。\n\n**原观测一律保留、一个字没删**（`hasTable` / `filledCells` / `svgCount` / `innerTextLength` / `chartOnlyTier` / `structuralEvidence` 都在原位），标注它们被什么推翻而已。\n\n**处置：** 判定作废，本条回到 `pending-remeasure`。重测的前提是穿透探针 + 分类前的三条硬闸门（落地 path == 请求路由 / 页头域名 == 请求目标 / 穿透后的报表区内容非空），任一不满足输出 `inconclusive`，**不许输出 `no-table` 或 `empty`**。判据与闸门只写在 backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 及 `scripts/lib-report-readiness.mjs` / `scripts/lib-deep-dom.mjs` 里，这里不复述。"
+                }
+              },
+              "/analytics/traffic/behavior/": {
+                "label": "行为",
+                "category": "data-not-in-table",
+                "node": 5,
+                "target": "canva.com",
+                "period": "2026年7月",
+                "protocol": "v4-visible-gated：只采信 document.visibilityState === \"visible\" 时的读；空判定必须在 visible 下连读 3 次",
+                "protocolId": "v4-visible-gated",
+                "visibilityStateAtVerdict": "visible",
+                "visibleReads": 3,
+                "sawVisible": true,
+                "hasTable": false,
+                "filledCells": 0,
+                "svgCount": 47,
+                "canvasCount": 0,
+                "innerTextLength": 180,
+                "targetVisible": true,
+                "upsell": false,
+                "dailyCapNotice": false,
+                "noMatchMessage": false,
+                "error": null,
+                "sweepVerdict": "no-table",
+                "note": "A 类。主体区只有维度名（社交媒体 / 兴趣度 / 设备 / 桌面设备 / 移动设备），没有数值文本。",
+                "remeasureStatus": "closed-2026-08-29",
+                "remeasureNote": "**2026-08-29 结案，但结论方向和原来相反。** 此前记为 `pending` / 弱证据 `no-table`（chart=0 / exp=0），理由是「整页章节都没渲染，等于什么都没测到」。实测复查发现：这条路由**根本没有 table 元素**，而**数据一直在 DOM 文本里**，用列表 + 条形图呈现。所以它既不是 `chart-only`（那一类是「有图无表、数在图里」，本条的数在文本里），也不是 `no-table` / `pending`（不是没测到，是测的东西找错了形状）。新分类 `data-not-in-table`，见 `dataNotInTable` 字段。判据、判定名（`no-table-structural` / `data-not-in-table` / `no-table`）和「非空单元格判据不能反过来用」这条更正**只写在** backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 里，这里不复述。",
+                "chartOnlyTier": null,
+                "weakEvidence": {
+                  "chartHydrated": 0,
+                  "exportBtns": 0,
+                  "verdict": "no-table",
+                  "admissible": false,
+                  "supersededBy": "data-not-in-table (2026-08-29)",
+                  "note": "保留不删：`chart=0 / exp=0` 这次读数本身没错，错的是用它去回答「这条路由有没有数据」。它回答的是「有没有表格型数据」。"
+                },
+                "presentationShape": "list+bar-chart",
+                "anchorLabels": [
+                  "社交媒体",
+                  "兴趣度",
+                  "设备"
+                ],
+                "dataNotInTable": {
+                  "measuredOn": "2026-08-29",
+                  "hasTable": false,
+                  "filledCells": 0,
+                  "rawSample": "YouTube 71.8% 1.5亿 | Facebook 49.36% 1亿 | Instagram 48.61% | Reddit 33.71% | TikTok 28.06%",
+                  "alsoPresent": [
+                    "兴趣度分布",
+                    "设备分布"
+                  ],
+                  "warning": "**按非空单元格判会得 0，但不是没数据。** 本条是那条正向判据的反例：它证明了「非空单元格 > 0」隐含着「数据 = 表格」这个没说出口的假设。判据本身不推翻——`filledCells > 0` 仍然是表格型报表里最可靠的正向判据——但它不能反过来用：`filledCells === 0` 只推得出「没有表格型数据」。",
+                  "howToRead": "声明 presentationShape 与 anchorLabels，在锚点标题所属的 section 子树内部取数值文本。不要用「页面上有数字」这种宽泛判据（那是 axa.fr 挂件那个假阳性）。"
+                }
+              },
+              "/analytics/traffic/daily-trends/": {
+                "label": "每日趋势",
+                "category": "chart-only",
+                "node": 5,
+                "target": "canva.com",
+                "period": "2026年7月",
+                "protocol": "v4-visible-gated：只采信 document.visibilityState === \"visible\" 时的读；空判定必须在 visible 下连读 3 次",
+                "protocolId": "v4-visible-gated",
+                "visibilityStateAtVerdict": "visible",
+                "visibleReads": 3,
+                "sawVisible": true,
+                "hasTable": false,
+                "filledCells": 0,
+                "svgCount": 32,
+                "canvasCount": 0,
+                "innerTextLength": 314,
+                "targetVisible": true,
+                "upsell": false,
+                "dailyCapNotice": false,
+                "noMatchMessage": false,
+                "error": null,
+                "sweepVerdict": "no-table",
+                "note": "A 类。主体区列的是渠道名（直接 / 引荐 / AI 流量 / 谷歌 AI 模式 / 自然搜索 / 自然社交 / 付费搜索 / 付费社交 / 电子邮件 / 展示广告）各带一个「导出」，没有数值文本。",
+                "remeasureStatus": "voided-2026-08-29-blind-probe",
+                "remeasureNote": "**2026-08-29 结案。** 此前「仍在跑、保持 pending」。重测回来，按结构判据判定 `no-table-structural`，可采信。判据、判定名（`no-table-structural` / `data-not-in-table` / `no-table`）和「非空单元格判据不能反过来用」这条更正**只写在** backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 里，这里不复述。",
+                "chartOnlyTier": "voided-blind-probe",
+                "structuralEvidence": {
+                  "verdict": "no-table-structural",
+                  "chartHydrated": null,
+                  "exportBtns": null,
+                  "criterionVersion": "v8-structural-no-visibility-gate",
+                  "note": "**B 的最终报告只给了「均通过结构判据」这个结论，没有逐条转述 chart/exp 计数**，所以这两个数字记为 null 而不是编一个。判定名可采信，逐格证据待从实测日志回填。 **2026-08-29 判据修订：结构判据不再要求 `vis === 'visible'`。** 它不是页面产出，而且一次 foreground attach 之后会被永久锁死在 `visible`（一个 Chrome 窗口里两个标签页同时报 visible 是铁证），是一个可能撒谎的信号。「页面其余部分渲染完了」这件事由 chartHydrated 与 exportBtns 直接证明，不需要可见性做代理。**保留的是「目标已生效」那半**——空态落地页是一个完美的 noTable===true。判据、判定名（`no-table-structural` / `data-not-in-table` / `no-table`）和「非空单元格判据不能反过来用」这条更正**只写在** backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 里，这里不复述。",
+                  "status20260829": "voided-blind-probe",
+                  "voidedBecause": "浅层 DOM 探针（不穿透 shadow DOM）+ 空白模块 + 导航壳里的 12 个导出按钮。chartHydrated 与 exportBtns 已在 backlink Skill 里退役，不再是判据。"
+                },
+                "chartOnlyTierVoided20260829": "structural-confirmed",
+                "voided20260829": {
+                  "status": "voided-blind-probe",
+                  "voidedVerdict": "no-table-structural",
+                  "now": "pending-remeasure",
+                  "note": "**2026-08-29 作废（voided-blind-probe）。** 这条判定所依据的 DOM 探针**对 shadow DOM 结构性失明**，所以它量到的是页面的一小块，不是页面。同一页同一刻实测：`document.body.innerText.length` = **59**，穿透 shadow DOM 的深层文本 = **1,605,054**，文档里 **44 个 shadow root**（Semrush 把外壳和报表挂件都渲染在里面）。`innerText` 不穿透，`querySelectorAll` 也不穿透。\n\n**成因三条，缺一不可：**\n1. **浅层 DOM 探针** —— `hasTable` / `filledCells` / `innerTextLength` / `svgCount` 全部是浅层读数。穿透探针在同一页上把 svg 从 32 读到 45、3 读到 16、49 读到 62。\n2. **空白模块** —— 内容区实际一片空白，所以「没有 table」是「什么都没渲染」，不是「这条路由不用表格」。\n3. **伪造的 exportBtns** —— `daily-trends` 量到 `exportBtns: 12`，**与本记录里的 `exp=12` 完全一致**，而内容区空白：那 12 个匹配全在 shadow DOM 的**导航壳**里，不在任何报表内。同批的 `chartHydrated` 在三条路由上**全部读到 0**，包括记录里写着 `chart=122` 的那条 —— 「这 9 条通过了结构判据」**无法复现**。\n\n**对照组（决定性）：** `top-pages` —— 记录里写着 **850 个非空单元格** —— 现在读到 `tables:0, grids:0, cells:0, innerText:59`，持续 150 秒。**一条已知有数据的路由，和这 9 条读出来完全一样。**分类在这样的读数上零区分力。\n\n**原观测一律保留、一个字没删**（`hasTable` / `filledCells` / `svgCount` / `innerTextLength` / `chartOnlyTier` / `structuralEvidence` 都在原位），标注它们被什么推翻而已。\n\n**处置：** 判定作废，本条回到 `pending-remeasure`。重测的前提是穿透探针 + 分类前的三条硬闸门（落地 path == 请求路由 / 页头域名 == 请求目标 / 穿透后的报表区内容非空），任一不满足输出 `inconclusive`，**不许输出 `no-table` 或 `empty`**。判据与闸门只写在 backlink Skill 里 id 为 `readiness-must-bind-to-this-query` 的那条 law 及 `scripts/lib-report-readiness.mjs` / `scripts/lib-deep-dom.mjs` 里，这里不复述。"
+                }
+              },
+              "/analytics/traffic/industry-and-bulk-analysis/": {
+                "label": "行业与批量分析",
+                "category": "requires-input",
+                "node": 5,
+                "target": "canva.com",
+                "period": "2026年7月",
+                "protocol": "v4-visible-gated：只采信 document.visibilityState === \"visible\" 时的读；空判定必须在 visible 下连读 3 次",
+                "protocolId": "v4-visible-gated",
+                "visibilityStateAtVerdict": "visible",
+                "visibleReads": 3,
+                "sawVisible": true,
+                "hasTable": false,
+                "filledCells": 0,
+                "svgCount": 12,
+                "canvasCount": 0,
+                "innerTextLength": 259,
+                "targetVisible": false,
+                "upsell": false,
+                "dailyCapNotice": false,
+                "noMatchMessage": false,
+                "error": null,
+                "sweepVerdict": "inconclusive-target-lost",
+                "note": "**不是「没数据」，是「需要输入才产出」。** 主体区原文：`批量分析 | 商家类别 | 竞争对手 | 0/100 | of 100 lines | 将文件拖放到此处或浏览 | CSV 或 TXT 小于 5MB | 文件每行必须包含一个 URL | 分析`。它**不吃 URL 上的目标**，要人贴最多 100 行域名（或传 <5MB 的 CSV/TXT）。sweep 记的 verdict 是 inconclusive-target-lost，那只是因为页头没有 canva.com——**页头本来就不会有**。这是第三个类别，别归进「空」。"
+              },
+              "/analytics/traffic/trends-api": {
+                "label": "Trends API",
+                "category": "not-a-report-route",
+                "node": 5,
+                "target": "canva.com",
+                "period": "2026年7月",
+                "protocol": "v4-visible-gated：只采信 document.visibilityState === \"visible\" 时的读；空判定必须在 visible 下连读 3 次",
+                "protocolId": "v4-visible-gated",
+                "visibilityStateAtVerdict": "visible",
+                "visibleReads": 3,
+                "sawVisible": true,
+                "hasTable": false,
+                "filledCells": 0,
+                "svgCount": 26,
+                "canvasCount": 0,
+                "innerTextLength": 1074,
+                "targetVisible": false,
+                "upsell": false,
+                "dailyCapNotice": false,
+                "noMatchMessage": false,
+                "error": null,
+                "sweepVerdict": "inconclusive-target-lost",
+                "note": "**纯营销页，不是数据路由。** 页面上是定价与 MCP 宣传：`基础版 | 访问流量摘要 | 每月 10,000 个 API 单位 | API 文档和设置指南 | $1000 | /月 | 购买 API 访问`、`高级版 | 自定义套餐和定价 | 16 种额外的数据类型 | 每日和每周流量数据 | 购买转化洞察见解 | 联系销售团队`，并宣传「通过 MCP 将 Trends API 连接到 Claude、Cursor 或 VS Code」。sweep 的 targetVisible=false 同样是正常的——营销页不显示目标域名。"
+              },
+              "/trending-websites/global/all/": {
+                "label": "热门网站趋势",
+                "category": "data",
+                "node": 5,
+                "target": "canva.com",
+                "period": "2026年7月",
+                "protocol": "v4-visible-gated：只采信 document.visibilityState === \"visible\" 时的读；空判定必须在 visible 下连读 3 次",
+                "protocolId": "v4-visible-gated",
+                "visibilityStateAtVerdict": "visible",
+                "visibleReads": 1,
+                "sawVisible": true,
+                "hasTable": true,
+                "filledCells": 140,
+                "svgCount": 41,
+                "canvasCount": 0,
+                "innerTextLength": 2634,
+                "targetVisible": false,
+                "upsell": false,
+                "dailyCapNotice": false,
+                "noMatchMessage": false,
+                "error": null,
+                "sweepVerdict": "data",
+                "sampleCells": [
+                  "google.com",
+                  "105.85B",
+                  "30.22%\n31.99B",
+                  "69.78%\n73.86B",
+                  "↑7.8%",
+                  "↑0.24%",
+                  "直接",
+                  "youtube.com",
+                  "57.05B",
+                  "33.2%\n18.94B",
+                  "66.8%\n38.11B",
+                  "↑9.24%"
+                ],
+                "note": "✅ 出数，但**不吃 URL 上的目标域名**——它是全球榜单，不是某个域名的报表。所以本条 targetVisible=false 是**正常的，不是「目标丢了」，更不是一次失败的读**。样本原文：google.com | 105.85B | 30.22%/31.99B | 69.78%/73.86B | ↑7.8% | ↑0.24% | 直接。",
+                "recheck20260829": {
+                  "status": "pending-recheck-blind-probe",
+                  "verdictStands": true,
+                  "filledCellsIsLowerBound": true,
+                  "note": "**2026-08-29 标为「待复查」（pending-recheck-blind-probe）。判定未作废。** 本条是**正向**判定：它拿到过真实的非空单元格字符串（见 `firstCells` / `filledCells`），而正向证据比缺失证据结实得多 —— 浅层探针**读到**的东西是真的，它只是可能**漏读**。所以 `filledCells` 是**下界**，不是等值；行数/列数很可能被低估。\n\n**但它和被作废的那 9 条是同一个失明探针产出的**，所以两件事必须复查：\n1. **数值本身是否完整** —— 穿透之后单元格数会不会变多（`top-pages` 850 → 现读 0 说明这套读数极不稳定）；\n2. **数是不是这个域名的** —— 同一批实盘里，深链弹跳之后标签页停在 **`mmradar.gg`** 的域名概览（23 个非空单元格、AS 22、自然流量 23.9K）。**任何当时读到 `cells > 0` 的探针，都会把 mmradar.gg 的数字记到 canva.com 名下。** 本条没有页头域名核对的留痕，所以无法自证不是那一种。\n\n复查按新闸门跑，通过前这条记录**可用但不可引用为精确值**。"
+                }
+              }
+            },
+            "notInThisSweep": {
+              "/analytics/traffic/traffic-overview/": "✅ 满数据（node 5，canva.com，2026年7月）。见 capturedSample。**不在 v2 sweep 的 22 条里。**",
+              "/analytics/traffic/top-pages/": {
+                "category": "data",
+                "note": "✅ 满数据，850 个非空单元格（前 6 格原文：主页 / 39.47% / 按「Tab」启用图形图表访问模块。/ 4.1亿 / 1.1亿 / 3.1亿，页头确认 canva.com）。**这条结论来自另一次实测，不在 sweep-results-v2.jsonl 的 node 5 那 22 条里。** 此前记的「node 5 得 0 行、node 8 得 850 格」的节点差异**不存在**——node 5 后来读到了同样的 850 格。原先那次 0 行是真实发生过的观测，但是观测假象，成因假设为：(a) 读取时标签页尚未水合；(b) 当时机器上有多个进程同时打 Semrush（那次为拿全局锁排队约 9 分钟）。不要把 0 行那次抹掉——它是「空表不等于没数据」现在最强的例证。**本条的「受可见性影响」结论成立且是唯一成立的一条**：同一路由 hidden 读到 0 格、visible 读到 850 格，三次交叉验证。它是重表格页，与 chart-only（本来就没表）是两种不同现象，不要合并。",
+                "pendingCrossNodeCheck": false,
+                "pendingCrossNodeCheckNote": "**node 8 复测已完成，这条成立**：850 个非空单元格，**与 node 5 逐格一致**（前 5 格逐字相同：主页 / 39.47% / 按「Tab」启用图形图表访问模块。 / 4.1亿 / 1.1亿）。sweep-results-v2.jsonl 末尾那行 node 8 读到 no-table / 0 格 / innerText 353 的记录，现已定性为**目标未生效**：换节点后旧 lid 不认、页面静默落回空态落地页，而当时的目标校验（body 文本含 canva.com）恰好被落地页「保存的列表」选择器里那条历史记录满足。修正判据：`含 canva.com 且 页面上没有「创建新列表」`，并额外记录 listPickerVisible 和页头账号首字母（node 5 = H、node 8 = B，可用来区分节点身份）。判据形状见 backlink Skill 里 id 为 readiness-must-bind-to-this-query 的那条 law。**不要拿那一行推翻 850 格。**",
+                "controlGroup20260829": {
+                  "role": "对照组 —— 这条路由是 2026-08-29 那轮扫描被整体作废的**决定性证据**。",
+                  "recordedFilledCells": 850,
+                  "readOn20260829": "tables:0, grids:0, cells:0, innerText:59，持续 150 秒",
+                  "conclusion": "**一条已知有数据的路由，和那 9 条被判「无表格」的路由读出来完全一样 —— 分类零区分力。** 本条自己的 850 格判定并未因此作废（那是正向证据，见 recheck 口径），但它证明了：那套浅层探针在这一天的读数**无法把「有数据」和「没有表格」分开**，所以任何建立在同一批读数上的「无表格」结论都不成立。",
+                  "cause": "浅层 DOM 探针不穿透 shadow DOM（同页同刻：innerText 59 / 深层 1,605,054 / 44 个 shadow root）。",
+                  "status": "pending-recheck-blind-probe —— 850 这个数只能当**下界**读，且要复查它是不是 canva.com 的数（同批实盘出现过 mmradar.gg 错配）。"
+                }
+              },
+              "/analytics/traffic/countries/": "❌ node 5 与 node 8 都是空（流量比例 n/a、访问量 n/a、表格 0 行）。原因未定，与 top-pages 是两种不同的失败。**不在 v2 sweep 的 22 条里。**",
+              "/analytics/traffic/market-overview/": "❌ 列头齐全但「域名 (0/0)」，疑似需要先定义市场/加竞品，未验证。**不在 v2 sweep 的 22 条里。**",
+              "/analytics/traffic/competitor-monitoring/": "未在 v2 sweep 中读取，无观测。",
+              "/analytics/traffic/": "入口/落地页，未在 v2 sweep 中读取，无观测。"
+            },
+            "_limitsDeclaredByMeasurer": {
+              "asOf": "2026-08-29",
+              "by": "B（实盘测量方）",
+              "statement": "**node 8 只完整测过 3 条路由。** JSONL 里 node 8 那几条 `empty-silent` 是**早停协议下的旧观测**，**请当作未测，不要引用**——既不要拿它们写「这条真的空」，也不要拿它们做节点对比。node 5 的 22 条才是这一轮的完整结果。"
+            },
+            "blindProbeVoiding20260829": {
+              "summary": "整轮扫描的 DOM 探针对 shadow DOM 结构性失明；9 条 `no-table-structural` 全部作废，10 条 `data` 标为待复查。",
+              "measuredSamePageSameInstant": {
+                "bodyInnerTextLength": 59,
+                "deepTextLengthPiercingShadowDom": 1605054,
+                "shadowRootsInDocument": 44,
+                "svgBeforeAfterPiercing": [
+                  "32 → 45",
+                  "3 → 16",
+                  "49 → 62"
+                ]
+              },
+              "controlGroup": {
+                "route": "/analytics/traffic/top-pages/",
+                "recordedFilledCells": 850,
+                "readNow": "tables:0, grids:0, cells:0, innerText:59，持续 150 秒",
+                "conclusion": "一条**已知有数据**的路由，和那 9 条「无表格」读出来完全一样 —— **分类零区分力**。"
+              },
+              "fabricatedEvidence": {
+                "exportBtns": "daily-trends 内容区空白却量到 12，**与本记录里的 exp=12 完全一致**；12 个匹配全在 shadow DOM 的导航壳里，不在任何报表内。",
+                "chartHydrated": "三条路由全部读到 0，包括记录里写着 chart=122 的那条 ——「9 条通过结构判据」无法复现。",
+                "disposition": "两个信号已在 backlink Skill 与 scripts/lib-report-readiness.mjs 里**退役**：继续量、继续记，不再参与任何判定。"
+              },
+              "priorLessonNotGeneralised": "Semrush 的**侧栏**也在 shadow DOM 里，当时的结论是「侧栏看不见」，直到改用 `document.querySelectorAll('snav-sidebar-ribbon-item, snav-sidebar-list-item')` + `el.shadowRoot.querySelector('a')` 才拿到 15 个额外页面。**那次只修了侧栏这一处，没有推广到取数探针。**",
+              "authorizedBase": {
+                "only": "sem.3ue.co",
+                "reference": "backlink/references/authorized-data-sources.md",
+                "wrongHostIsSilent": "`www.semrush.com/analytics/traffic/...` **不是授权基址，而且不报错**：渲染骨架 → 弹到 `/analytics/traffic/`（**公开营销页**，innerText 514、10 张图、标题 `Traffic Analytics: Estimate Any Website's Traffic | Semrush`）→ 再弹到 overview。**一个扫描器会从销售页上记下「无表格、有 svg、有导出按钮」。**",
+                "targetMismatchCaughtLive": "弹完之后标签页停在 **mmradar.gg** 的完整域名概览（23 个非空单元格、AS 22、自然流量 23.9K）。任何当时读到 `cells > 0` 的探针，都会把 mmradar.gg 的数字记到 canva.com 名下。"
+              },
+              "scrollNotTheCause": {
+                "measured": "`body.scrollHeight === window.innerHeight`（772），`scrollY` 滚 8 次从没动过，350 秒内所有数字冻结。",
+                "limitOfThisObservation": "**但那是因为整个报表模块渲染空白** —— 一个什么都没渲染的页面当然没有首屏之下的内容。**不能推广成「这个站不需要滚动」。** 另外在一个把外壳挂在 44 个 shadow root 里的页面上，真正的滚动容器很可能**不是 window**，「滚 window 不动」和「没有可滚内容」读数一模一样。分段滚动能力已加进取数探针，**默认关闭**，探针每轮回报 `scrollContainers`，下一次实盘用数据来定默认值。"
+              },
+              "remeasurePrecondition": "穿透探针（scripts/lib-deep-dom.mjs）+ 分类前的三条硬闸门（落地 path == 请求路由 / 页头域名 == 请求目标 / 穿透后的报表区内容非空）。任一不满足 ⇒ `inconclusive`，**绝不输出 `no-table` 或 `empty`**。",
+              "originalObservationsKept": "原观测一律保留，一个字没删，只标注被什么推翻。"
+            }
+          },
+          "savedListCheck": "展开「再显示 20 个结果」后清点 25 条保存的列表，canva.com 不在其中；提交前后前 5 条逐字节相同。 URL 上的 lid（node 5 是 1231490、node 8 是 1231560）**按账号隔离**，拿一个账号的 lid 去另一个账号会落回空态落地页。 结论：分析不创建保存的列表。限度：列表底部仍有「再显示 20 个」未展开，查的是前 25 条。",
+          "savedListCheckLidRemeasure": "**归档位置更正 + 待复测（2026-08-28）**：「lid 按账号隔离」这条一度被当成 Similarweb 侧的结论派出去复测，**它不是**。复测方查证：本文件里 `lid` 只出现一次，就在 `providers.semrush.savedListCheck` 这条，证据用的是 Semrush 的 node 5 / node 8；`providers.similarweb` 下没有任何 lid 记录。**这条留在 Semrush 名下。** 状态：**pending-remeasure**，本轮未复测。 **为什么值得复测（不是走过场）**：它的判据是「拿别的账号的 lid 会静默落回空态」——也就是**读到空 ⇒ 下结论**，正是 2026-08-28 这一天被反复证伪的那种形状（见 backlink Skill 里 id 为 readiness-must-bind-to-this-query 的那条 law，实例 5 与实例 6）。而本模块的 `rule` 里本来就写着「空表不等于没数据」。所以「落回空态」这个观测既可能是 lid 真的不认，也可能只是那一次没水合完 / 没等到 visible。**在复测之前，不要用这条去解释任何一次空读，也不要据此断定跨账号 lid 不可用。** 复测协议：`v6-patient-signal-gated`，轮询间隔 600–700ms（visible 是 ~3 秒脉冲），并要求「同一个 visible 窗口内连续 3 次」读到空态落地页标记，外加正向判据——页头账号首字母 + 页面上有没有「创建新列表」。",
+          "rule": "**在这条工具线里，空表不等于没数据。** 例证更新 2026-08-28：**同一个节点（node 5）、同一个 canva.com / 主要页面 / 2026年7月**，一次读到 0 行且不报任何错，另一次读到 850 个非空单元格。变量不是节点——是读取时刻的页面状态（水合完成与否、以及是否有别的进程在抢同一个浏览器）。任何针对本模块的取数脚本必须把「读到 0 行」和「这个域名没有数据」分开报；报空之前重读一次，并同时记下读取瞬间的 document.visibilityState。把 0 行当成业务结论，就是本仓库反复出事的那类错误。（旧例证 node5 vs node8 已作废，见 perRouteFindings.top-pages。） **更正 2026-08-28：「空」有两种，并存，不要合并。** (1) 可见性伪空：同一路由 hidden 读 0、visible 读满——**只在重表格页 /analytics/traffic/top-pages/ 上实测到**（0 格 vs 850 格，三次交叉验证），本规则的重读补救只对它有用。(2) chart-only「本来就没表」：visible 下连读 3 次仍然 0 个表格元素，只有图表——**node 5 上共 10 条**（referral / organic-search / paid-search / organic-social / paid-social / email / display-ads / socioeconomics / behavior / daily-trends），见 perRouteFindings。chart-only 不是水合截面，套可见性重试循环是白费。 **更正 2026-08-28（全量 sweep 之后）：「空」实际有四类，不是两类。** 除上面两类外还有 requires-input（industry-and-bulk-analysis：要人贴最多 100 行域名才产出，不吃 URL 上的目标）和 not-a-report-route（trends-api：营销定价页，压根不返回报表）。四类长得像，成因和补救完全不同，**枚举值必须分开**：data / chart-only / empty-silent / requires-input / not-a-report-route。另有一条独立提醒：`/trending-websites/global/all/` 出数但**不吃目标域名**（全球榜单），它的 targetVisible=false 是正常的，不是一次失败的读。  **更新 2026-08-28（node 8 复测回来之后）：一条成立，一条作废。** (1) **成立**：`/analytics/traffic/top-pages/` 在 node 5 和 node 8 上**都是 850 格，前 5 格逐字相同**（主页 / 39.47% / 按「Tab」启用图形图表访问模块。 / 4.1亿 / 1.1亿）——两个节点是两个不同的共享账号（页头首字母 node 5 = H、node 8 = B）。最初那条「node 5 空 / node 8 有数」的节点差异，是**可见性**与**目标未生效**两个观测缺陷叠出来的，不是账号或订阅差异。 (2) **作废**：那 8 条 `empty-silent` 的判定**全部不可信，正在重测**（`remeasureStatus: pending-remeasure-v5`）。原判据「可见读满 3 次即采信为空」有**早停缺陷**：可见读间隔 6 秒，最快 18 秒下结论，而页面渲染顺序是 **摘要 → 图表 → 表格，表格最后水合**——表格还没开始渲染时，连续读一百次也是稳定的空。已被反证两条：node 8 上 `page-groups` 20 格、`geographical-regions` 198 格，而 node 5 的旧记录里这两条**摘要区数字是齐的**。判据已改为「可见读满 3 次 **且** 本轮已等满 100 秒」，每轮上限 150 秒、最多 3 轮（`v5-visible-gated-min100s`）。**在重测回来之前，不要写「这 8 条是真的空」，也不要写「这个订阅拿不到这条」。** **判据教训单独成条**：这一天出现了五次「判据被这次查询之外的东西满足」——整页找数字命中邻居工具的挂件、关键词命中营销文案、「有 svg」命中空态落地页的装饰图、目标校验命中空态落地页保存列表里的历史记录，以及第五种最隐蔽的：把「连续 N 次读到空」当成「确认是空」。判据必须绑定在**这次查询的产物**上（最可靠的形状是「表格里真的存在一个非空单元格」），否定判据必须配**最小等待时间下限**。五个实例和正确判据形状**只写在** backlink Skill 里 id 为 readiness-must-bind-to-this-query 的那条 law，这里不复述。 **再更新 2026-08-28（耐心模式重测回来之后）：「最小等待下限」本身也被推翻了。** 那 8 条里的 **5 条改判为 `data`**：page-groups 20 格（`美国 / 18.73%·1.5亿 / 81.88% / 18.12% / 巴西`）、geographical-regions 198 格（`北美 / 20.69% / 1.6亿 / 4752.6万 / 82.63%`）、business-regions 36 格（`APAC / 34.96% / 2.8亿 / 6769.9万 / 85.84%`）、sources-destinations 272 格、subfolders-subdomains 900 格。**其中 geographical-regions 和 business-regions 是第二次重测才出的数——100 秒的下限没兜住它们**，重表格页的水合时间跨度大而且不稳定。所以这条规则的正确形状不是「把下限调大」：**只要判据长成「等够久 + 还是空 → 判空」，它就永远只是在赌一个阈值**，而阈值随页面、随目标、随负载变化。600 秒是现在的经验值，不是保证。**改成**：「空」这个结论默认就是暂定的，判空必须绑定一个正向的「本页已渲染完成」信号（分页器出现 / 行数计数出现 / 加载指示消失 / 只在数据到位后才出现的控件）；拿不到那种信号就**输出 `inconclusive` 而不是 `empty`**——这两个词对下游的意义完全不同，本仓库的规矩是宁可显式失败。时间下限保留，但它是**兜底不是判据**。现行协议 `v6-patient-signal-gated`（每轮 200 秒、3 轮跑满不早停、单条最长 600 秒）。**另记一条实测机制**：Semrush 流量与市场的渲染顺序是**摘要 → 图表 → 表格，表格永远最后**；摘要区已经出数、表格仍 0 行是正常中间态，不是空表。而 `captureStable` 那套「读两次一致就收下」在这里恰好会被**稳定的空态**骗过——0 行本身就是完全稳定的。剩下 3 条（usa / demographics / audience-overlap）仍在重测，**不要替它们下任何结论**。判据教训和六个实例见 backlink Skill 里 id 为 readiness-must-bind-to-this-query 的那条 law（实例 5 与实例 6），这里不复述。 **收尾 2026-08-28：不是 5 条改判，是 8 条全部改判，`empty-silent` 这一类在 node 5 上归零。** 补齐的三条：usa 459 格（`加利福尼亚 / 13.92% / 1811.9万 / 531.5万 / 82.66%`）、demographics 20 格（`美国 / 18.73%·1.5亿 / 81.88% / 18.12% / 巴西`）、audience-overlap 204 格（`chatgpt.com / 无类别 / 8.5亿 / 6.4亿 / 12.25%·1亿`）。另两条的样本原文：sources-destinations `canva.com / 直接 / 79.32% / 6.3亿 / ↑4.4%`、subfolders-subdomains `/design/ / 35.74% / 6.1亿 / 1.4亿 / 2.8亿`。实盘原话：**「我判过的每一条『空』，最后都是我等得不够。零例外。」** ⚠️ **并且 `chart-only` 那 10 条也没结案**：它们同样是在早停判据下测的，正按耐心模式重跑（先跑 referral / organic-search / paid-search / organic-social / socioeconomics）。表现不同（连 table 元素都不存在）**不构成免测的理由**——原话：「虽然它们的表现不同，但我不能凭这个就免测。」在结果回来之前，别把 chart-only 当成已确认的分类。",
+          "methodologyNote": "**windowMode ≠ visibilityState。** 脚本传给 opencli 的 --window / windowMode 只是意图，不是标签页的实际状态：2026-08-28 实测中，标记为 background 的那次读到 document.visibilityState=visible，标记为 foreground 的那次读到 hidden。**唯一可信的记录是读取瞬间在页面里读到的 document.visibilityState**，任何按模式名归因的结论都要重做。 **更正 2026-08-28：可见性根本不是 CLI 侧能控制的量，它会自己来回翻。** 同一会话、期间什么都没做：全新 window:foreground launch 落地那一刻是 visible → 一次页内 location.href 导航之后变 hidden → 再隔约 10 分钟又自己变回 visible。推测机制：Chrome 对被其它窗口遮挡的窗口报 hidden，取决于机主桌面此刻哪个窗口在前。**所以策略不是「设法让它可见」，而是「只采信 visible 时的那一次读」**：每条路由最多 3 轮导航、每轮轮询 100 秒；只有 filled > 0、或连续 3 次在 vis === visible 下读到空，才允许下判定；全程没等到过 visible 就判 inconclusive-hidden，绝不记成「空」；每次读都记 visibilityState。详见 backlink Skill 里 id 为 hidden-tabs-do-not-hydrate 的那条 law。",
+          "observedNote": "2026-08-28：node 5 上 22 条路由全部按 v4-visible-gated 协议判定完毕，四类分布见 perRouteFindings._distributionNode5。仍是 `partially-captured` 的部分只剩两处：8 条静默空表等 node 8 复测（pendingCrossNodeCheck），以及 traffic-overview / top-pages / countries / market-overview / competitor-monitoring 这几条不在本次 sweep 里的路由。  **更新 2026-08-28（node 8 复测回来之后）**：`top-pages` 的跨节点复测已完成（两节点都 850 格，逐格一致），`pendingCrossNodeCheck` 取消。8 条静默空表**没有**因此结案——它们的原判定用的是有早停缺陷的 v4 判据，已全部作废并按 `v5-visible-gated-min100s` 重测中（`remeasureStatus: pending-remeasure-v5`），`pendingCrossNodeCheck` 保留。所以本模块仍是 `partially-captured`，且待办比之前多，不比之前少。 **再更新 2026-08-28（耐心模式重测）**：8 条里 **5 条已改判为 `data`**（page-groups 20 / geographical-regions 198 / business-regions 36 / sources-destinations 272 / subfolders-subdomains 900 格），其中两条第二次重测才出数；`_distributionNode5` 已改为 data 7 / empty-silent 3。**剩 3 条（usa / demographics / audience-overlap）仍标 `pending-remeasure-v5`**，协议已升级为耐心模式 `v6-patient-signal-gated`（每轮 200 秒 / 3 轮 / 最长 600 秒）。另：`page-groups` 的 node 5 结果与 node 8 **逐格相同**，是继 top-pages 之后第二条跨节点一致的路由。本模块仍是 `partially-captured`。 **再收尾 2026-08-28**：8 条 empty-silent **全部**改判为 `data`，这一类计数归零，`_distributionNode5` 为 data 10 / chart-only 10 / requires-input 1 / not-a-report-route 1。但 **chart-only 的 10 条正在重测**（同一个早停判据），所以那个 10 是「待重测的条数」不是结论；本模块因此仍是 `partially-captured`。",
+          "pricing": {
+            "appCenter": {
+              "slug": "semrush-traffic-and-market",
+              "listPrice": "$289/月",
+              "note": "卖的就是本账号已经能从侧栏直接进的「流量与市场」(.Trends) 工具箱。  **2026-08-28：仍然维持「撤回」，没有升级为「有正面反证」。** 一度打算写成正面反证（两个不同账号在同一批路由上给出逐格相同的结果，既有出数的也有空的，档位不同不可能格格一致），但那批一致性里的**空判定现在不可信**——它们用的是有早停缺陷的 v4 判据，已作废重测。支点只剩 `top-pages` 一条（两节点都 850 格）。**一条支点不足以支撑「两个节点档位相同」这个结论。** 这里既不断言这个 App 是按节点卖，也不断言不是；只是说它要解释的那个节点差异不存在。"
+            },
+            "trendsApi": {
+              "route": "/analytics/traffic/trends-api",
+              "basic": "Trends API 基础版：$1000/月，每月 10,000 个 API 单位，访问流量摘要 + API 文档和设置指南",
+              "premium": "Trends API 高级版：自定义套餐和定价，联系销售团队；含 16 种额外数据类型、每日和每周流量数据、购买转化洞察见解",
+              "note": "**这是另一条产品线的价格，独立于 App Center 里那条 `semrush-traffic-and-market` $289/月。** 别把两个数混在一起报。页面同时宣传通过 MCP 把 Trends API 接到 Claude / Cursor / VS Code。"
+            }
+          }
+        },
+        {
+          "name": "AI SEO / AI Visibility",
+          "pages": 10,
+          "examples": [
+            "Visibility Overview",
+            "Brand Performance",
+            "Competitor Research",
+            "Prompt Research",
+            "Narrative Drivers",
+            "Perception",
+            "Questions",
+            "Prompt Tracking"
+          ],
+          "note": "the overview renders a marketing landing page until an AI-visibility campaign exists, and starting one is a write action; read-only AI metrics are available without a campaign on Domain Overview"
+        },
+        {
+          "name": "Content Toolkit",
+          "pages": 7,
+          "examples": [
+            "Dashboard",
+            "AI Article Generator",
+            "Content Optimizer",
+            "Content Repurposing",
+            "Topic Finder",
+            "SEO Brief Generator",
+            "My Content"
+          ]
+        },
+        {
+          "name": "Advertising Toolkit",
+          "pages": 6,
+          "examples": [
+            "Advertising Research",
+            "Ads AI Agent",
+            "Ads Launch Assistant",
+            "Google Shopping Ads Research (PLA Research)",
+            "AdClarity",
+            "Getting Started"
+          ]
+        },
+        {
+          "name": "Social Toolkit",
+          "pages": 7,
+          "examples": [
+            "Dashboard",
+            "Social Poster",
+            "Social Tracker",
+            "Social Analytics",
+            "Social Content Insights",
+            "Influencer Marketing",
+            "Media Monitoring"
+          ],
+          "note": "sub-tools are query params on /social-media/, not distinct paths"
+        },
+        {
+          "name": "Local Toolkit",
+          "pages": 6,
+          "examples": [
+            "Dashboard",
+            "Listing Management",
+            "Review Management",
+            "GBP Optimisation",
+            "Google Business Profile AI Agent",
+            "Map Rank Tracker"
+          ]
+        },
+        {
+          "name": "AI PR Toolkit",
+          "pages": 8,
+          "examples": [
+            "Dashboard",
+            "AI Cited Media",
+            "Contact Search (Media Database)",
+            "Media Lists",
+            "Your Emails",
+            "Senders & Domains",
+            "Media Monitoring",
+            "Alerts & Digests"
+          ]
+        },
+        {
+          "name": "My Reports",
+          "pages": 8,
+          "examples": [
+            "My Reports",
+            "GA4 template",
+            "Google Search Console template",
+            "Monthly SEO template",
+            "Create Report",
+            "Templates",
+            "Themes",
+            "About My Reports Suite"
+          ],
+          "note": "Scheduled PDF Reports and Toolkit Widgets were not in the sidebar; they may live inside the report constructor, unverified"
+        },
+        {
+          "name": "Apps (App Center)",
+          "pages": 16,
+          "observed": "enumerated",
+          "enumeratedAt": "2026-08-28",
+          "entry": "/apps/",
+          "collectionRoute": "/apps/collection/<slug>/",
+          "note": "pages = the /apps/ index plus the 15 collection listing pages. observed is 'enumerated', not 'captured': only the listing cards were read - no app was installed, opened, or used, so nothing here is a verified data source.",
+          "appCount": 48,
+          "appCountNote": "48 is the de-duplicated count across the 15 collections; most apps appear in several collections at once.",
+          "collections": {
+            "seo": 17,
+            "social-media": 12,
+            "content-creation": 12,
+            "advertising": 6,
+            "ai-apps": 13,
+            "competitor-analysis": 21,
+            "smb": 13,
+            "mobile-aso-apps": 5,
+            "Workflows": 10,
+            "for-ecommerce": 8,
+            "video-marketing": 8,
+            "Brand": 6,
+            "LeadGen": 10,
+            "Toolkits": 0,
+            "most-popular": 10
+          },
+          "collectionsNote": "Toolkits returned 0 as an observation, not as an absence: the page title matched the other collections, there were simply no matching app-card links on it. Whether the collection is genuinely empty or uses a different card structure was not separately verified. Do not record this as 'the collection does not exist'.",
+          "collectionsToolkitsRemeasure": "**pending-remeasure（2026-08-28）**：App Center 分类 `Toolkits` 的「返回 0 条」本轮**未复测**，保持待复测。这条和上面的 savedListCheck lid 结论是同一种形状——**页面上没看到东西 ⇒ 记 0**——而 0 条既可能是分类真的为空，也可能是卡片结构变了导致选择器没匹配上，甚至只是没渲染完。复测要求：换一个不依赖 app-card 链接选择器的判据（比如页面自报的条目数 / 分页器 / 空态文案），并按 600–700ms 轮询到一个正向的「本页已渲染完成」信号，拿不到就记 `inconclusive` 而不是 0。归属：Semrush 名下。",
+          "activeOnThisAccount": [
+            {
+              "name": "SERP Gap Analyzer",
+              "slug": "serp-gap-analyzer",
+              "does": "Find SERP opportunities. See where your brand stands in AI Search. Fix decaying pages.",
+              "collections": [
+                "seo",
+                "competitor-analysis",
+                "smb",
+                "most-popular"
+              ]
+            },
+            {
+              "name": "AdClarity - Advertising Intelligence",
+              "slug": "adclarity-advertising-intelligence",
+              "does": "Unwrap competitors' digital ads, ad spend and impressions",
+              "collections": [
+                "advertising",
+                "competitor-analysis",
+                "video-marketing",
+                "most-popular"
+              ]
+            }
+          ],
+          "activeNote": "CORRECTED 2026-08-28: this \"2 of 48 are Active\" reading is **node 5's account (page-header initial H)**, not a property of the shared-account pool. Read side by side on 2026-08-28: SERP Gap Analyzer is **Active on node 5** but **$99/mo, not subscribed, on node 8 (initial B)**; AdClarity is **Active on both**; CallRail / Influencer Analytics / Exploding Topics / LLM Gap Analyzer / Crazy Egg / Voice Assist show Free trial + a price on both. So **the two nodes really are different accounts, and the difference is real - it just does not land on the Traffic & Market module**, where every apparent difference has so far turned out to be a collection-side defect. None of the 48 has been installed, trialled, or subscribed to from here.",
+          "relevantToThisProject": {
+            "backlinks": [
+              {
+                "name": "AI Backlink Builder",
+                "slug": "ai-backlink-builder",
+                "price": "Free trial $169/mo"
+              },
+              {
+                "name": "Brand Monitoring",
+                "slug": "brand-monitoring",
+                "price": "Free trial $79/mo"
+              },
+              {
+                "name": "Mentioned - Outreach Wizard",
+                "slug": "mentioned-outreach-wizard",
+                "price": "Free trial $49/mo"
+              },
+              {
+                "name": "Media Monitoring",
+                "slug": "media-monitoring",
+                "price": "Free trial $39/mo"
+              }
+            ],
+            "keywordsAndAiSearch": [
+              {
+                "name": "SERP Gap Analyzer",
+                "slug": "serp-gap-analyzer",
+                "price": "Active"
+              },
+              {
+                "name": "LLM Gap Analyzer",
+                "slug": "llm-gap-analyzer",
+                "price": "Free trial $49/mo"
+              },
+              {
+                "name": "Otterly - AI Search Monitoring",
+                "slug": "otterly-ai-search-monitoring",
+                "price": "Free trial $27/mo"
+              },
+              {
+                "name": "Ecommerce Keyword Analytics",
+                "slug": "ecommerce-keywords-analytics",
+                "price": "Free trial $19.99/mo"
+              },
+              {
+                "name": "AI Keyword Inspector for ASO",
+                "slug": "ai-keyword-inspector-for-aso",
+                "price": "Free trial $19/mo"
+              },
+              {
+                "name": "Keyword Analytics for YouTube",
+                "slug": "keyword-analytics-for-youtube",
+                "price": "Free trial $10/mo"
+              }
+            ],
+            "trafficAndCompetitorMonitoring": [
+              {
+                "name": "Semrush Traffic & Market",
+                "slug": "semrush-traffic-and-market",
+                "price": "$289/mo"
+              },
+              {
+                "name": "AdClarity - Advertising Intelligence",
+                "slug": "adclarity-advertising-intelligence",
+                "price": "Active"
+              },
+              {
+                "name": "AI Strategic Market Insights",
+                "slug": "ai-strategic-market-insights",
+                "price": "Free trial $99/mo"
+              },
+              {
+                "name": "Exploding Topics",
+                "slug": "exploding-topics",
+                "price": "Free trial $99/mo"
+              },
+              {
+                "name": "PPC Lead Intelligence",
+                "slug": "ppc-lead-intelligence",
+                "price": "Free trial $97/mo"
+              }
+            ]
+          },
+          "openQuestion": "The App Center sells `semrush-traffic-and-market` (Semrush Traffic & Market, $289/mo) - the same 流量与市场 (.Trends) module this account already reaches directly from the panel sidebar. That observation still stands on its own. WITHDRAWN 2026-08-28: this entry used to offer that App as a candidate explanation for a node split (same canva.com, same /analytics/traffic/top-pages/, same 2026-07: node 5 returning 0 rows while node 8 returned 850 non-empty cells). It was not disproved as a hypothesis - **the phenomenon it was invented to explain does not exist**. A later run read the same 850 non-empty cells on node 5 itself, so there is no node split left to explain, and per-node subscription state is no longer the question. Keep the distinction: nothing here says the App is or is not per-node; the split simply was not real. See perRouteFindings.top-pages for the observation that was corrected and why it was probably seen. 2026-08-28 update: an attempt to UPGRADE this from \"withdrawn\" to \"positively counter-evidenced\" was itself withdrawn. The proposed counter-evidence was that two different shared accounts (page-header initials H on node 5, B on node 8) returned cell-identical results across a batch of routes, mixing populated and empty ones - which two different subscription tiers could not do. But the EMPTY verdicts in that batch are no longer trustworthy: they came from a v4 readiness criterion with an early-stop bug (three visible reads, 6s apart, so a verdict at 18s, on pages that render summary -> charts -> table last). Those 8 routes are voided and being re-measured under v5-visible-gated-min100s. That leaves exactly one load-bearing observation - top-pages, 850 cells on both nodes - and one data point does not carry \"same tier\". Still no claim either way about whether the App is sold per node. 2026-08-28, later the same day: the situation got weaker still, not stronger. Five of those 8 routes came back as DATA under a patient re-measure (page-groups 20 cells, geographical-regions 198, business-regions 36, sources-destinations 272, subfolders-subdomains 900) - two of them only on a SECOND re-measure, which also retired the 100-second floor that had been introduced to fix the early stop. So the indirect support this hypothesis once had is gone too: **every observation that ever looked like a tier difference has ended up attributed to a collection-side defect - visibility, a target that never took effect, or an early stop.** State it precisely: this remains an UNSUPPORTED HYPOTHESIS, not a refuted one. What has been shown is that no evidence supports it; it has NOT been shown that the two accounts are on the same tier. Keep that difference. What can be said: **so far, not one route has shown a real difference between the two accounts (page-header initials H and B)** - page-groups is now the second route, after top-pages, to read cell-identical on both nodes. Still no claim either way about whether the App is sold per node. 2026-08-28, App Center page read directly (read-only: nothing was installed, trialled, or subscribed). `/apps/semrush-traffic-and-market` renders **identically on node 5 and node 8 - 2517 characters of text on both, byte-for-byte identical**: CTA `Go to app` (not \"Free trial\", not \"Buy\"), `Pricing $289/mo`, `Unsubscribe anytime`. `Go to app` normally means already-subscribed / directly enterable, and **both nodes are in the same state**. So this App cannot explain a node difference in either direction - and there is no node difference left to explain anyway. The wording does NOT change: this stays an **unsupported hypothesis**, not a refuted one. Precisely: every observation that ever looked like a tier difference has ended up attributed to a collection-side defect (visibility, a target that never took effect, an early stop). Nothing here proves the two accounts are on the same tier.",
+          "appPageCrossNodeCheck": "node 5 vs node 8 on /apps/semrush-traffic-and-market: identical page, 2517 chars both, CTA \"Go to app\", \"Pricing $289/mo\", \"Unsubscribe anytime\". Read-only observation, 2026-08-28.",
+          "perNodeAppState": {
+            "measuredOn": "2026-08-28",
+            "method": "read-only listing comparison, nothing installed or trialled",
+            "node5 (account initial H)": {
+              "serp-gap-analyzer": "Active",
+              "adclarity-advertising-intelligence": "Active"
+            },
+            "node8 (account initial B)": {
+              "serp-gap-analyzer": "$99/mo, not subscribed",
+              "adclarity-advertising-intelligence": "Active"
+            },
+            "identicalOnBoth": [
+              "callrail",
+              "influencer-analytics",
+              "exploding-topics",
+              "llm-gap-analyzer",
+              "crazy-egg",
+              "voice-assist"
+            ],
+            "note": "The App-level difference is the first REAL difference measured between the two accounts. It does not touch the Traffic & Market routes."
+          }
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "analytics API v3/v4",
+          "access": "blocked-shared-account",
+          "mode": "read",
+          "checkedAt": "2026-08-27",
+          "reason": "requires SEO Business tier plus separately purchased API units; the api_key lives on the account Subscription Info page, which the Tools Share proxy does not expose",
+          "evidence": "developer.semrush.com/api/v4/get-started/api-access/"
+        },
+        {
+          "name": "projects API v3",
+          "access": "blocked-shared-account",
+          "mode": "mixed",
+          "checkedAt": "2026-08-27",
+          "reason": "same Business tier and API key requirement as the analytics API",
+          "evidence": "developer.semrush.com/api/v3/projects/basic-docs/"
+        },
+        {
+          "name": "MCP",
+          "access": "blocked-shared-account",
+          "mode": "read",
+          "checkedAt": "2026-08-27",
+          "reason": "shares the same API unit pool as HTTP, and this account has units=0; changing MCP client, transport, or OAuth flow cannot change that",
+          "evidence": "developer.semrush.com/api/v4/introduction/semrush-mcp/ + rankup/references/seo-growth.md"
+        },
+        {
+          "name": "trends API",
+          "access": "blocked-shared-account",
+          "mode": "read",
+          "checkedAt": "2026-08-27",
+          "reason": "requires a separate Trends subscription this account does not hold",
+          "evidence": "developer.semrush.com/api/v4/get-started/api-access/"
+        }
+      ]
+    },
+    "similarweb": {
+      "status": "public-catalog-bounded",
+      "liveAudit": {
+        "auditedAt": "2026-08-27",
+        "planTier": "PRO 全球版, node 1, multiplier X1, expires 2027-02-21",
+        "inAppQuotas": {
+          "rankTrackerCampaigns": "1/10",
+          "searchTracking": "1984/2000",
+          "monitorProtectCampaigns": "0/5",
+          "keywordCrawl": "0/310",
+          "projects": "1/1 (limit reached, upsell shown)"
+        },
+        "observedRoutes": 73,
+        "capturedPagesWithData": 30,
+        "boundaries": [
+          "Market Research needs an industry selected or created before it reports",
+          "interaction changes require separate before/after evidence",
+          "exports, PDF, and Excel were never clicked"
+        ],
+        "spaNavigation": "Launch through the panel with launchTool(), then navigate INSIDE the booted SPA by assigning location.href to the origin plus hash route, then wait 20-22s. Never run `opencli browser <session> open` against a hash deep link: that full-document-loads the route and yields the blank shell. This is exactly what gotoInTool() in backlink/scripts/lib-tools-share.mjs already does, so the working scripts were never blocked - only ad-hoc open calls were.",
+        "stuckPageGuidance": "Retry the CLICK, not the page. Reload storms transiently destroy the left navigation, which made 11 pages falsely report 'nav item not found'; a 6x click-retry with 6s waits recovered all 11. Also, short innerText is not a stuck signal on this SPA - several pages render complete correct data in under 600 characters because the charts are SVG.",
+        "probingHazard": {
+          "id": "silent-redirect-on-unknown-route",
+          "observedAt": "2026-08-28",
+          "behavior": "Similarweb 面板对未知路由不返回 404，而是静默重定向到 #/digitalsuite/ai-brand-visibility/home。",
+          "consequence": "看到内容 ≠ 功能存在。打开一个猜测的路由后读到了内容，读到的可能是 AI 品牌可见性页，不是你请求的那个功能。",
+          "requiredCheck": "每次探测后核对 location.hash 是否仍等于请求的那条路由。落地 hash 变了就判定该路由不存在，无论内容区多丰满。",
+          "evidence": [
+            "#/digitalsuite/agents/home 落到 #/digitalsuite/ai-brand-visibility/home",
+            "#/digitalsuite/ai-studio/home 落到 #/digitalsuite/ai-brand-visibility/home"
+          ],
+          "asymmetry": "这个陷阱只制造假阳性（功能看起来存在）。反方向的结论——路由打开后内容区是空的——不受影响，因为重定向的落点是有内容的。",
+          "affectsPriorEvidence": "2026-08-27 那一轮的 73 条路由 / 30 页取数没有记录落地 hash。逐条审计见 evidenceAudit。"
+        },
+        "entryFacts": [
+          "面板真实首页是 #/activation/home。",
+          "#/home/dashboard 与 #/digitalsuite/home 都渲染成空壳（body innerText 长度 0），刷新多轮也不出内容。"
+        ],
+        "sidebarRoutes": {
+          "recordedAt": "2026-08-28",
+          "method": "逐项点击侧栏，点击后读 location.hash",
+          "observed": "enumerated",
+          "note": "侧栏共 19 项功能，其中 18 项取到了路由；转化分析那次点击没生效，路由停在上一页，未取得。这 6 个目标功能名一个都没出现在侧栏。",
+          "routes": [
+            {
+              "label": "首页",
+              "route": "#/activation/home",
+              "observed": "enumerated"
+            },
+            {
+              "label": "网站分析",
+              "route": "#/digitalsuite/websiteanalysis/home",
+              "observed": "enumerated"
+            },
+            {
+              "label": "站点排名",
+              "route": "#/digitalsuite/markets/webmarketanalysis/home",
+              "observed": "enumerated"
+            },
+            {
+              "label": "网站区段",
+              "route": "#/digitalsuite/segments/home?tab=0",
+              "observed": "enumerated"
+            },
+            {
+              "label": "搜索跟踪",
+              "route": "#/digitalsuite/rank-tracker/home",
+              "observed": "enumerated"
+            },
+            {
+              "label": "关键词研究",
+              "route": "#/organicsearch/websiteanalysis/home",
+              "observed": "enumerated"
+            },
+            {
+              "label": "反向链接分析",
+              "route": "#/digitalsuite/acquisition/backlinks/overview/999/?duration=365d",
+              "observed": "enumerated"
+            },
+            {
+              "label": "网站审核",
+              "route": "#/digitalsuite/acquisition/site-audit",
+              "observed": "enumerated"
+            },
+            {
+              "label": "AI 品牌可见性",
+              "route": "#/digitalsuite/ai-brand-visibility/home",
+              "observed": "enumerated"
+            },
+            {
+              "label": "AI 研究 (BETA)",
+              "route": "#/digitalsuite/ai-research/home",
+              "observed": "enumerated"
+            },
+            {
+              "label": "AI 流量",
+              "route": "#/digitalsuite/ai-traffic/overview/*/999/6m?webSource=Total",
+              "observed": "enumerated"
+            },
+            {
+              "label": "推荐 (BETA)",
+              "route": "#/digitalsuite/recommendations/report/?campaignId=...&model=chatgpt",
+              "observed": "enumerated"
+            },
+            {
+              "label": "广告主活动",
+              "route": "#/advertiseractivity/home",
+              "observed": "enumerated"
+            },
+            {
+              "label": "发布方分析",
+              "route": "#/publisheranalysis/home",
+              "observed": "enumerated"
+            },
+            {
+              "label": "监测和保护",
+              "route": "#/monitorandprotect/home?duration=28d&device=All",
+              "observed": "enumerated"
+            },
+            {
+              "label": "市场分析",
+              "route": "#/digitalsuite/webmarketResearch/home",
+              "observed": "enumerated"
+            },
+            {
+              "label": "需求分析",
+              "route": "#/digitalsuite/marketresearch/keywordmarketresearch/home",
+              "observed": "enumerated"
+            },
+            {
+              "label": "高级版功能",
+              "route": "#/premium-features/home",
+              "observed": "route-exists-content-empty"
+            },
+            {
+              "label": "转化分析",
+              "route": null,
+              "observed": "route-not-recorded"
+            }
+          ]
+        },
+        "hiddenTabHydrationControl": {
+          "recordedAt": "2026-08-28",
+          "verdict": "Similarweb 面板不受「隐藏标签页不水合」影响 —— 正面对照实验，已确认。**2026-08-29 升格**：从「面板级」升格到「已实测的三种重表格页型也不受影响」，见 heavyTableUpgrade20260829。",
+          "control": "#/digitalsuite/websiteanalysis/home",
+          "measurement": "vis=hidden 下稳定读到完整内容：mainLen=445 / bodyLen=745，跨 4 次运行、900+ 次读全都如此，没有出现过降级形态。",
+          "conclusion": "这个 SPA 的隐藏标签页照常渲染。所以在 Similarweb 上，「读到空」不能用 hidden 解释掉——空读必须靠它自己的证据来判，而不是靠可见性来免责。",
+          "strength": "这是这条问题上的第一个正面对照实验，比之前那条负面证据（similarweb-query.mjs 长期后台使用能取到数）强：没出事比不上测过。",
+          "scopeOfTheLaw": "由此，backlink Skill 里 id 为 hidden-tabs-do-not-hydrate 的那条 law 的适用范围收窄为：已确认受影响 = Semrush 流量与市场（.Trends）的重表格页；已确认不受影响 = Similarweb 面板；其余仍未测量。范围表只写在那条 law 的 scope 里，这里只做指路和记录本次证据。",
+          "notYetExcluded": "**（2026-08-28 原文，保留不改；其中三种页型已于 2026-08-29 被 heavyTableUpgrade20260829 补测，剩下的 1 万行榜单仍未测。）** 本次对照用的是网站分析首页这类较轻的页面。Similarweb 侧的重表格页（站点排名 1 万行榜单、关键词研究大表、反向链接表）没有单独做过 hidden/visible 对照，所以「Similarweb 不受影响」目前是面板级结论、重表格页未单测。",
+          "heavyTableUpgrade20260829": {
+            "recordedAt": "2026-08-29",
+            "verdict": "升格：**已实测的三种重表格页型**在 hidden 下完整水合，与 visible 逐字节一致。",
+            "scopeWarning": "⚠️ **只覆盖实测过的这三种页型，不要写成「所有重表格页」。** 那个 1 万域名 / 14 列的榜单**始终没找到**（`ranking` / `websites` / `topsites` / `leaders` 全部静默重定向到 `#/digitalsuite/ai-brand-visibility/home`），**从未被测过**。",
+            "design": "3 种重表格页型 × 2 个域名（一大一小 canva.com / creem.io）= 5 组 hidden/visible 配对；约 160 次诚实 hidden 读、约 130 次 visible 读。",
+            "pairs": [
+              {
+                "page": "关键词研究 website-keyword-v2",
+                "domain": "canva.com",
+                "hidden": "12546 / 1 表 / 19 列 / 100 行",
+                "visible": "完全相同"
+              },
+              {
+                "page": "关键词研究 website-keyword-v2",
+                "domain": "creem.io",
+                "hidden": "13518 / 1 表 / 19 列 / 100 行",
+                "visible": "完全相同"
+              },
+              {
+                "page": "反向链接 backlinks/table/999",
+                "domain": "canva.com",
+                "hidden": "46993 / 2 表 / 8 列 / 100 行",
+                "visible": "47027，仅差一个「x 分钟前」式相对时间戳（34 字符）"
+              },
+              {
+                "page": "反向链接 backlinks/table/999",
+                "domain": "creem.io",
+                "hidden": "18144 / 2 表 / 8 列 / 100 行",
+                "visible": "18178，同上，仅时间戳差"
+              },
+              {
+                "page": "站点排名 mapping/...",
+                "domain": "canva.com",
+                "hidden": "7170 / 3 表 / 12 列 / 12 行",
+                "visible": "完全相同"
+              }
+            ],
+            "whyStronger": "**证据强在哪要写明**：原始对照组（mainLen=445）**根本没有配对的 visible 读**，所以那个 445 从没被证明是「完整页面」，只被证明是「稳定」——而稳定不等于完成。这 5 组配对补上的正是这个洞。",
+            "honestHiddenReadsCaveat": "「诚实 hidden 读」这个限定词是必须的：一次 foreground attach 会把该标签页的 visibilityState 永久锁死在 visible，所以 hidden 那一轮必须跑在**从未 foreground attach 过（即建时就是 background）**的会话上。**注意收窄（2026-08-29 Experiment F）**：被钉住的标签页并不是在谎报——rAF 帧数显示它**真的按 visible 调度**（181 帧 vs 建时 background 的 0 帧），所以它不能充当 hidden 样本，理由是「它确实是 visible」，而不是「它的读数被污染了」。判据是**建时的 window 模式**，不是当前前后台状态。**规则的权威版本只写在 backlink Skill 里 id 为 hidden-tabs-do-not-hydrate 的那条 law 里（协议 + Experiment E + Experiment F），本文件不复述。**",
+            "voidedObservations": "**保留记录**：发现者据此作废了自己的三次运行——150 次标着 hidden、实际读到 visible 的读数。它们被**重新归类为 visible 读，没有被删除**：带着原因的作废观测本身是关于仪器的证据。 ⚠️ **2026-08-29 收窄（Experiment F）：重新归类是对的，「作废」这个词下重了。** 行为判据推翻了「被钉住的标签页其实是 hidden」这个推论——1.5 秒内 rAF 帧数：建时 foreground、已停泊的标签页 **181 帧**（vis=visible、focus=false），建时 background 的 **0 帧**（vis=hidden），当前活动标签页 **181 帧**。**被钉住的标签页是真的按 visible 调度的**，所以那 150 次读**采到的数据有效**，错的只是它们头上「这是一次 hidden 读」的标签。**改标签、留数据，不要当成没测过重跑。** 区分条件是「这个标签页是在哪种 window 模式下**被创建**的」，不是「这个会话现在是不是前台」：建时 foreground → 终身钉死 visible 且真的 visible；建时 background → 终身诚实 hidden，事后补一次 foreground 导航也救不回来。⚠️ **这条收窄只适用于「假 visible 污染」这一类作废。** 同一周里因**早停判空**和**目标未生效**而作废的记录**不受影响，仍然成立**，不要一并撤销。权威版本见 backlink Skill 里 id 为 hidden-tabs-do-not-hydrate 的那条 law（Experiment F）。",
+            "transientEmptyTable": "顺带验证了结构判据的中间态：`kw-canva-hidden` 第 1 次读是 `tables=1, th=0, rows=0`，**下一轮就变成 `th=19, rows=100`**；`bl-canva-hidden4` 和 `bl-creem-hidden` 同样出现该瞬态。在旧的「等够久就判空」规则下这些都会被记成空表。作为正面例证已写进 backlink Skill 里 id 为 readiness-must-bind-to-this-query 的那条 law。"
+          },
+          "pending445Coincidence": {
+            "recordedAt": "2026-08-29",
+            "status": "**待复查的巧合，不是结论**",
+            "observation": "原始对照组记的是 `mainLen=445`；而未知路由的兜底页 `#/digitalsuite/ai-brand-visibility/home` 测出来是 `bodyLen=445`。",
+            "notEvidence": "**指标不同（mainLen vs bodyLen），不构成证据**——发现者也如实这么说了。",
+            "whyWorthChecking": "在把 445 当成「完整的 website-analysis 首页」信任之前值得查一眼：有可能当初测的根本就是重定向兜底页。",
+            "doesNotAffect": "**不因为它撤销 heavyTableUpgrade20260829**——那条有自己独立的 5 组配对证据，不依赖 445。"
+          },
+          "routesRecorded20260829": {
+            "recordedAt": "2026-08-29",
+            "note": "补录此前没有记下路由的三条。",
+            "backlinksTable": {
+              "route": "#/digitalsuite/acquisition/backlinks/table/999/?duration=…&key=<域名>",
+              "shape": "8 列、每页 100 行，可深链"
+            },
+            "siteRankingEntry": {
+              "route": "#/digitalsuite/markets/webmarketanalysis/mapping/<行业>/999/<窗口>",
+              "howToReach": "从 #/digitalsuite/markets/webmarketanalysis/home 选一个行业进入；**home 路由本身只渲染行业选择器，没有表**。"
+            },
+            "notFound": {
+              "what": "那个 1 万域名 / 14 列的榜单本身",
+              "tried": "`ranking` / `websites` / `topsites` / `leaders`，全部静默重定向到 #/digitalsuite/ai-brand-visibility/home",
+              "consequence": "它从未被 hidden/visible 对照测过，不在升格范围内。"
+            }
+          }
+        },
+        "segmentsObservation": {
+          "recordedAt": "2026-08-28",
+          "route": "#/digitalsuite/segments/home?tab=0",
+          "verdict": "维持，已达标（empty-confirmed-visible）",
+          "conclusion": "网站区段只渲染导航壳，是「还没建区段」的空态，不是坏页。",
+          "evidence": "在单个 visible 窗口内连续 3 次读到 mainLen=0 / bodyLen=209 / document.title=网站区段。这满足协议要求的「同一 visible 窗口内连续 3 次」，所以判定强度是达标，不是打折。",
+          "shellIdentity": "这 209 字符的外壳与 #/premium-features/home 逐字节相同（侧栏 19 项 + 用户指南浮层），这一点是 premiumFeaturesObservation.remeasure20260828.corroboration 的依据。",
+          "protocol": "v6-patient-signal-gated，轮询间隔 600–700ms（visible 是约 3 秒脉冲，6 秒轮询几乎必然错过）。"
+        },
+        "premiumFeaturesObservation": {
+          "route": "#/premium-features/home",
+          "observed": "route-exists-content-empty",
+          "notAConclusion": "不要记成「功能不存在」。路由存在、document.title 正确返回「高级版功能」，只是内容区读不到东西。",
+          "entriesTried": [
+            "点侧栏「高级版功能」→ 路由跳到 #/premium-features/home，内容区空",
+            "直接 gotoInTool 深链 + 20s settle → 空",
+            "关掉「用户指南」浮层（.Sidebar-close）再读 → 空",
+            "location.reload() 后重读 → 空"
+          ],
+          "attempts": "2 个独立会话、合计 10+ 次轮询，.sw-layout-section-content 的 innerText 长度 mainLen 全为 0（更早一轮记的是恒定 209 字符的导航壳）。",
+          "notAScriptFailure": "同一会话、同一读法，在另外 18 条路由上都读到了内容。",
+          "attemptsWordingCorrection": "**更正 2026-08-28（原文保留在上面的 attempts 里，不改）**：attempts 把那 209 个字符称为「导航壳」。更准确的说法是：那 209 字符**不是「内容」**，而是**侧栏 19 项 + 用户指南浮层**（「我们如何提供帮助？…前往知识中心」）；**主内容区确实是 0**。所以 mainLen=0 / bodyLen=209 这一对读数并不矛盾，它们描述的是同一件事的两层。",
+          "concurrencyHazard": "复测期间全程 1400+ 次读里只有 6 次 vis=visible——因为另一个 agent 的 semrush-nav 标签页一直是 Chrome 的活动标签；第一次运行还被别人直接把 similarweb-nav 会话关掉了（日志出现 No active session）。**任何按 6 秒轮询做的可见性复测在这台机器上都近乎必然采不到 visible。**visible 是约 3 秒的短脉冲，轮询间隔必须降到 600–700ms。",
+          "remeasure20260828": {
+            "verdict": "维持，但强度打折（not-fully-met）",
+            "protocol": "v6-patient-signal-gated，轮询间隔 600–700ms",
+            "evidence": "3 次独立的 visible 读，来自 3 个会话、跨度约 40 分钟，全部 mainLen=0 / bodyLen=209 / document.title=高级版功能 / location.hash 未漂移；合计 821 次读形态恒定。",
+            "whyNotFullyMet": "协议要求的是「单个 visible 窗口内连续 3 次」。premium-features 每次 visible 脉冲只采到 1 次读就翻回 hidden，所以那 3 次是跨会话的，不是同一窗口内的。复测方自己拒绝把它写成达标——这个分寸要保留，不要在下游把它读成 empty-confirmed-visible。",
+            "corroboration": "有一个合理的补强论证：premium-features 和网站区段（Segments）共用逐字节相同的 209 字符外壳，而网站区段已达标（同一个 visible 窗口内连续 3 次读到 mainLen=0 / bodyLen=209）。这说明同一个外壳在确认的 visible 状态下就是这个样子，因此 premium-features 那 3 次读是真实渲染结果，而不是隐藏态伪影。",
+            "visibilityExcuseUnavailable": "另外，Similarweb 面板的隐藏标签页照常水合（见 liveAudit.hiddenTabHydrationControl 的正面对照实验），所以这里的空本来就不能用 hidden 解释掉。",
+            "conclusionStands": "route-exists-content-empty 维持。仍然不能据此说这个功能不存在，也仍然不知道那里本该渲染什么（iframe？套餐挡掉的组件？）。"
+          }
+        },
+        "knownMissing": [],
+        "resolvedQuestions": [
+          "The six unclassified official labels (Strategy, Video, AI Leaderboard, AI Search Optimization, SEO Strategist Agent, Trend Analyzer Agent) are all similarweb.com marketing-site navigation entries, not panel features. Per-name verdicts and evidence URLs are in resolvedFeatureNames.",
+          "Audience Interests is the third tab on the Audience page, not a separate navigation item. Confirmed by clicking it. selectedTab= in the URL does not switch tabs on an already-mounted page, and switching to it forces the window to a 3-month range.",
+          "Conversion Analysis is NOT a navigation stub. It is a complete module in an empty state: it carries three report slots (highest conversion rate, most improved year over year, stickiness index) each with month, device, and country filters. They return no matches only because this account has no custom group defined, and creating one is a write action."
+        ],
+        "officialLabelCrosswalk": {
+          "source": ".rankup/provider-audit/live/manifests/similarweb-official36-crosswalk.json in the project directory, 36 rows of which 32 are bounded-unmapped. The names were always on disk; only the count had been carried into this skill.",
+          "belongToSeparateProducts": {
+            "App Intelligence": [
+              "App Competitors",
+              "App Keyword Ranking",
+              "App Web Insights",
+              "In-App Purchases",
+              "Ratings & Reviews",
+              "Usage"
+            ],
+            "Sales Intelligence": [
+              "App Leads",
+              "Company Research",
+              "Intent Signals",
+              "Lead Enrichment",
+              "Lead Scoring",
+              "CRM Integrations",
+              "Prospecting/Meeting Prep/Sales Outreach Agents"
+            ],
+            "Retail Intelligence": [
+              "Retail Price Intelligence",
+              "Category Management",
+              "Consumer Analytics",
+              "Brand Health Tracking",
+              "Digital Shelf Analytics"
+            ],
+            "Inventory Intelligence": [
+              "Company Performance",
+              "Forecasting",
+              "Sector Performance"
+            ]
+          },
+          "renamedOrNested": [
+            {
+              "official": "Demographics & Interests",
+              "actual": "the 受众人口特征 and 受众兴趣 tabs on the Audience page",
+              "confidence": "high"
+            },
+            {
+              "official": "Benchmarking",
+              "actual": "与类别对标 on the Traffic & Engagement page",
+              "confidence": "high"
+            },
+            {
+              "official": "Technographics",
+              "actual": "Website Technologies",
+              "confidence": "high"
+            },
+            {
+              "official": "Trend Analysis / Market Trends",
+              "actual": "Market Research → Demand Analysis, topic search volume and growth",
+              "confidence": "medium"
+            }
+          ],
+          "stillUnknown": [],
+          "stillUnknownNote": "2026-08-28 清零。原来的 6 条已逐条结案，见 liveAudit.resolvedFeatureNames。",
+          "lesson": "A cross-product feature list must not be treated as a gap list for one product. Two thirds of these labels describe products this subscription never included."
+        },
+        "resolvedFeatureNames": {
+          "resolvedAt": "2026-08-28",
+          "observed": "enumerated",
+          "rootCause": "这 6 个名字全部来自 similarweb.com 的营销站导航，不是面板功能表。证据：www.similarweb.com/corp/ai/agents/ 与 aisearch.similarweb.com/ai-leaderboard/ 两个页面的导航里同时列出全部 6 项（中文站文案）。",
+          "whyItTookSoLong": "面板的 ⌘K 只搜域名 / 关键词 / 报表，搜不了功能名，所以在面板内部怎么找都找不到这几个名字。",
+          "names": [
+            {
+              "name": "Strategy",
+              "verdict": "belongs-to-another-line",
+              "marketingLabel": "市场策略",
+              "evidence": [
+                "https://www.similarweb.com/corp/web/strategy/"
+              ],
+              "panelLanding": "面板里最接近的落点是「市场研究」组（市场分析 #/digitalsuite/webmarketResearch/home）。这是本轮的对应判断，不是官方映射。"
+            },
+            {
+              "name": "Video",
+              "verdict": "belongs-to-another-line",
+              "marketingLabel": "视频广告（Ad Intelligence 产品线下的视频广告情报）",
+              "evidence": [
+                "https://www.similarweb.com/corp/web/video/"
+              ],
+              "panelLanding": "本账号面板里没有：#/advertiseractivity/home 的渠道选择器只有 所有渠道 / 显示广告 / 社交 / 搜索，没有视频（实测 hasVideo=false）。知识库有 Using Video Ad Campaign Insights 一文，说明这是需要单独订阅的模块。",
+              "doNotConfuse": "知识库里还有一条同名但完全无关的 Video Box / Video Pack，那是 SERP 特性（视频缩略图组），归在 Product Support > Glossary 下。"
+            },
+            {
+              "name": "AI Leaderboard",
+              "verdict": "separate-free-public-product",
+              "marketingLabel": "AI 知名度排行榜",
+              "evidence": [
+                "https://aisearch.similarweb.com/ai-leaderboard/"
+              ],
+              "panelLanding": "免费公开站，不需要登录，不在 PRO 面板里。按行业分类排品牌在 AI 答案里的可见度（AI 声量份额、被引域名、被引页面、热门提示词）。知识库里搜 AI Leaderboard 零篇对应文章，进一步佐证它不是面板功能。"
+            },
+            {
+              "name": "AI Search Optimization",
+              "verdict": "umbrella-name-for-existing-panel-group",
+              "marketingLabel": "AI 搜索情报（AEO/GEO 套件）",
+              "evidence": [
+                "https://www.similarweb.com/corp/search/gen-ai-intelligence/",
+                "https://aisearch.similarweb.com"
+              ],
+              "panelLanding": "面板里的落点就是「AI 搜索情报」这一组：AI 品牌可见性 + AI 研究 + AI 流量，再加「推荐」。不是缺失的功能，是已有一组功能的伞名。页面标题即 \"AI Search Intelligence: Tools for AI Search Optimization\"。"
+            },
+            {
+              "name": "SEO Strategist Agent",
+              "verdict": "separate-product-not-in-this-account",
+              "marketingLabel": "AI SEO 策略助理（Similarweb AI Agents 套件，2025-05-28 发布）；知识库正式名 AI SEO Strategy Agent",
+              "evidence": [
+                "https://www.similarweb.com/corp/ai/agents/seo-strategist/",
+                "https://support.similarweb.com/.../27188343539741-Using-AI-SEO-Strategy-Agent"
+              ],
+              "panelLanding": "本账号面板里没有：试过 #/digitalsuite/agents/home、#/digitalsuite/ai-studio/home，两个都被静默重定向到 #/digitalsuite/ai-brand-visibility/home（按 probingHazard 的判据即路由不存在）；侧栏里也没有。"
+            },
+            {
+              "name": "Trend Analyzer Agent",
+              "verdict": "separate-product-not-in-this-account",
+              "marketingLabel": "AI 趋势分析工具（同一套 Similarweb AI Agents）；知识库正式名 AI Trend Analyzer",
+              "evidence": [
+                "https://www.similarweb.com/corp/ai/agents/trend-analyzer/",
+                "https://support.similarweb.com/.../27158140965021-AI-Trend-Analyzer"
+              ],
+              "panelLanding": "面板里同样没有落点。侧栏的「需求分析」(#/digitalsuite/marketresearch/keywordmarketresearch/home) 是它的数据底座（Demand Analysis / Demand Trends），但不是这个 Agent 本身。"
+            }
+          ]
+        },
+        "evidenceAudit": {
+          "auditedAt": "2026-08-28",
+          "trigger": "probingHazard.silent-redirect-on-unknown-route",
+          "question": "既有的 Similarweb 结论里，有哪些是靠「打开某个路由、看到了内容」推出来的？那类结论可能被静默重定向污染。",
+          "criterion": "只有「路由打开后有内容 ⇒ 该功能存在」这一种形状会被污染。反方向（打开后是空的 / 空态 / 只有导航壳）不受影响，因为重定向的落点本身是有内容的页面。",
+          "reviewedCount": 60,
+          "reviewedScope": "JSON 侧 40 条（23 个 module、2 条 resolvedQuestions、2 条 openQuestions、3 条 boundaries、spaNavigation、stuckPageGuidance、observedRoutes/capturedPagesWithData/verificationStrength、officialLabelCrosswalk 的 4 条 renamedOrNested + 21 条归属判定按 1 条计、separateProducts 5 条、separateProductsLocation、discontinuation）与 MD 侧 20 条（第三节模块表 14 行、转化分析更正、独立产品段、到期公告、SPA 空白页段、三条判据坑、第四节已结掉 9 行与还没摸到 6 行按段计）。",
+          "affected": [
+            {
+              "where": "liveAudit.spaNavigation / observedRoutes:73 / capturedPagesWithData:30 / verificationStrength",
+              "why": "该轮的导航方式是把 location.href 赋成 origin + hash 路由，而当时没有记录落地 hash。凡是靠深链到达、又只用「读到了内容」来确认的页面，都无法区分「路由存在」与「被静默重定向到 AI 品牌可见性」。",
+              "status": "此结论的证据方式受静默重定向影响，需重新核对落地 hash",
+              "doNotDelete": "不要删这些数字。侧栏 19 项已由 2026-08-28 的点击 + 记 hash 独立确认；未确认的是各模块的深链内页。"
+            },
+            {
+              "where": "modules[] 中 observed=true 的 18 个模块的 examples 内页清单（网站分析 15、关键词研究 15、广告主活动 16、排名跟踪器 11 等）",
+              "why": "模块本身（侧栏那一层）已被 sidebarRoutes 独立确认；受影响的是内页——它们中有多少是点击到达、有多少是深链到达，档案里没有分开记。",
+              "status": "此结论的证据方式受静默重定向影响，需重新核对落地 hash",
+              "mitigating": "stuckPageGuidance 记载当轮大量页面是靠重试点击到达的（11 个页面靠 6 次点击重试恢复），点击到达不受本陷阱影响；且各内页记录的列名、筛选器、分页上限彼此不同，与 AI 品牌可见性页的内容不符，说明多数不是重定向产物。"
+            },
+            {
+              "where": "resolvedQuestions 的 Conversion Analysis 一条",
+              "why": "结论形状是「打开后看到了完整模块」。2026-08-28 这一轮点击「转化分析」没生效、路由停在上一页，说明这一项的到达方式本身就不稳。",
+              "status": "此结论的证据方式受静默重定向影响，需重新核对落地 hash",
+              "mitigating": "所记内容（自定义组、三张成品报表位、月份/设备/国家筛选器）与 AI 品牌可见性页完全不同，不像是重定向落点。"
+            }
+          ],
+          "unaffected": [
+            "Premium Features / Segments 一类「打开后是空的」的结论：重定向只会给出有内容的页面，所以空内容不可能是重定向造成的。",
+            "officialLabelCrosswalk 的全部归属判定：依据是功能名的语义与产品线，不涉及路由探测。",
+            "separateProducts 与 separateProductsLocation：依据是报表页页脚的「选择解决方案」区块，不涉及路由探测。",
+            "discontinuation：依据是页面顶部横幅。",
+            "Audience Interests 一条：明确记着 Confirmed by clicking it。",
+            "interfaces（data API / MCP）与 ifSelfSubscribed：依据是官方文档与套餐门槛，不涉及面板路由。"
+          ],
+          "verdict": "共审 60 条，找到 3 处证据方式受影响（全部已就地标注，未删除），其余为主动确认过的不受影响。"
+        },
+        "openQuestions": [
+          "#/premium-features/home is route-exists-content-empty, not a missing feature: the route resolves and the title is correct, but the content area read 0 characters across 2 sessions and 10+ polls through four different entries. What renders there (iframe? plan-gated component?) is still unknown. RE-MEASURED 2026-08-28 under v6-patient-signal-gated with a 600-700ms poll: the verdict STANDS but at reduced strength (not-fully-met) — 3 visible reads across 3 sessions / ~40 minutes, 821 reads of constant shape, but never 3 consecutive reads inside ONE visible window. Full record, plus the Segments shared-shell corroboration and the 209-character wording correction, in liveAudit.premiumFeaturesObservation.remeasure20260828. The hidden-tab excuse is not available here: see liveAudit.hiddenTabHydrationControl.",
+          "The 2026-08-27 route evidence never recorded the landing hash, so any inner page reached by hash deep link needs one re-check against location.hash before it can be called confirmed. See evidenceAudit."
+        ],
+        "separateProducts": [
+          "Data Studio (NEW) - listed under 选择解决方案 alongside 网络情报, the tier this subscription sits in",
+          "应用 情报 (App Intelligence)",
+          "零售 情报 (Retail Intelligence)",
+          "销售人员 情报 (Sales Intelligence)",
+          "库存 情报 (Inventory Intelligence)"
+        ],
+        "separateProductsLocation": "CORRECTION: these are in the 选择解决方案 / 浏览其他解决方案 block in the FOOTER of every report page, not in a top-of-page product switcher. Clicking the logo and the top-bar icons opens no switcher menu. Whether the entries are clickable was not tested, because opening one means entering an unsubscribed product and may start an upgrade or purchase flow.",
+        "discontinuation": "The Monetization pages (Advertisers, Ad Networks) carry a banner saying monetization features stop on 2025-12-01, directing users to the consolidated Publisher Overview under Display.",
+        "verificationStrength": {
+          "enumeratedRoutes": 73,
+          "pagesWithCapturedData": 30,
+          "note": "同上。"
+        }
+      },
+      "scriptCoverage": {
+        "status": "script-verified",
+        "reports": [
+          "performance",
+          "channels",
+          "similar-sites"
+        ],
+        "partial": [
+          "referrals via payment-referrers.mjs, welded to the payment-gateway scenario and unable to pair share percentages"
+        ],
+        "gapsRanked": [
+          "Keyword Generator seed expansion, the entry point of the whole keyword pipeline",
+          "Audience country distribution, needed before any cross-panel comparison",
+          "Website Search keyword table with top-5 share",
+          "Search Competitors keyword-level market share",
+          "generalise the referrals scraper out of payment-referrers.mjs"
+        ],
+        "notWorthScripting": [
+          "Advertiser Activity (16 pages, we do not buy ads)",
+          "Rank Tracker (11 pages, needs a project and GSC already tracks rankings)",
+          "the five separate products, which are outside this subscription"
+        ],
+        "gapNote": "similar-sites returns body text only; performance is the sole report with structured metrics."
+      },
+      "modules": [
+        {
+          "name": "Website Analysis",
+          "pages": 15,
+          "observed": true,
+          "examples": [
+            "Website Performance",
+            "Traffic & Engagement",
+            "Traffic Source Channels",
+            "Audience (tabs: Geography, Demographics, Interests, Overlap)",
+            "Search Overview",
+            "Referrals (incoming and outgoing)",
+            "Website Content",
+            "Website Technologies",
+            "Display / Advertiser Overview",
+            "Publisher Overview",
+            "Social",
+            "Monetization: Advertisers",
+            "Monetization: Ad Networks",
+            "Similar Sites"
+          ],
+          "note": "the two Monetization pages are being discontinued on 2025-12-01 in favour of Publisher Overview"
+        },
+        {
+          "name": "Keyword Research",
+          "pages": 15,
+          "observed": true,
+          "examples": [
+            "Keyword Lists",
+            "Keyword Generator",
+            "Keyword Overview",
+            "SERP",
+            "Market Players",
+            "Pages",
+            "Search Ads",
+            "SERP Snapshot",
+            "SEO Overview",
+            "Keyword Clusters",
+            "Website Keywords",
+            "Landing Pages",
+            "Search Competitors",
+            "Ranking Distribution"
+          ]
+        },
+        {
+          "name": "Advertiser Activity",
+          "pages": 16,
+          "observed": true,
+          "examples": [
+            "Display: Overview, Campaigns, Ads, Publishers",
+            "Social: Ads, AI Ads (NEW)",
+            "Search: Keyword Lists, Keyword Landing Pages, SERP, Market Players, Keyword Ads, Website Keyword Clusters, Website Keywords, Website Landing Pages, Website Ads"
+          ],
+          "note": "Social AI Ads carries an unlock badge and is outside this plan"
+        },
+        {
+          "name": "Rank Tracker",
+          "pages": 11,
+          "observed": true,
+          "examples": [
+            "Home",
+            "Overview",
+            "Keywords",
+            "Keyword Trends",
+            "Tags",
+            "Pages",
+            "Competitors",
+            "SERP Features",
+            "Ad Tracker: Home, Advertisers, Search Ads"
+          ],
+          "note": "inner pages need a campaign selected; creating one is a write action"
+        },
+        {
+          "name": "Backlinks",
+          "pages": 3,
+          "observed": true,
+          "examples": [
+            "Overview",
+            "Referring Sites",
+            "Backlinks"
+          ]
+        },
+        {
+          "name": "AI Research",
+          "pages": 3,
+          "observed": true,
+          "examples": [
+            "Search by Brand",
+            "Explore Industry"
+          ],
+          "note": "BETA landing page, needs a brand or industry entered"
+        },
+        {
+          "name": "AI Brand Visibility",
+          "pages": 1,
+          "observed": true,
+          "examples": [
+            "Brand Overview",
+            "Prompt Tracking",
+            "Citation Analysis",
+            "Sentiment Analysis"
+          ]
+        },
+        {
+          "name": "AI Traffic",
+          "pages": 1,
+          "observed": true,
+          "note": "breaks traffic down across 21 named AI platforms; URL table caps at 999 rows, 20 per page"
+        },
+        {
+          "name": "Publisher Analysis",
+          "pages": 3,
+          "observed": true,
+          "note": "NEW; landing page needs a publisher domain"
+        },
+        {
+          "name": "Conversion Analysis",
+          "pages": 1,
+          "observed": true,
+          "note": "CORRECTION: not a navigation stub. A complete module in an empty state - three report slots with month, device, and country filters, returning no matches only because this account has no custom group. Creating one is a write action."
+        },
+        {
+          "name": "Market Research",
+          "pages": 3,
+          "observed": true,
+          "examples": [
+            "Market Analysis",
+            "Demand Analysis",
+            "Conversion Analysis"
+          ],
+          "note": "Demand Analysis reads without setup and shows topic search volume plus growth"
+        },
+        {
+          "name": "Website Ranking",
+          "pages": 1,
+          "observed": true,
+          "note": "cross-site league table, 14 columns, capped at 10,000 domains, 100 rows per page, with per-channel tabs"
+        },
+        {
+          "name": "Monitor & Protect",
+          "pages": 1,
+          "observed": true,
+          "examples": [
+            "Keyword Monitoring: Overview, Competitors, Keywords, Ads",
+            "Trademark Protection: Trademarks, Infringement Detail"
+          ],
+          "note": "needs a campaign; a read-only demo entry exists"
+        },
+        {
+          "name": "Dashboards",
+          "pages": 1,
+          "observed": true,
+          "note": "10 templates; picking one creates a dashboard, which is a write action"
+        },
+        {
+          "name": "Segments",
+          "pages": 1,
+          "observed": true,
+          "note": "renders only the navigation shell across 3 reloads; judged an empty state awaiting a created segment, not a broken page"
+        },
+        {
+          "name": "Recommendations",
+          "pages": 1,
+          "observed": true,
+          "note": "BETA; requires picking a topic and running a 3-5 minute generation job, which is a write action"
+        },
+        {
+          "name": "Site Audit",
+          "pages": 1,
+          "observed": true,
+          "note": "feature description page; starting the crawler is a write action"
+        },
+        {
+          "name": "Premium Features",
+          "pages": 1,
+          "observed": false,
+          "observedDetail": "route-exists-content-empty",
+          "note": "route-exists-content-empty, NOT a missing feature: #/premium-features/home resolves and document.title returns 高级版功能, but the content area read 0 characters across 2 independent sessions and 10+ polls through four entries (sidebar click, deep link + 20s settle, closing the user-guide overlay, reload). The same read returned content on the other 18 routes, so this is an observation, not a script failure. observed stays false only in the sense of 'no data captured'. Full record in liveAudit.premiumFeaturesObservation."
+        },
+        {
+          "name": "App Intelligence",
+          "pages": 0,
+          "observed": false,
+          "note": "confirmed as separate Similarweb product via product switcher; not part of Web Intelligence subscription"
+        },
+        {
+          "name": "Sales Intelligence",
+          "pages": 0,
+          "observed": false,
+          "note": "confirmed as separate Similarweb product via product switcher"
+        },
+        {
+          "name": "Retail Intelligence",
+          "pages": 0,
+          "observed": false,
+          "note": "confirmed as separate Similarweb product via product switcher"
+        },
+        {
+          "name": "Inventory Intelligence",
+          "pages": 0,
+          "observed": false,
+          "note": "newly discovered separate Similarweb product via product switcher"
+        },
+        {
+          "name": "Data Studio",
+          "pages": 0,
+          "observed": false,
+          "note": "newly discovered separate product marked NEW in product switcher"
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "data API (REST and batch v4)",
+          "access": "blocked-shared-account",
+          "mode": "read",
+          "checkedAt": "2026-08-27",
+          "reason": "requires a Business, Enterprise, or API-only plan; the API key is taken from the account dashboard, which the shared proxy does not expose",
+          "evidence": "developers.similarweb.com/docs/report-endpoints"
+        },
+        {
+          "name": "MCP",
+          "access": "blocked-shared-account",
+          "mode": "read",
+          "checkedAt": "2026-08-27",
+          "reason": "same plan gate as the data API, and it spends the same data credits",
+          "evidence": "developers.similarweb.com/docs/similarweb-mcp"
+        }
+      ],
+      "interfaceVerdict": "A shared-account proxy lends a session, not an account. Every interface that needs an account-level API key or OAuth consent is unreachable here, so browser capture is the correct method rather than a fallback.",
+      "ifSelfSubscribed": [
+        "Call the three free discovery endpoints first: /v3/batch/credits, /v3/batch/user-credits, /v3/batch/tables/describe. They consume no quota and tables/describe enumerates every virtual table, metric, and granularity.",
+        "Batch API exposes daily granularity, which the panel never shows."
+      ],
+      "legacyV5": {
+        "status": "bounded-unknown",
+        "note": "The former endpoint inventory is not currently verified; /v3/batch/tables/describe would settle it in one free call if an API key ever becomes available."
+      }
+    }
+  }
+}

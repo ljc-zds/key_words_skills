@@ -1,0 +1,4 @@
+interface:
+  display_name: "SEO IndexNow"
+  short_description: "Submit and automate IndexNow updates"
+  default_prompt: "Use $seo-indexnow to publish an IndexNow key file, set up post-deploy automation, verify the live sitemap, and submit updated URL notifications."

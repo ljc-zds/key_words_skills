@@ -1,0 +1,474 @@
+#!/usr/bin/env node
+// 项目记忆体检:把 `rankup review` 里可机械判定的部分压成脚本,人只处理需要判断的部分。
+//
+//   node scripts/review.mjs --project-root <项目目录> [--days 30] [--json]
+//
+// 只读,不修改任何文件。输出缺口清单交给 review 流程去补。
+// 报告分五块:缺失文件、陈旧记录、脚本体检、生命周期检查点、经验库信号。
+
+import { readdir, readFile, stat } from "node:fs/promises";
+import { execFile } from "node:child_process";
+import path from "node:path";
+import { promisify } from "node:util";
+
+const execFileAsync = promisify(execFile);
+
+const REQUIRED = ["INDEX.md", "PROJECT.md", "plan.md", "decisions.md"];
+const RECOMMENDED = ["roadmap.md", "iterations.md", "experience.md", "baseline.md", "rejected.md"];
+
+// 生命周期检查点：review 不仅看文件有没有，还看关键环节有没有走过。
+// 已上线的站缺这些 = 应该做但没做；新引入 Skill 的老站靠这张表查漏补缺。
+const LIFECYCLE_CHECKS = [
+  // -- 通用基础（任何阶段都适用）--
+  {
+    id: "keywords",
+    name: "关键词规划",
+    group: "基础",
+    evidence: "keywords.md",
+    minBytes: 50,
+    fix: "node <rankup>/scripts/seo-webcafe.mjs kd <keyword>",
+    tool: "seo-webcafe.mjs",
+    why: "SEO 的基底——目标词定了，密度/排名/进度才有锚点",
+  },
+  {
+    id: "roadmap",
+    name: "路线图",
+    group: "基础",
+    evidence: "roadmap.md",
+    minBytes: 50,
+    fix: "写 .rankup/roadmap.md：阶段目标与放弃条件",
+    tool: null,
+    why: "阶段目标不写下来就会漂移，放弃条件不写就永远不会放弃",
+  },
+  // -- 上线后（项目有部署/域名/扫描记录时才检查）--
+  {
+    id: "agentic",
+    name: "AI Agent 就绪度基线",
+    group: "上线后",
+    evidence: "agentic/",
+    checkDir: true,
+    fix: "node <rankup>/scripts/is-agentic.mjs scan <domain> --save",
+    tool: "is-agentic.mjs",
+    why: "AI 代理能否发现和使用站点——零配置可跑，有基线才能量化后续改进",
+  },
+  {
+    id: "audit",
+    name: "技术审计（段 4 上线前闸门 8 行：0–6 + 4b）",
+    group: "上线后",
+    evidence: "audit.md",
+    minBytes: 500,
+    fix: "执行 lifecycle.md 段 4 C 节「上线前闸门」0–6 + 4b 逐行留证据",
+    tool: "is-agentic.mjs + seo-webcafe.mjs audit/chat",
+    why: "站点身份/SEO/TDK/密度/GEO/哥飞审阅/性能——逐项要证据",
+  },
+  {
+    id: "baseline",
+    name: "性能与流量基线",
+    group: "上线后",
+    evidence: "baseline.md",
+    minBytes: 200,
+    // Lighthouse 只给实验室数据,闸门 6 要的是实验室+现场两套(seo-box.md 一)。
+    // 单跑 Lighthouse 会让这条闸门只过一半而表面是绿的。
+    fix: "node <rankup>/scripts/pagespeed.mjs plan <三类页面 URL> --strategy both 出链接，再读 pagespeed.web.dev 记进 baseline.md",
+    tool: "pagespeed.mjs",
+    why: "没有基线的「优化」只是猜测——改了不知道改了多少",
+  },
+  {
+    id: "integrations",
+    name: "平台接入记录",
+    group: "上线后",
+    evidence: "integrations.md",
+    minBytes: 100,
+    fix: "node <rankup>/scripts/cf-analytics-setup.mjs status <domain>",
+    tool: "cf-analytics-setup.mjs",
+    why: "数据越早接越值钱——历史数据晚接一天永久少一天",
+  },
+  {
+    id: "indexnow",
+    name: "索引推送（IndexNow）",
+    group: "上线后",
+    evidence: "integrations.md",
+    // 按内容判定而不是按体积:integrations.md 记着一堆别的平台时体积早就够了,
+    // 而"IndexNow 到底接没接"仍然是未知。体积检查在这里会给出一个假的绿灯。
+    mustContain: ["IndexNow", "indexnow"],
+    fix: "node <rankup>/scripts/indexnow-submit.mjs --generate-key，然后按 search-platforms.md 接",
+    tool: "indexnow-submit.mjs",
+    why: "唯一一个零账号的索引通道——一个密钥文件就是全部凭据，没有理由不接",
+  },
+  {
+    id: "sitemap-submitted",
+    name: "两边站长工具的 sitemap 已提交",
+    group: "上线后",
+    evidence: "integrations.md",
+    mustContain: ["sitemap"],
+    fix: "node <rankup>/scripts/webmaster-sitemap.mjs <gsc|bing> submit …，结果记进 integrations.md",
+    tool: "webmaster-sitemap.mjs",
+    why: "资源验证通过 ≠ sitemap 已提交，这两件事经常只做了前一件",
+  },
+  {
+    id: "infrastructure",
+    name: "基础设施记录",
+    group: "上线后",
+    evidence: "infrastructure.md",
+    minBytes: 50,
+    fix: "记录域名/zone/NS/部署配置到 infrastructure.md",
+    tool: null,
+    why: "部署验证的事实源——缺了就不知道该在哪个环境核对",
+  },
+  {
+    id: "iterations",
+    name: "迭代记录",
+    group: "上线后",
+    evidence: "iterations.md",
+    minBytes: 1,
+    fix: "每轮优化后记录假设、改动、结果到 iterations.md",
+    tool: null,
+    why: "失败轮次不写清被证伪的假设，下次会重走弯路",
+  },
+  {
+    id: "experiments",
+    name: "优化实验记录",
+    group: "上线后",
+    evidence: "experiments.md",
+    minBytes: 1,
+    fix: "node <rankup>/scripts/is-agentic.mjs diff <domain> + pagespeed.mjs plan --strategy both 后重读网页版",
+    tool: "is-agentic.mjs diff",
+    why: "进步或倒退要用对比数字说话，不能只断言「应该更好了」",
+  },
+];
+
+function parseArgs(argv) {
+  const options = { projectRoot: process.cwd(), days: 30, json: false };
+  for (let index = 0; index < argv.length; index += 1) {
+    const arg = argv[index];
+    if (arg === "--project-root") options.projectRoot = argv[++index] ?? options.projectRoot;
+    else if (arg === "--days") options.days = Number(argv[++index]);
+    else if (arg === "--json") options.json = true;
+    else if (arg === "-h" || arg === "--help") {
+      // 显式 `--help` 是成功，不是用法错误——批处理里 set -e 会把非零码当脚本坏了。
+      console.log("用法: review.mjs [--project-root <路径>] [--days <n>] [--json]");
+      process.exit(0);
+    }
+    else throw new TypeError(`未知参数: ${arg}`);
+  }
+  if (!Number.isFinite(options.days) || options.days <= 0) {
+    throw new TypeError("--days 必须是正数");
+  }
+  return options;
+}
+
+async function exists(target) {
+  try {
+    await stat(target);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function ageInDays(file, now) {
+  try {
+    return Math.floor((now - (await stat(file)).mtimeMs) / 86_400_000);
+  } catch {
+    return null;
+  }
+}
+
+async function fileBytes(filepath) {
+  try {
+    return (await stat(filepath)).size;
+  } catch {
+    return 0;
+  }
+}
+
+async function checkLifecycle(rankupDir) {
+  // 上线与否这里**猜不准，也不假装准**：只看有没有 infrastructure/integrations/agentic
+  // 三个证据之一，据此决定要不要把「上线后」那组检查点纳进来。报告里会写明这是推断。
+  const looksLive =
+    (await fileBytes(path.join(rankupDir, "infrastructure.md"))) > 0 ||
+    (await fileBytes(path.join(rankupDir, "integrations.md"))) > 0 ||
+    (await exists(path.join(rankupDir, "agentic")));
+
+  const results = [];
+  for (const check of LIFECYCLE_CHECKS) {
+    if (check.group === "上线后" && !looksLive) continue;
+
+    let done = false;
+    if (check.checkDir) {
+      // 检查目录下是否有域名子目录且含 JSON 快照
+      const dir = path.join(rankupDir, check.evidence);
+      if (await exists(dir)) {
+        try {
+          const entries = await readdir(dir, { withFileTypes: true });
+          for (const entry of entries) {
+            if (!entry.isDirectory()) continue;
+            const files = await readdir(path.join(dir, entry.name));
+            if (files.some((f) => f.endsWith(".json"))) {
+              done = true;
+              break;
+            }
+          }
+        } catch {
+          /* ignore */
+        }
+      }
+    } else if (check.mustContain) {
+      // 内容检查:文件在、体积够,不代表这一项真的做了。
+      try {
+        const text = await readFile(path.join(rankupDir, check.evidence), "utf8");
+        done = check.mustContain.some((needle) => text.includes(needle));
+      } catch {
+        done = false;
+      }
+    } else {
+      const size = await fileBytes(path.join(rankupDir, check.evidence));
+      done = size >= (check.minBytes ?? 1);
+    }
+    results.push({ ...check, done });
+  }
+  return { checks: results, looksLive };
+}
+
+// 记录是否落后于代码:有提交而记忆没动,就是漂移信号。滞后指标不能当进度依据。
+async function commitsSince(projectRoot, since) {
+  try {
+    const { stdout } = await execFileAsync(
+      "git",
+      ["-C", projectRoot, "log", "--oneline", `--since=${since}`],
+      { maxBuffer: 4 * 1024 * 1024 },
+    );
+    return stdout.trim() ? stdout.trim().split("\n").length : 0;
+  } catch {
+    return null;
+  }
+}
+
+function splitEntries(text) {
+  return text
+    .split(/(?=^- \*\*\[20)/m)
+    .filter((block) => block.startsWith("- **["))
+    .map((block) => block.trim());
+}
+
+function headline(entry) {
+  return (entry.match(/^- \*\*\[[^\]]+\]\s*([^*]+)/) ?? [, ""])[1].trim();
+}
+
+async function reviewProject(projectRoot, days) {
+  const now = Date.now();
+  const rankupDir = path.join(projectRoot, ".rankup");
+  const report = {
+    projectRoot,
+    hasRankup: await exists(rankupDir),
+    missingRequired: [],
+    missingRecommended: [],
+    stale: [],
+    scripts: [],
+    experience: { total: 0, malformed: false, duplicates: [], promotionCandidates: [] },
+    lifecycle: { checks: [], looksLive: false },
+    commitsSince: null,
+  };
+  if (!report.hasRankup) return report;
+
+  for (const file of REQUIRED) {
+    if (!(await exists(path.join(rankupDir, file)))) report.missingRequired.push(file);
+  }
+  for (const file of RECOMMENDED) {
+    if (!(await exists(path.join(rankupDir, file)))) report.missingRecommended.push(file);
+  }
+
+  for (const file of [...REQUIRED, ...RECOMMENDED]) {
+    const age = await ageInDays(path.join(rankupDir, file), now);
+    if (age !== null && age > days) report.stale.push({ file, days: age });
+  }
+  report.stale.sort((a, b) => b.days - a.days);
+
+  const scriptsDir = path.join(rankupDir, "scripts");
+  if (await exists(scriptsDir)) {
+    for (const entry of await readdir(scriptsDir, { withFileTypes: true })) {
+      if (!entry.isFile() || entry.name.startsWith(".")) continue;
+      const file = path.join(scriptsDir, entry.name);
+      const text = await readFile(file, "utf8");
+      const head = text.split("\n").slice(0, 20).join("\n");
+      report.scripts.push({
+        name: entry.name,
+        // 脚本会因页面改版而腐坏,所以头部必须留"已验证"日期;没有就无从判断新鲜度。
+        hasVerifiedDate: /已验证|verified/i.test(head),
+        // 写死具体值的脚本换个站/换个词就得改,等于没有复用价值。
+        parameterized: /process\.argv|argparse|sys\.argv|getopts/.test(text),
+        days: await ageInDays(file, now),
+      });
+    }
+    report.scripts.sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  const experiencePath = path.join(rankupDir, "experience.md");
+  if (await exists(experiencePath)) {
+    const raw = await readFile(experiencePath, "utf8");
+    const entries = splitEntries(raw);
+    report.experience.total = entries.length;
+
+    // 文件里明明有内容却一条都切不出来 = 格式不对(多半是用 `## 标题` 分的条),
+    // 而不是「还没积累经验」。不报出来的话重复检测与回流候选会长期空转,
+    // 报告却完全正常——实测有过一个 12 条的库被静默报成 0 条。
+    // 判据取「有 `##` 分条却切不出条目」为主,纯长度阈值为辅——
+    // 只用长度会漏掉短条目的库(标题行被剔掉后正文可能不足两百字)。
+    const hasHeadingSections = /^##\s+\S/m.test(raw);
+    const bodyLength = raw.replace(/^#.*$/gm, "").trim().length;
+    if (entries.length === 0 && (hasHeadingSections || bodyLength > 200)) {
+      report.experience.malformed = true;
+    }
+
+    const seen = new Map();
+    for (const entry of entries) {
+      const key = headline(entry).slice(0, 24);
+      if (!key) continue;
+      if (seen.has(key)) report.experience.duplicates.push(key);
+      else seen.set(key, true);
+    }
+
+    // 既不提本站域名、也不含本站专属数字的条目,很可能是通用规则,值得考虑回流 Skill。
+    const projectName = path.basename(projectRoot).toLowerCase();
+    for (const entry of entries) {
+      const lower = entry.toLowerCase();
+      const mentionsSite =
+        lower.includes(projectName) || /https?:\/\/|\b[a-z0-9-]+\.(com|store|guide|support|io|dev)\b/.test(lower);
+      if (!mentionsSite) report.experience.promotionCandidates.push(headline(entry).slice(0, 60));
+    }
+  }
+
+  report.lifecycle = await checkLifecycle(rankupDir);
+  report.commitsSince = await commitsSince(projectRoot, `${days} days ago`);
+  return report;
+}
+
+function renderText(report, days) {
+  const lines = [`# .rankup 体检 — ${report.projectRoot}`, ""];
+  if (!report.hasRankup) {
+    lines.push("未找到 `.rankup/`。先运行 `rankup init` 初始化项目记忆。", "");
+    return lines.join("\n");
+  }
+
+  lines.push("## 缺失文件", "");
+  if (report.missingRequired.length === 0 && report.missingRecommended.length === 0) {
+    lines.push("无。", "");
+  } else {
+    for (const file of report.missingRequired) lines.push(`- 必需：\`${file}\``);
+    for (const file of report.missingRecommended) lines.push(`- 建议：\`${file}\``);
+    lines.push("");
+  }
+
+  lines.push(`## 超过 ${days} 天未更新`, "");
+  if (report.stale.length === 0) {
+    lines.push("无。", "");
+  } else {
+    for (const item of report.stale) lines.push(`- \`${item.file}\` — ${item.days} 天`);
+    if (report.commitsSince !== null && report.commitsSince > 0) {
+      lines.push(
+        "",
+        `同期仓库有 ${report.commitsSince} 个提交：记录已落后于代码，进度以 git、路由与 sitemap 为准。`,
+      );
+    }
+    lines.push("");
+  }
+
+  lines.push("## 脚本体检", "");
+  if (report.scripts.length === 0) {
+    lines.push("尚无可复用脚本。会做第二次的操作，第一次跑通就该固化到 `.rankup/scripts/`。", "");
+  } else {
+    lines.push("| 脚本 | 已验证日期 | 参数化 | 距上次改动 |", "|---|---|---|---|");
+    for (const script of report.scripts) {
+      lines.push(
+        `| \`${script.name}\` | ${script.hasVerifiedDate ? "有" : "**缺**"} | ${script.parameterized ? "是" : "**否**"} | ${script.days ?? "?"} 天 |`,
+      );
+    }
+    lines.push("");
+  }
+
+  // 生命周期检查点
+  const { checks: lcChecks, looksLive } = report.lifecycle;
+  if (lcChecks.length > 0) {
+    const missing = lcChecks.filter((c) => !c.done);
+    const passed = lcChecks.filter((c) => c.done);
+
+    lines.push(
+      // looksLive 是从「有没有 infrastructure/integrations/agentic 证据」推出来的**猜测**，
+      // 不是观测到的上线状态，所以标出它是怎么推的。
+      `## 生命周期检查点${looksLive ? "（按 infrastructure/integrations/agentic 的存在推断为已上线，上线后那组检查点因此纳入）" : ""}`,
+      "",
+    );
+
+    // 措辞刻意保守：`done` 测的是**证据文件在不在、够不够大、含不含指定字样**，
+    // 不是「这一项真的做了」。文件在而内容是占位符、或者做了但没记下来，
+    // 在这里长得一模一样——所以只说「有/没有证据文件」，做没做由读的人判。
+    if (missing.length === 0) {
+      lines.push("✓ 每个检查点都找到了对应的证据文件（文件在 ≠ 这一项真的做完了，还得打开看）。", "");
+    } else {
+      lines.push(
+        `${lcChecks.length} 个检查点里 ${passed.length} 个找到了证据文件，${missing.length} 个没找到：`,
+        "",
+      );
+
+      // 按 group 分组显示缺失项
+      const groups = new Map();
+      for (const check of missing) {
+        const g = groups.get(check.group) ?? [];
+        g.push(check);
+        groups.set(check.group, g);
+      }
+
+      for (const [group, items] of groups) {
+        lines.push(`### ${group}`, "");
+        lines.push(
+          "| 检查项 | 修复命令 | 为什么需要 |",
+          "|---|---|---|",
+        );
+        for (const item of items) {
+          const fixCmd = item.fix.replace(/</g, "\\<").replace(/>/g, "\\>");
+          lines.push(
+            `| ${item.name} | \`${fixCmd}\` | ${item.why} |`,
+          );
+        }
+        lines.push("");
+      }
+    }
+
+    if (passed.length > 0) {
+      lines.push("已完成：" + passed.map((c) => c.name).join("、"), "");
+    }
+  }
+
+  lines.push("## 经验库信号", "");
+  lines.push(`- 条目总数：${report.experience.total}`);
+  if (report.experience.malformed) {
+    lines.push(
+      "- **格式异常**：文件有内容但一条都切不出来。条目必须以 `- **[YYYY-MM-DD] 标题**` 起头,",
+      "  用 `## 标题` 分条会让本脚本读出 0 条,重复检测与回流候选因此全部空转。",
+    );
+  }
+  if (report.experience.duplicates.length > 0) {
+    lines.push(`- 疑似重复（应合并）：${report.experience.duplicates.join("、")}`);
+  }
+  if (report.experience.promotionCandidates.length > 0) {
+    lines.push(`- 候选回流 Skill（未提及本站，疑为通用规则）：${report.experience.promotionCandidates.length} 条`);
+    for (const candidate of report.experience.promotionCandidates.slice(0, 10)) {
+      lines.push(`  - ${candidate}`);
+    }
+  }
+  lines.push("");
+  return lines.join("\n");
+}
+
+let options;
+try {
+  options = parseArgs(process.argv.slice(2));
+} catch (error) {
+  console.error(error.message);
+  process.exit(1);
+}
+
+const report = await reviewProject(path.resolve(options.projectRoot), options.days);
+process.stdout.write(
+  options.json ? `${JSON.stringify(report, null, 2)}\n` : renderText(report, options.days),
+);

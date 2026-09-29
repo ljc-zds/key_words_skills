@@ -1,0 +1,791 @@
+{
+  "version": 1,
+  "updatedAt": "2026-09-06",
+  "channels": [
+    {
+      "id": "telegraph",
+      "name": "telegra.ph (graph.org mirror)",
+      "kind": "publish-platform",
+      "scope": "single-site",
+      "homepage": "https://telegra.ph",
+      "account": "none",
+      "captcha": "none",
+      "browserRequired": false,
+      "anchorRendered": true,
+      "relObserved": [
+        "nofollow"
+      ],
+      "robotsObserved": "index, follow",
+      "indexable": true,
+      "rateLimit": null,
+      "howToPublish": "Pure HTTP API, no browser at all: createAccount then createPage. Both must be POST — GET silently misbehaves.",
+      "traps": [
+        "Body anchors are nofollow; the ONE dofollow link per page is the byline, built from the author_url passed at publish time. Point author_url at the URL you actually want the dofollow to reach.",
+        "This record read 'dofollow' for a while because a check sampled a single anchor — the byline — and generalised. Read rel from EVERY anchor before recording it."
+      ],
+      "status": "live",
+      "lastVerifiedAt": "2026-08-17",
+      "evidence": {
+        "method": "anonymous-http",
+        "what": "Every anchor across six published pages on both hosts was read from raw HTML; body links carried rel=nofollow throughout while the byline did not.",
+        "publicUrl": null
+      },
+      "notes": "captcha=none confirmed by this record's own evidence (anonymous-http), not derived from submission-targets gates — 2026-09-07 audit"
+    },
+    {
+      "id": "write-as",
+      "name": "write.as",
+      "kind": "publish-platform",
+      "scope": "single-site",
+      "homepage": "https://write.as",
+      "account": "none",
+      "captcha": "none",
+      "browserRequired": true,
+      "anchorRendered": true,
+      "relObserved": [
+        "nofollow"
+      ],
+      "robotsObserved": null,
+      "indexable": true,
+      "howToPublish": "Browser, plain textarea. No editor API needed.",
+      "traps": [],
+      "status": "live",
+      "lastVerifiedAt": "2026-08-17",
+      "evidence": {
+        "method": "browser-dom",
+        "what": "Published page rendered a real anchor with rel=nofollow and carried no robots meta tag.",
+        "publicUrl": null
+      },
+      "notes": "captcha=none confirmed by this record's own evidence (browser-dom), not derived from submission-targets gates — 2026-09-07 audit"
+    },
+    {
+      "id": "rentry-co",
+      "name": "rentry.co",
+      "kind": "paste",
+      "scope": "single-site",
+      "homepage": "https://rentry.co",
+      "account": "none",
+      "captcha": "none",
+      "browserRequired": true,
+      "anchorRendered": true,
+      "relObserved": [],
+      "robotsObserved": "noindex",
+      "indexable": false,
+      "howToPublish": "Browser; the editor is CodeMirror, so set content with .setValue() rather than by assigning to a textarea value.",
+      "traps": [
+        "The dofollow link is real but the hosting page is noindex, which cancels most of the ranking value. Do not let 'dofollow' alone promote this record."
+      ],
+      "status": "rejected",
+      "rejectReason": "Page-level noindex",
+      "lastVerifiedAt": "2026-08-17",
+      "evidence": {
+        "method": "browser-dom",
+        "what": "Published page emitted an anchor with no rel attribute, and the document head carried a noindex robots meta.",
+        "publicUrl": null
+      },
+      "notes": "captcha=none confirmed by this record's own evidence (browser-dom), not derived from submission-targets gates — 2026-09-07 audit"
+    },
+    {
+      "id": "atabook-guestbooks",
+      "name": "Atabook-powered guestbooks",
+      "kind": "guestbook-engine",
+      "scope": "engine",
+      "homepage": "https://atabook.org",
+      "account": "none",
+      "captcha": "passive",
+      "browserRequired": true,
+      "anchorRendered": true,
+      "relObserved": [
+        "noopener noreferrer ugc"
+      ],
+      "robotsObserved": "varies",
+      "indexable": "per-host",
+      "rateLimit": "Per address across the WHOLE engine, not per board. Refusals begin around the eighth or ninth post in a sitting: 'Too many posts from your address. Try again in a few hours.'",
+      "howToPublish": "Browser. Write the link into the message body as BBCode [URL=…]text[/URL]; the server renders a real anchor, so there is no need to drive the rich-text editor.",
+      "traps": [
+        "The bot check is instantiated ON SUBMIT, not on load. Waiting for a token before clicking times out every time and misreports as 'blocked'. Click submit first, then observe.",
+        "A plain HTTP POST returns 200 and silently saves nothing. Only the verification step catches this, never the response code.",
+        "Board owners independently configure an anti-bot question (a question-<id> field) and the robots tag. On a 30-board sample, 14 had a question — the majority. Realistic postable rate after screening was about 45%.",
+        "Rate-limit failures are silent: no redirect, no HTTP error, only an inline ⚠ Error banner above the form. Read that banner after every submit or throttling is indistinguishable from rejection.",
+        "A hidden field named like a password with tabindex=-1 is a honeypot. Never fill it."
+      ],
+      "status": "live",
+      "lastVerifiedAt": "2026-08-18",
+      "evidence": {
+        "method": "both",
+        "what": "Eleven placements published and then re-read over anonymous cookie-less HTTP; each rendered rel=\"noopener noreferrer ugc\", and the hosting boards carried no robots meta.",
+        "publicUrl": null
+      },
+      "notes": "captcha=passive confirmed by this record's own evidence (both), not derived from submission-targets gates — 2026-09-07 audit"
+    },
+    {
+      "id": "statshow",
+      "name": "statshow.com",
+      "kind": "domain-report",
+      "scope": "single-site",
+      "urlPattern": "https://www.statshow.com/www/{domain}",
+      "account": "none",
+      "captcha": "none",
+      "browserRequired": true,
+      "anchorRendered": true,
+      "relObserved": [
+        "",
+        "nofollow"
+      ],
+      "robotsObserved": "index,follow",
+      "indexable": true,
+      "howToPublish": "Visiting the templated URL is the entire submission — the report page is generated on demand.",
+      "traps": [
+        "Raw HTML shows no anchor; the links only exist after client-side rendering. A plain fetch produces a false negative here."
+      ],
+      "status": "live",
+      "lastVerifiedAt": "2026-08-18",
+      "evidence": {
+        "method": "browser-dom",
+        "what": "Nine anchors to the subject domain in the rendered DOM, some with no rel attribute at all, on a page serving robots index,follow.",
+        "publicUrl": null
+      },
+      "notes": "captcha=none confirmed by this record's own evidence (browser-dom), not derived from submission-targets gates — 2026-09-07 audit"
+    },
+    {
+      "id": "domain-glass",
+      "name": "domain.glass",
+      "kind": "domain-report",
+      "scope": "single-site",
+      "urlPattern": "https://www.domain.glass/{domain}",
+      "account": "none",
+      "captcha": "none",
+      "browserRequired": true,
+      "anchorRendered": true,
+      "relObserved": [
+        "",
+        "nofollow",
+        "nofollow noopener noreferrer",
+        "external nofollow noopener noreferrer"
+      ],
+      "robotsObserved": "index, follow, max-image-preview:large",
+      "indexable": true,
+      "howToPublish": "Visiting the templated URL generates the report page.",
+      "traps": [
+        "Mixed rel values on the same page — some anchors carry none. Record the whole set, not the first one you happen to read."
+      ],
+      "status": "live",
+      "lastVerifiedAt": "2026-08-18",
+      "evidence": {
+        "method": "browser-dom",
+        "what": "Twenty anchors to the subject domain in the rendered DOM with a mix of rel values including bare anchors, on an index,follow page.",
+        "publicUrl": null
+      },
+      "notes": "captcha=none confirmed by this record's own evidence (browser-dom), not derived from submission-targets gates — 2026-09-07 audit"
+    },
+    {
+      "id": "sitelike-org",
+      "name": "sitelike.org",
+      "kind": "domain-report",
+      "scope": "single-site",
+      "urlPattern": "https://www.sitelike.org/similar/{domain}/",
+      "account": "none",
+      "captcha": "none",
+      "browserRequired": false,
+      "anchorRendered": true,
+      "relObserved": [
+        "external nofollow noopener"
+      ],
+      "robotsObserved": null,
+      "indexable": true,
+      "howToPublish": "Visiting the templated URL generates the similar-sites page.",
+      "traps": [],
+      "status": "live",
+      "lastVerifiedAt": "2026-08-18",
+      "evidence": {
+        "method": "anonymous-http",
+        "what": "One anchor to the subject domain present in raw HTML with rel='external nofollow noopener'; no robots meta on the page.",
+        "publicUrl": null
+      },
+      "notes": "captcha=none confirmed by this record's own evidence (anonymous-http), not derived from submission-targets gates — 2026-09-07 audit"
+    },
+    {
+      "id": "hypestat",
+      "name": "hypestat.com",
+      "kind": "domain-report",
+      "scope": "single-site",
+      "urlPattern": "https://hypestat.com/info/{domain}",
+      "account": "none",
+      "captcha": "none",
+      "browserRequired": true,
+      "anchorRendered": false,
+      "robotsObserved": "noindex,follow",
+      "indexable": false,
+      "howToPublish": "N/A",
+      "traps": [
+        "Representative of most of this family: the page generates fine and looks like a win, but it is noindex. Checking only that the URL loads passes a pile of worthless pages."
+      ],
+      "status": "rejected",
+      "rejectReason": "noindex, and no anchor to the subject domain in the rendered DOM",
+      "lastVerifiedAt": "2026-08-18",
+      "evidence": {
+        "method": "browser-dom",
+        "what": "Rendered DOM contained zero anchors to the subject domain and the page served robots noindex,follow.",
+        "publicUrl": null
+      },
+      "notes": "captcha=none confirmed by this record's own evidence (browser-dom), not derived from submission-targets gates — 2026-09-07 audit"
+    },
+    {
+      "id": "htmlcommentbox",
+      "name": "HTML Comment Box (embedded widget)",
+      "kind": "comment-form",
+      "scope": "engine",
+      "homepage": "https://www.htmlcommentbox.com",
+      "account": "none",
+      "captcha": "unknown",
+      "browserRequired": true,
+      "anchorRendered": true,
+      "robotsObserved": "varies",
+      "indexable": "per-host",
+      "howToPublish": "Browser. The widget is embedded by the host site; the comment stream renders client-side.",
+      "traps": [
+        "Spam saturation is per embedding, NOT per widget. A blanket rejection of this product was recorded from one bad instance; other embeddings carry ordinary human conversation with zero spam, because the embedding owner has moderation controls.",
+        "The comment stream is client-rendered, so a plain HTTP fetch shows a near-empty page and finds no spam. That is a false clear — check the neighbourhood in a browser."
+      ],
+      "status": "unverified",
+      "lastVerifiedAt": "2026-08-18",
+      "evidence": {
+        "method": "browser-dom",
+        "what": "One embedding rendered a real human comment thread in the browser with zero spam-term hits, while plain HTTP returned only 2439 characters of page text and could not see the stream at all.",
+        "publicUrl": "https://solarcircuits.neocities.org/guestbook"
+      },
+      "notes": "captcha unknown — not probed 2026-09-07"
+    },
+    {
+      "id": "supertools-rundown",
+      "name": "Supertools (therundown.ai)",
+      "kind": "directory",
+      "scope": "single-site",
+      "homepage": "https://supertools.therundown.ai/submit",
+      "account": "none",
+      "captcha": "none",
+      "browserRequired": false,
+      "anchorRendered": true,
+      "robotsObserved": null,
+      "indexable": true,
+      "howToPublish": "Embedded Tally.so form on /submit. No login, no payment, no CAPTCHA.",
+      "traps": [
+        "Listing is reviewed, so submission is not publication — verify the live listing before recording any rel."
+      ],
+      "status": "unverified",
+      "lastVerifiedAt": "2026-08-18",
+      "evidence": {
+        "method": "both",
+        "what": "Raw HTML grepped for recaptcha/hcaptcha/turnstile/sitekey returned nothing, no login wording and no price in script-stripped visible text, and a headless browser pass showed a reachable Tally form.",
+        "publicUrl": null
+      },
+      "notes": "captcha=none confirmed by this record's own evidence (both), not derived from submission-targets gates — 2026-09-07 audit"
+    },
+    {
+      "id": "dofollow-tools",
+      "name": "Dofollow.Tools",
+      "kind": "directory",
+      "scope": "single-site",
+      "homepage": "https://dofollow.tools/submit",
+      "account": "none",
+      "captcha": "unknown",
+      "browserRequired": true,
+      "anchorRendered": true,
+      "robotsObserved": null,
+      "indexable": true,
+      "howToPublish": "Native multi-step wizard. Step 1 (Tool Information) is reachable with no login wall and no CAPTCHA.",
+      "traps": [
+        "Only step 1 was walked. Step 2 is named \"Submission Type\", which is usually where a free/paid tier choice lives — treat the channel as unverified until someone walks that step.",
+        "The header carries a \"Sign In\" link, but it is navigation, not a wall: the step-1 form renders and is fillable without it. Matching on the words alone gives a false positive."
+      ],
+      "status": "unverified",
+      "lastVerifiedAt": "2026-08-18",
+      "evidence": {
+        "method": "both",
+        "what": "Step-1 form fields render in raw HTML; script-stripped visible text contains no price and no login requirement; no CAPTCHA sitekey string anywhere in the source.",
+        "publicUrl": null
+      },
+      "notes": "captcha unknown — not probed 2026-09-07"
+    },
+    {
+      "id": "legacy-php-directory-script",
+      "name": "Legacy PHP directory script (one engine, several hosts)",
+      "kind": "directory",
+      "scope": "engine",
+      "account": "none",
+      "captcha": "unknown",
+      "browserRequired": false,
+      "anchorRendered": true,
+      "robotsObserved": "varies",
+      "indexable": "per-host",
+      "howToPublish": "Server-rendered submit.php with a free tier. Fields and markup are identical across hosts running this script.",
+      "traps": [
+        "Two of the three hosts measured carry a classic image CAPTCHA exposed only as form fields (name=\"CAPTCHA\" plus name=\"IMAGEHASH\"). No third-party script is loaded, so a recaptcha/hcaptcha/turnstile search returns clean on them — search the field names too.",
+        "Whether the CAPTCHA is present is a per-host choice on the same engine, so it must be probed per host like every other owner-level setting."
+      ],
+      "status": "unverified",
+      "lastVerifiedAt": "2026-08-18",
+      "evidence": {
+        "method": "anonymous-http",
+        "what": "Three hosts served byte-similar submit.php markup with identical field names; a service-name CAPTCHA search returned false on all three while two exposed IMAGEHASH and CAPTCHA form fields.",
+        "publicUrl": null
+      },
+      "notes": "captcha unknown — not probed 2026-09-07"
+    },
+    {
+      "id": "qualityinternetdirectory",
+      "name": "qualityinternetdirectory.com",
+      "kind": "directory",
+      "scope": "single-site",
+      "homepage": "https://www.qualityinternetdirectory.com/submit.php",
+      "account": "none",
+      "captcha": "none",
+      "browserRequired": false,
+      "anchorRendered": true,
+      "robotsObserved": null,
+      "indexable": true,
+      "howToPublish": "submit.php, free tier, no account. The only host of this legacy engine measured without a CAPTCHA field.",
+      "traps": [
+        "Same engine as the sibling hosts that DO carry an image CAPTCHA — re-check the field names before each campaign, since this is an owner-level setting that can be turned on."
+      ],
+      "status": "unverified",
+      "lastVerifiedAt": "2026-08-18",
+      "evidence": {
+        "method": "anonymous-http",
+        "what": "submit.php returned 200 with a free tier in script-stripped visible text, no price, and neither modern CAPTCHA service strings nor legacy CAPTCHA/IMAGEHASH field names.",
+        "publicUrl": null
+      },
+      "notes": "captcha=none confirmed by this record's own evidence (anonymous-http), not derived from submission-targets gates — 2026-09-07 audit"
+    },
+    {
+      "id": "brownbook",
+      "name": "Brownbook",
+      "kind": "directory",
+      "scope": "single-site",
+      "homepage": "https://www.brownbook.net/",
+      "account": "none",
+      "captcha": "none",
+      "browserRequired": true,
+      "anchorRendered": true,
+      "robotsObserved": null,
+      "indexable": true,
+      "howToPublish": "Add-business wizard. Step 1 reachable with no account, no payment and no CAPTCHA.",
+      "traps": [
+        "Only step 1 of a two-step wizard was walked, so a late gate on step 2 is not ruled out."
+      ],
+      "status": "unverified",
+      "lastVerifiedAt": "2026-08-18",
+      "evidence": {
+        "method": "both",
+        "what": "Homepage and add-business step 1 rendered in a browser with no login wall, no price and no CAPTCHA strings or legacy CAPTCHA field names in source.",
+        "publicUrl": null
+      },
+      "notes": "captcha=none confirmed by this record's own evidence (both), not derived from submission-targets gates — 2026-09-07 audit"
+    },
+    {
+      "id": "aitoolsguide",
+      "name": "AI Tools Guide",
+      "kind": "directory",
+      "scope": "single-site",
+      "homepage": "https://www.aitoolsguide.com/",
+      "account": "none",
+      "captcha": "none",
+      "browserRequired": false,
+      "anchorRendered": true,
+      "robotsObserved": null,
+      "indexable": true,
+      "howToPublish": "免费提交表单，无登录墙、无验证码、无价格",
+      "traps": [
+        "Reviewed listing, so submitting is not publishing — verify the live listing before recording any rel."
+      ],
+      "status": "unverified",
+      "lastVerifiedAt": "2026-08-18",
+      "evidence": {
+        "method": "both",
+        "what": "Submission form present in source; script-stripped visible text carried no price and no login requirement; neither modern CAPTCHA service strings nor legacy CAPTCHA/IMAGEHASH field names were found.",
+        "publicUrl": null
+      },
+      "notes": "captcha=none confirmed by this record's own evidence (both), not derived from submission-targets gates — 2026-09-07 audit"
+    },
+    {
+      "id": "ainavhub",
+      "name": "AI NavHub",
+      "kind": "directory",
+      "scope": "single-site",
+      "homepage": "https://ainavhub.com/",
+      "account": "none",
+      "captcha": "none",
+      "browserRequired": false,
+      "anchorRendered": true,
+      "robotsObserved": null,
+      "indexable": true,
+      "howToPublish": "同上",
+      "traps": [
+        "Reviewed listing, so submitting is not publishing — verify the live listing before recording any rel."
+      ],
+      "status": "unverified",
+      "lastVerifiedAt": "2026-08-18",
+      "evidence": {
+        "method": "both",
+        "what": "Submission form present in source; script-stripped visible text carried no price and no login requirement; neither modern CAPTCHA service strings nor legacy CAPTCHA/IMAGEHASH field names were found.",
+        "publicUrl": null
+      },
+      "notes": "captcha=none confirmed by this record's own evidence (both), not derived from submission-targets gates — 2026-09-07 audit"
+    },
+    {
+      "id": "llmrelevance",
+      "name": "LLM Relevance",
+      "kind": "directory",
+      "scope": "single-site",
+      "homepage": "https://llmrelevance.com/",
+      "account": "none",
+      "captcha": "none",
+      "browserRequired": false,
+      "anchorRendered": true,
+      "robotsObserved": null,
+      "indexable": true,
+      "howToPublish": "可见文本里出现 $ 0，与免费档一致",
+      "traps": [
+        "Reviewed listing, so submitting is not publishing — verify the live listing before recording any rel.",
+        "2026-09-06 videocatch run: submitted via /submit (Tool Name=VideoCatch, Website URL, Category=Productivity — no Video category available, Starting Price=Free, contact hello@videocatch.org). Confirmation text: \"Submission received — We review submissions within 48 hours ... Submission and review are always free.\" Status kept unverified until the live listing (with rel) is publicly confirmed — a review-queue confirmation is not a publish confirmation."
+      ],
+      "status": "unverified",
+      "lastVerifiedAt": "2026-08-18",
+      "evidence": {
+        "method": "both",
+        "what": "Submission form present in source; script-stripped visible text carried no price and no login requirement; neither modern CAPTCHA service strings nor legacy CAPTCHA/IMAGEHASH field names were found.",
+        "publicUrl": null
+      },
+      "notes": "captcha=none confirmed by this record's own evidence (both), not derived from submission-targets gates — 2026-09-07 audit"
+    },
+    {
+      "id": "activesearchresults",
+      "name": "ActiveSearchResults",
+      "kind": "directory",
+      "scope": "single-site",
+      "homepage": "https://www.activesearchresults.com/",
+      "account": "none",
+      "captcha": "none",
+      "browserRequired": false,
+      "anchorRendered": true,
+      "robotsObserved": null,
+      "indexable": true,
+      "howToPublish": "老派搜索目录，免费提交表单",
+      "traps": [
+        "Reviewed listing, so submitting is not publishing — verify the live listing before recording any rel."
+      ],
+      "status": "unverified",
+      "lastVerifiedAt": "2026-08-18",
+      "evidence": {
+        "method": "both",
+        "what": "Submission form present in source; script-stripped visible text carried no price and no login requirement; neither modern CAPTCHA service strings nor legacy CAPTCHA/IMAGEHASH field names were found.",
+        "publicUrl": null
+      },
+      "notes": "captcha=none confirmed by this record's own evidence (both), not derived from submission-targets gates — 2026-09-07 audit"
+    },
+    {
+      "id": "toolai",
+      "name": "ToolAI",
+      "kind": "directory",
+      "scope": "single-site",
+      "homepage": "https://www.toolai.io/submit/tool",
+      "account": "none",
+      "payment": "optional",
+      "captcha": "none",
+      "browserRequired": false,
+      "anchorRendered": true,
+      "robotsObserved": null,
+      "indexable": true,
+      "howToPublish": "Free submission form (name / website / description), no login required to fill it.",
+      "traps": [
+        "**The free tier is explicitly nofollow.** The paid tier ($99, discounted to $49 first month) is what buys a dofollow link and priority review. Free still gets a listing, so record it as a channel — but never record dofollow here without observing it."
+      ],
+      "status": "unverified",
+      "lastVerifiedAt": "2026-08-18",
+      "evidence": {
+        "method": "browser-dom",
+        "what": "Free form fillable without login; the paid plan panel states dofollow and priority review as its paid features, implying the free listing is nofollow.",
+        "publicUrl": null
+      },
+      "notes": "captcha=none confirmed by this record's own evidence (browser-dom), not derived from submission-targets gates — 2026-09-07 audit"
+    },
+    {
+      "id": "openpr",
+      "name": "openPR",
+      "kind": "publish-platform",
+      "scope": "single-site",
+      "homepage": "https://www.openpr.com/",
+      "account": "none",
+      "payment": "optional",
+      "captcha": "interactive",
+      "browserRequired": true,
+      "anchorRendered": false,
+      "relObserved": [],
+      "robotsObserved": "index,follow,noarchive",
+      "indexable": true,
+      "howToPublish": "Free press release at /news/submit.html, reachable anonymously — no login wall, only a legacy image CAPTCHA and two consent checkboxes. It publishes; it just does not give you an anchor.",
+      "traps": [
+        "Publishes fine and emits NO anchor for the author. Rendered DOM of a live release carries 127 anchors and not one points at the author domain; the author URLs (arizton.com, four of them) exist only as plain text nodes. Verified in a browser 2026-08-18.",
+        "The page does have outbound anchors with no rel — but they are openPR own properties, a consent-manager, and a sitewide advertiser (einbock.com) that is byte-identical across unrelated releases. Reading those as \"dofollow author link\" is the specific way this site fools a page-level rel scan.",
+        "Every form field name is a per-load random hash (e.g. 8182cb1481cc...), so no script can hardcode field names — it must parse the form on each load.",
+        "The form carries load_credits / credits_code fields: a paid path exists beside the free one. Free submission did not require touching them.",
+        "Generalisation warning: this is one site, not the free-press-release family. Sample each PR site own published item before assuming it behaves the same."
+      ],
+      "status": "rejected",
+      "rejectReason": "Publishes without an account but emits no author anchor at all, so a placement here is worth zero link equity. Rejected on output, not on access.",
+      "lastVerifiedAt": "2026-08-18",
+      "evidence": {
+        "method": "browser-dom",
+        "url": "https://www.openpr.com/news/4606409/middle-east-data-center-construction-investment-to-reach-usd",
+        "what": "Ran document.querySelectorAll on the rendered page: 127 anchors total, outbound anchor hosts were only twitter/facebook/linkedin/google (all rel=nofollow), consentmanager.net and einbock.com (both no rel). The author domain arizton.com appeared four times in document.body.innerText and zero times in any href. Cross-checked against a second unrelated release (/news/4606405) which carried the same einbock.com anchor, confirming it is a sitewide advertiser rather than an author link."
+      },
+      "notes": "captcha=interactive confirmed by this record's own evidence (browser-dom), not derived from submission-targets gates — 2026-09-07 audit"
+    },
+    {
+      "id": "blogengage",
+      "name": "BlogEngage (dead — domain resold)",
+      "kind": "directory",
+      "scope": "single-site",
+      "homepage": "https://blogengage.com/",
+      "account": "required",
+      "captcha": "unknown",
+      "anchorRendered": false,
+      "status": "dead",
+      "lastVerifiedAt": "2026-08-18",
+      "howToPublish": "Nothing to publish. The domain no longer belongs to a blog directory.",
+      "traps": [
+        "Answers HTTP 200 and is still listed as a live blog-promotion directory in widely-copied backlink lists. It now redirects to a crypto product. A status-code check alone passes it; only following the redirect or reading the title catches it."
+      ],
+      "evidence": {
+        "method": "browser-dom",
+        "url": "https://blogengage.com/",
+        "what": "Navigating to blogengage.com in a browser lands on https://gomining.com with the title \"Bitcoin superapp - mining, earning and using BTC | GoMining\". There is no blog directory left at this domain — the site was resold, not merely rebranded."
+      },
+      "notes": "captcha unknown — not probed 2026-09-07"
+    },
+    {
+      "id": "valine-comment-engine",
+      "name": "Valine (LeanCloud-backed comment engine)",
+      "kind": "comment-form",
+      "scope": "engine",
+      "homepage": "https://valine.js.org",
+      "account": "none",
+      "payment": "none",
+      "captcha": "none",
+      "browserRequired": true,
+      "anchorRendered": true,
+      "relObserved": [
+        "noopener"
+      ],
+      "robotsObserved": null,
+      "indexable": "per-host",
+      "rateLimit": null,
+      "howToPublish": "Browser only. Four fields: 昵称 (required), 邮箱 (required), 网址 (optional), comment body. Submit with the button or Cmd/Ctrl+Enter. Publishes instantly with no moderation queue on the host measured — a comment posted 9 seconds earlier was already rendered.",
+      "traps": [
+        "The nickname becomes an anchor pointing at whatever went in the 网址 field, and bare URLs in the body become anchors too. Both carried rel=\"noopener\" only — no nofollow — so this is one of the few genuinely dofollow no-account channels in this file.",
+        "THE WHOLE STREAM IS CLIENT-RENDERED. The served HTML of the host measured is 9766 bytes and contains ZERO outbound anchors; every link, including the static site list above the form, appears only after Valine.min.js runs. An anonymous-http check therefore reports no anchors at all, and a non-rendering crawler sees none either. Do not record this as an indexed dofollow link without confirming the rendered page in Search Console or a cache view.",
+        "Moderation, and whether comments require review at all, is a per-host LeanCloud setting. Instant publish on one host says nothing about the next.",
+        "Because the backend is the host owner’s own LeanCloud app, the entire history can be wiped or the app can expire, taking every link with it. Treat placements here as impermanent.",
+        "The nickname anchor and any bare URL in the body BOTH point at your domain, so one submission yields two anchors on the same page — count that as one placement, not two.",
+        "Boards in this family are served from several hostnames sharing ONE LeanCloud app. The Noise board answers on noisedh.cn, noisedh.link and noisedaohang.netlify.app with byte-identical /tougao/ pages (9766 bytes) and the same appId in data.js, so one comment renders on all three. Queue it as one target, not three, and never resubmit to a mirror.",
+        "The comment store is readable over the LeanCloud REST API with the appId/appKey embedded in the page — 5108 comments came back in six requests. That makes the board a discovery source, not just a placement target. Whitelist keys=nick,link,comment,createdAt so you do not pull commenters mail addresses."
+      ],
+      "status": "live",
+      "lastVerifiedAt": "2026-08-19",
+      "evidence": {
+        "method": "both",
+        "what": "On noisedaohang.netlify.app/tougao a submission of our own published instantly with no moderation queue (comment count 4651 to 4652) and rendered TWO anchors to the submitted domain — the nickname anchor built from the 网址 field and the bare URL in the body — both rel=\"noopener\" with no nofollow, on a page carrying no robots meta. A plain HTTP fetch of the same URL returns 9766 bytes with zero outbound anchors and no comment markup.",
+        "publicUrl": "https://noisedaohang.netlify.app/tougao/"
+      },
+      "notes": "captcha=none confirmed by this record's own evidence (both), not derived from submission-targets gates — 2026-09-07 audit"
+    },
+    {
+      "id": "wordpress-open-comment-form",
+      "name": "WordPress native comment form (open, no account)",
+      "kind": "comment-form",
+      "scope": "engine",
+      "account": "none",
+      "payment": "none",
+      "captcha": "passive",
+      "browserRequired": false,
+      "anchorRendered": true,
+      "robotsObserved": "varies",
+      "indexable": "per-host",
+      "rateLimit": null,
+      "howToPublish": "POST to wp-comments-post.php, or fill #commentform in a browser. Detect by grepping the served HTML for id=\"commentform\" together with wp-comments-post.php.",
+      "traps": [
+        "THE WEBSITE FIELD IS OPTIONAL AND OWNERS TURN IT OFF. One of 7 open forms measured (onlytoday.com.ua) renders #commentform with no name=\"url\" input at all, so an accepted comment there can never carry an anchor. Grep for name=\"url\" separately — the presence of a comment form does not imply a link field.",
+        "Akismet was present on 6 of the 7 open forms measured. It is invisible in the form markup, produces no challenge, and silently sinks submissions; a 200 response and a \"your comment is awaiting moderation\" notice are both compatible with the comment never appearing.",
+        "A page can serve a complete #commentform and still be closed to new comments, and the reverse also happens: yourcupofcake.com served no form at all and matched \"comments are closed\", while a form’s presence on an 11-year-old post says nothing about whether anything still gets approved.",
+        "Comment pagination hides state. squatuniversity.com was supplied as /comment-page-3/ — the form renders there, but link value and moderator attention concentrate on page 1.",
+        "These are almost always somebody’s topical blog. An off-topic comment from an unrelated site is the single most likely thing to be deleted, and posting it is what this Skill refuses to automate."
+      ],
+      "status": "live",
+      "lastVerifiedAt": "2026-08-19",
+      "evidence": {
+        "method": "anonymous-http",
+        "what": "Of 19 URLs handed over as no-login comment targets, 7 served an open native WordPress comment form (id=\"commentform\" + wp-comments-post.php) with no login wording; 6 of those also carried Akismet, and 1 exposed no name=\"url\" field.",
+        "publicUrl": null
+      },
+      "notes": "captcha=passive confirmed by this record's own evidence (anonymous-http), not derived from submission-targets gates — 2026-09-07 audit"
+    },
+    {
+      "id": "reciprocal-link-gated-directory",
+      "name": "Directory that gates free listing behind a reciprocal dofollow link",
+      "kind": "directory",
+      "scope": "engine",
+      "account": "none",
+      "payment": "none",
+      "captcha": "none",
+      "browserRequired": true,
+      "anchorRendered": true,
+      "relObserved": [],
+      "robotsObserved": null,
+      "indexable": "per-host",
+      "rateLimit": null,
+      "howToPublish": "Put a dofollow link to the directory on your own homepage (footer counts — it renders on every page), deploy, verify the anchor is in the served HTML, then submit. The directory crawls your homepage and rejects the submission if the link is missing or carries nofollow.",
+      "traps": [
+        "rel MUST be noopener only. Adding nofollow satisfies the human instruction and fails the automated check, so the outbound link is spent for nothing.",
+        "This is a PAY-FIRST trade: your dofollow ships the moment you deploy, their listing arrives later or never. seektool.ai returned HTTP 500 from POST /api/submit on 4 consecutive attempts on 2026-08-19 while our reciprocal link was already live — a one-sided state that persists until their API recovers. Diarise a recheck and be willing to remove the link.",
+        "Verify the link on the DEPLOYED page with a plain fetch, not in the build output. The check reads what the crawler sees.",
+        "A reciprocal link that only buys faster review, not eligibility, is not worth paying. best-ai.org offers 48h priority for a footer link but still requires an account to submit at all — the link alone buys nothing."
+      ],
+      "status": "live",
+      "lastVerifiedAt": "2026-08-19",
+      "evidence": {
+        "method": "both",
+        "what": "seektool.ai/submit exposes a 2-field form (website, url) with no CAPTCHA and no login. After adding <a href=\"https://seektool.ai\" rel=\"noopener\"> to the subject site's footer and deploying, the served homepage HTML carried the anchor and the form POSTed to /api/submit — which answered 500 four times running with the page rendering \"Server error, please try again later\".",
+        "publicUrl": "https://seektool.ai/submit"
+      },
+      "notes": "captcha=none confirmed by this record's own evidence (both), not derived from submission-targets gates — 2026-09-07 audit"
+    },
+    {
+      "id": "arithmetic-and-slider-botcheck-directories",
+      "name": "Free no-account directories gated by a self-hosted bot check",
+      "kind": "directory",
+      "scope": "engine",
+      "account": "none",
+      "payment": "none",
+      "captcha": "interactive",
+      "browserRequired": true,
+      "anchorRendered": true,
+      "relObserved": [],
+      "robotsObserved": null,
+      "indexable": "per-host",
+      "rateLimit": null,
+      "howToPublish": "Not automatable by this Skill. Every field can be filled programmatically; the final bot check must be answered by the site owner. Fill everything, leave the check blank, and hand off.",
+      "traps": [
+        "THE USUAL FINGERPRINTS MISS THESE. Neither thenextai.com nor aig123.com mentions recaptcha, hcaptcha or turnstile anywhere in the served HTML. The checks live in id=\"captchaInput\" (an arithmetic question, rendered as \"Quick check: 4 + 7 =\") and <input captcha-type=\"slider\" name=\"captcha_type\">. Add captchaInput | captcha-type | captcha_type | 验证码 | 人机 | quick check | slider to the probe wordlist.",
+        "Query the LIVE DOM, not the first-response HTML. thenextai renders #captchaInput outside any <form> (el.form is null, parent carries no text); the question text next to it only exists after render.",
+        "An arithmetic question is still bot detection. It is not exempt because it is easy — the rule does not scale with difficulty.",
+        "HONEYPOT FIELDS MUST STAY EMPTY. thenextai ships a normally-visible text input id=\"website_confirm\" with no label. Filling every field on the page is exactly the failure mode it detects. Skip anything named *_confirm / url2 / website2 that carries no label.",
+        "Fields may carry only id and no name. All 12 controls on thenextai have name===\"\"; querySelector(\"[name=...]\") returns null. Dump {tag,id,name,type} before choosing a selector."
+      ],
+      "status": "rejected",
+      "lastVerifiedAt": "2026-08-19",
+      "evidence": {
+        "method": "browser-dom",
+        "what": "thenextai.com/submit-ai-tool/ accepted 10 filled fields (name, url, category, pricing, short/full description, logo, email, tags) with no account and no third-party CAPTCHA, then required #captchaInput. aig123.com/site-submit exposes a full Chinese directory form with no account and a slider captcha declared as captcha-type=\"slider\".",
+        "publicUrl": "https://www.thenextai.com/submit-ai-tool/"
+      },
+      "rejectReason": "Submission requires answering a self-hosted bot check (arithmetic question or slider). This Skill does not complete bot detection, regardless of how trivial the challenge is. Every other field is automatable — fill them and hand the final step to the site owner.",
+      "notes": "captcha=interactive confirmed by this record's own evidence (browser-dom), not derived from submission-targets gates — 2026-09-07 audit"
+    },
+    {
+      "id": "catch-all-soft-404-directory",
+      "name": "Directory whose /submit is a catch-all soft 404",
+      "kind": "directory",
+      "scope": "engine",
+      "account": "none",
+      "payment": "none",
+      "captcha": "unknown",
+      "browserRequired": false,
+      "anchorRendered": false,
+      "relObserved": [],
+      "robotsObserved": null,
+      "indexable": false,
+      "rateLimit": null,
+      "howToPublish": "Do not submit. There is no form; the SPA answers 200 for every path.",
+      "traps": [
+        "ALWAYS PROBE AN INVENTED CONTROL PATH alongside /submit. Seven domains measured on 2026-08-19 answered 200 for /zzz-control-<random>: sergechel.info, vuink.com, topaihubs.com, l.dang.ai, techbasedirectory.com, toolspedia.io, aitoolsdirectory.com. Without the control they enter the next round as seven live submission targets.",
+        "Byte size does not disambiguate. topaihubs.com returned different sizes for /submit (28,101) and /submit-tool (52,384), which reads like two distinct real pages — the control path returned 200 as well.",
+        "In a browser the control path often does not merely answer 200 — it lands on the homepage. Comparing location.href after load is a cheaper tell than diffing markup."
+      ],
+      "status": "rejected",
+      "rejectReason": "No submission surface exists; every path returns the SPA shell.",
+      "lastVerifiedAt": "2026-08-19",
+      "evidence": {
+        "method": "both",
+        "what": "Probed /submit, /submit-tool, /submit-ai-tool, /add-tool, /new, /post plus an invented /zzz-control-<random> across 43 directory domains; seven answered 200 on the control path. Confirmed in a real browser on toolspedia.io: /zzz-control-91827 RESOLVES TO https://toolspedia.io/ and renders the homepage, and /submit renders a byte-identical DOM (same title, 2 forms, 499 inputs). Neither path carries a submission surface.",
+        "publicUrl": null
+      },
+      "notes": "captcha unknown — not probed 2026-09-07"
+    },
+    {
+      "id": "10015-product-finder",
+      "name": "10015.io Product Finder submission",
+      "kind": "directory",
+      "scope": "single-site",
+      "homepage": "https://10015.io",
+      "urlPattern": "https://10015.io/product-finder/submit",
+      "account": "required",
+      "payment": "optional",
+      "captcha": "none",
+      "browserRequired": true,
+      "anchorRendered": true,
+      "relObserved": [],
+      "robotsObserved": null,
+      "indexable": "unknown",
+      "rateLimit": null,
+      "howToPublish": "Step 1 is a single URL field; submitting it makes the site scrape your page and prefill a long step-2 form. Fill the text fields, pick Pricing / Category / Tags from custom comboboxes, then press Submit Product — which opens a Product Preview modal whose own Submit Product button is the real one.",
+      "traps": [
+        "TWO BUTTONS, SAME LABEL. The first Submit Product opens a preview modal; the modal holds a second Submit Product that actually posts. Reading document.body.innerText after the first click returns the form BEHIND the modal and looks exactly like nothing happened — that false negative cost several retries here. Select the LAST match, and take a screenshot before concluding a click failed.",
+        "FIELD name IS A REACT PROP, NOT A DOM ATTRIBUTE. Selecting by attribute returns an empty list while iterating the inputs and comparing the name property finds them. Set a data-* attribute on the element first, then use that as the selector for opencli type/click.",
+        "Comboboxes for Pricing / Category / Tags render no select element. Walk up two levels from the label's text node, click that container, then read document.body.innerText for the option list — the options are announced there even when no li or role=option nodes match. Enter selects the focused option.",
+        "Scripted value-setting was not enough on its own. Fields set with the native value setter plus input/change events showed correct values and correct lengths, yet submit stayed inert until the fields were re-entered with real key events.",
+        "The standard review queue is 3-4 MONTHS. Do not schedule a public/indexed recheck sooner. Paid Priority Review promises 24 hours and was not bought.",
+        "Requires an existing signed-in account. This Skill does not create accounts — this submission rode the owner's already-authenticated Chrome session.",
+        "The prefill scrapes your own OG image. Ours pointed at a path that 404s, and the form showed 'Image could not be loaded' rather than failing loudly. Check the rendered preview, not just the field value."
+      ],
+      "status": "live",
+      "lastVerifiedAt": "2026-08-20",
+      "evidence": {
+        "method": "browser-dom",
+        "what": "Submitted a browser-tools site (category Productivity, pricing Free, tags Tools / Text Generator / PDF / Typography / Privacy) through the two-step form on 2026-08-20. The page then rendered: Thanks for submitting your product! \"<product name>\" has been submitted successfully. — alongside a standard-review notice of 3-4 months.",
+        "publicUrl": null
+      },
+      "notes": "captcha=none confirmed by this record's own evidence (browser-dom), not derived from submission-targets gates — 2026-09-07 audit"
+    },
+    {
+      "id": "github-repo",
+      "name": "GitHub — public repository (README)",
+      "kind": "publish-platform",
+      "scope": "own-property",
+      "homepage": "https://github.com",
+      "account": "required",
+      "captcha": "none",
+      "browserRequired": false,
+      "anchorRendered": true,
+      "relObserved": [
+        "nofollow"
+      ],
+      "robotsObserved": "index, follow",
+      "indexable": true,
+      "rateLimit": null,
+      "howToPublish": "Create a public repo and put real links in README.md. Entirely scriptable with the `gh` CLI plus git — no browser needed. The repo must carry something genuinely useful; an empty shell built only to hold links is what every guideline calls out.",
+      "traps": [
+        "EVERY anchor to an external site is rel=\"nofollow\" — measured 2026-08-22 across 46 anchors on one repo page: 45 plain nofollow plus 1 \"noopener noreferrer nofollow\". There is no dofollow slot anywhere on the page, unlike platforms where a byline or profile field escapes the rule.",
+        "The repo description and homepage fields render as links too and are nofollow as well — do not count them as a second channel.",
+        "A README goes stale silently. Links to pages later merged away keep 301-ing and look fine to a human, so re-diff the README against the live sitemap whenever the site's URL set changes."
+      ],
+      "status": "live",
+      "lastVerifiedAt": "2026-08-22",
+      "evidence": {
+        "method": "anonymous-http",
+        "what": "Fetched the public repo page and read the rel attribute off every anchor pointing at the linked site. 46 anchors total, all carrying nofollow.",
+        "observedAt": "2026-08-22"
+      },
+      "notes": "captcha=none confirmed by this record's own evidence (anonymous-http), not derived from submission-targets gates — 2026-09-07 audit"
+    }
+  ]
+}

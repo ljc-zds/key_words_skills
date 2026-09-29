@@ -1,0 +1,175 @@
+# Copy this file to .github/workflows/indexnow.yml.
+# Replace SITE_URL and INDEXNOW_KEY before committing.
+name: Submit IndexNow
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Print the payload summary without submitting."
+        required: true
+        default: true
+        type: boolean
+      limit:
+        description: "Optional URL limit for smoke tests."
+        required: false
+        default: ""
+  repository_dispatch:
+    types:
+      - production-deployed
+
+env:
+  SITE_URL: https://example.com
+  INDEXNOW_KEY: "replace-with-indexnow-key"
+  INDEXNOW_ENDPOINT: https://api.indexnow.org/indexnow
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Verify live key file and sitemap
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          repo_key_file="public/${INDEXNOW_KEY}.txt"
+          repo_key_body="$(tr -d '\r\n' < "${repo_key_file}")"
+
+          if [ "${repo_key_body}" != "${INDEXNOW_KEY}" ]; then
+            echo "Repository IndexNow key file mismatch at ${repo_key_file}" >&2
+            exit 1
+          fi
+
+          key_url="${SITE_URL}/${INDEXNOW_KEY}.txt"
+          key_body="$(curl --fail --silent --show-error --location --max-time 30 "${key_url}" | tr -d '\r\n')"
+
+          if [ "${key_body}" != "${INDEXNOW_KEY}" ]; then
+            echo "Live IndexNow key file mismatch at ${key_url}" >&2
+            exit 1
+          fi
+
+          curl --fail --silent --show-error --location --max-time 30 "${SITE_URL}/sitemap.xml" --output sitemap.xml
+
+      - name: Submit live sitemap URLs
+        env:
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || false }}
+          LIMIT: ${{ github.event_name == 'workflow_dispatch' && inputs.limit || '' }}
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from "node:fs/promises";
+
+          const endpoint = process.env.INDEXNOW_ENDPOINT;
+          const siteUrl = process.env.SITE_URL.replace(/\/$/, "");
+          const key = process.env.INDEXNOW_KEY;
+          const dryRun = process.env.DRY_RUN === "true";
+          const limitInput = process.env.LIMIT?.trim();
+          const limit = limitInput ? Number.parseInt(limitInput, 10) : undefined;
+
+          if (limit !== undefined && (!Number.isInteger(limit) || limit < 1)) {
+            throw new Error("LIMIT must be empty or a positive integer.");
+          }
+
+          const decodeXmlEntities = (value) =>
+            value
+              .replace(/&amp;/g, "&")
+              .replace(/&lt;/g, "<")
+              .replace(/&gt;/g, ">")
+              .replace(/&quot;/g, '"')
+              .replace(/&apos;/g, "'");
+
+          const sitemap = await fs.readFile("sitemap.xml", "utf8");
+          const urls = Array.from(
+            new Set(
+              Array.from(
+                sitemap.matchAll(/<(?:[A-Za-z0-9_-]+:)?loc\b[^>]*>([\s\S]*?)<\/(?:[A-Za-z0-9_-]+:)?loc>/gi),
+                (match) => decodeXmlEntities(match[1].trim()),
+              ),
+            ),
+          );
+
+          if (urls.length === 0) {
+            throw new Error("No URLs found in sitemap.xml.");
+          }
+
+          const site = new URL(siteUrl);
+          const invalidUrl = urls.find((url) => {
+            try {
+              const parsed = new URL(url);
+              return parsed.host !== site.host || !["http:", "https:"].includes(parsed.protocol);
+            } catch {
+              return true;
+            }
+          });
+
+          if (invalidUrl) {
+            throw new Error(`Sitemap URL does not belong to ${site.host}: ${invalidUrl}`);
+          }
+
+          const urlList = limit ? urls.slice(0, limit) : urls;
+
+          if (urlList.length > 10000) {
+            throw new Error(`IndexNow accepts up to 10000 URLs per POST; got ${urlList.length}.`);
+          }
+
+          const payload = {
+            host: site.host,
+            key,
+            keyLocation: `${siteUrl}/${key}.txt`,
+            urlList,
+          };
+
+          console.log(JSON.stringify({
+            endpoint,
+            host: payload.host,
+            keyLocation: payload.keyLocation,
+            urlCount: payload.urlList.length,
+            dryRun,
+            urls: payload.urlList.slice(0, 20),
+            truncated: payload.urlList.length > 20,
+          }, null, 2));
+
+          if (dryRun) {
+            process.exit(0);
+          }
+
+          const controller = new AbortController();
+          const timeout = setTimeout(() => controller.abort(), 30000);
+
+          try {
+            const response = await fetch(endpoint, {
+              method: "POST",
+              headers: {
+                "content-type": "application/json; charset=utf-8",
+                "user-agent": "indexnow-github-actions/1.0",
+              },
+              body: JSON.stringify(payload),
+              signal: controller.signal,
+            });
+
+            const body = (await response.text()).trim();
+
+            console.log(JSON.stringify({
+              status: response.status,
+              ok: response.status === 200 || response.status === 202,
+              retryAfter: response.headers.get("retry-after"),
+              body,
+            }, null, 2));
+
+            if (response.status !== 200 && response.status !== 202) {
+              process.exitCode = 1;
+            }
+          } finally {
+            clearTimeout(timeout);
+          }
+          NODE
